@@ -1,0 +1,72 @@
+@main-color: #1f2041ff;
+@sub-color: #4b3f72ff;
+@accent-first: #ffc857;
+@accent-second: #119da4ff;
+@accent-third: #119da4ff;
+@text-color: white;
+
+.container {
+  padding: 5px;
+
+
+  .card {
+    width: 100%;
+    padding: 10px 5px;
+    //margin: 5px;
+    border-radius: 3px;
+    overflow: hidden;
+
+    background-color: white;
+    box-shadow: 0 1px 10px rgb(0 0 0 / 10%);
+
+
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+
+    h3 {
+      width: 100%;
+      text-align: center;
+      word-break: break-word;
+
+      @media screen and (max-width: 480px) {
+        font-size: small;
+      }
+    }
+
+    h5 {
+      padding: 5px;
+      text-align: left;
+      //word-break: break-all;
+
+      @media screen and (max-width: 480px) {
+        font-size: small;
+        font-weight: normal;
+        height: 120px;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.button {
+  width: 80%;
+  padding: 5px 0;
+  margin: auto;
+
+  color: #fafafa;
+  background-color: @sub-color;
+  border-radius: 3px;
+
+  user-select: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: @accent-second;
+  }
+}

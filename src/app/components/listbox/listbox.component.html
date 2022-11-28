@@ -1,0 +1,16 @@
+<table class="list-container">
+  <thead>
+  <th *ngFor="let field of fields" >
+    <p>{{field.title}}</p>
+  </th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of listItems" >
+    <td *ngFor="let article of fields" >
+      <p>
+        {{ item[ article.article ] }}
+      </p>
+    </td>
+  </tr>
+  </tbody>
+</table>

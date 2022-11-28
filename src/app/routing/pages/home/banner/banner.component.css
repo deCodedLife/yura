@@ -1,0 +1,121 @@
+.content-banner {
+  padding: 25px;
+  height: 250px;
+  flex: 1;
+  display: flex;
+  background-color: #119da4;
+  color: #fafafa;
+  border-radius: 3px;
+}
+.content-banner:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+.content-banner div {
+  display: grid;
+  align-content: center;
+  flex: 2;
+}
+h2,
+h4 {
+  margin: 5px;
+}
+.content-banner img {
+  width: 100%;
+}
+@media screen and (max-width: 1210px) {
+  .body {
+    width: 100%;
+  }
+  .content-banner {
+    margin: 10px;
+  }
+}
+.dropdown {
+  flex: 1;
+  margin: 10px 0;
+  z: 999;
+}
+.dropdown .drop-parent {
+  position: absolute;
+  left: 0;
+  margin-top: 0;
+  width: 100%;
+  display: none;
+}
+.dropdown .drop-parent .drop-content * {
+  flex: 1;
+}
+.dropdown .drop-parent .drop-content {
+  width: 1400px;
+  height: 100%;
+  margin: auto;
+  color: black;
+  background-color: white;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  column-gap: 10px;
+  border-radius: 3px;
+}
+@media screen and (max-width: 1400px) {
+  .dropdown .drop-parent .drop-content {
+    width: 1200px;
+  }
+}
+@media screen and (max-width: 1210px) {
+  .dropdown .drop-parent .drop-content {
+    width: auto;
+    margin: 0 10px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .dropdown .drop-parent {
+    display: none;
+  }
+}
+.dropdown:hover {
+  cursor: pointer;
+  color: #ffc857;
+}
+.dropdown:hover .drop-parent {
+  display: block;
+}
+@media screen and (max-width: 900px) {
+  .dropdown:hover .drop-parent {
+    display: none;
+  }
+}
+.dropdown h2 {
+  font-weight: normal;
+  font-size: medium;
+}
+a {
+  color: black;
+}
+.container {
+  padding: 5px;
+}
+.container .card {
+  width: 100%;
+  height: 300px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.container .card img {
+  width: 100%;
+  height: 200px;
+}
+.container .card h3 {
+  width: 100%;
+  text-align: center;
+  word-break: break-word;
+}
+@media screen and (max-width: 480px) {
+  .container .card h3 {
+    font-size: small;
+  }
+}
+/*# sourceMappingURL=banner.component.css.map */

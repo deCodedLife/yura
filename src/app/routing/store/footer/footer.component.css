@@ -1,0 +1,57 @@
+.footer-body {
+  width: -moz-available;
+  color: #fafafa;
+  background-color: #4b3f72ff;
+}
+.main-content {
+  width: 1400px;
+  margin: auto;
+}
+.padding {
+  padding: 20px;
+}
+.info {
+  display: flex;
+  flex-direction: row;
+}
+.info div {
+  flex: 1;
+}
+.info div * {
+  display: block;
+}
+.schedule-block {
+  text-align: center;
+}
+.contacts-block {
+  text-align: right;
+}
+.placement-block {
+  color: #999999;
+}
+.hr {
+  width: 100%;
+  height: 1px;
+  background-color: #999999;
+  margin: 25px 0px;
+}
+@media screen and (max-width: 1400px) {
+  .main-content {
+    width: 1200px;
+  }
+}
+@media screen and (max-width: 1210px) {
+  .main-content {
+    width: 0;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 640px) {
+  .info {
+    flex-direction: column;
+  }
+  .info * {
+    text-align: left;
+  }
+}
+/*# sourceMappingURL=footer.component.css.map */

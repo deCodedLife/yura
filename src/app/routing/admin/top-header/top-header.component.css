@@ -1,0 +1,24 @@
+.header {
+  @apply w-full bg-white drop-shadow-lg;
+  align-items: center;
+  height: 64px;
+}
+.header-content {
+  @apply px-4 flex justify-between h-full;
+}
+h2 {
+  margin: 0;
+}
+.input {
+  @apply bg-gray-100 rounded px-4 py-3 flex;
+  width: 300px;
+}
+.input mat-icon {
+  @apply px-3;
+}
+.input input {
+  all: unset;
+  width: inherit;
+  flex: 1;
+}
+/*# sourceMappingURL=top-header.component.css.map */

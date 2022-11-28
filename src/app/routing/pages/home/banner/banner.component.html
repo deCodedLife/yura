@@ -1,0 +1,27 @@
+<div class="dropdown">
+  <div class="content-banner" [style]="'background-color: ' + backgroundColor">
+    <div>
+      <h2 class="marked-text">
+        {{ title }}
+      </h2>
+      <h4 class="price-text">
+        {{ subtitle }}
+      </h4>
+    </div>
+    <div class="image-container">
+      <img src="{{ image }}">
+    </div>
+  </div>
+
+  <div class="drop-parent">
+    <div class="drop-content">
+
+      <app-dropdown
+        *ngFor="let content of dropContent;"
+        [content]="content"
+      >
+      </app-dropdown>
+
+    </div>
+  </div>
+</div>

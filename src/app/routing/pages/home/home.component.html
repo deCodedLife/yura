@@ -1,0 +1,32 @@
+<div class="body">
+  <div class="banner-content">
+    <app-banner
+      title="Кондиционеры"
+      subtitle="от 10 000р"
+      image="assets/Кондиционеры Funai.png"
+      backgroundColor="#119da4"
+      [dropContent]="productsDropdowns"
+    ></app-banner>
+    <app-banner
+      title="Услуги"
+      subtitle="от 1 100р"
+      image="assets/shapka5.png"
+      backgroundColor="#119da4"
+      [dropContent]="servicesDropdowns"
+    ></app-banner>
+  </div>
+
+
+
+  <div class="block bleed" style="padding: 10px 0">
+    <h1 style="padding: 0 20px">
+      Популярные товары
+    </h1>
+    <div class="card-carousel" style="padding: 0 20px;">
+      <app-product
+        *ngFor="let item of productsList"
+        [product]="item"
+      ></app-product>
+    </div>
+  </div>
+</div>

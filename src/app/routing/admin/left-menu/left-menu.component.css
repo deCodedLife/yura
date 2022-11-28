@@ -1,0 +1,29 @@
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+.menu {
+  @apply bg-gray-800 h-full fixed;
+  flex: 0 1;
+  width: 290px;
+}
+.menu img {
+  @apply w-full py-10;
+}
+.menu .list-item {
+  height: 42px;
+  @apply w-full bg-purple-500 grid;
+}
+a {
+  @apply w-full font-sans text-sm font-light;
+}
+a p {
+  @apply px-5;
+}
+button {
+  @apply text-white w-full py-4 px-7 flex;
+  text-align: left;
+}
+button:hover {
+  @apply bg-orange-300;
+}
+/*# sourceMappingURL=left-menu.component.css.map */

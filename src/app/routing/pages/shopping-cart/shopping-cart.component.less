@@ -1,0 +1,189 @@
+@main-color: #1f2041;
+@sub-color: #4b3f72;
+@accent-first: #ffc857;
+@accent-second: #119da4;
+@accent-third: #119da4;
+@text-color: white;
+
+
+.center-in {
+  display: grid;
+  align-content: center;
+}
+
+.block {
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 10%);
+  margin: 20px 0;
+
+  h1 {
+    padding: 20px;
+  }
+
+  .category {
+    padding: 0 20px;
+
+    @media screen and (max-width: 480px) {
+      padding: 10px 20px;
+      font-size: large;
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+
+  .products {
+    flex: 1;
+    padding: 10px;
+
+    table {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+
+      .products {
+        text-align: center;
+      }
+
+      .photo {
+
+        img {
+          width: 64px;
+          height: 64px;
+        }
+
+      }
+
+      .price {
+        @media screen and (max-width: 480px) {
+          display: none;
+        }
+      }
+
+      .input-back {
+        width: 100px  ;
+
+        .input-box {
+          display: flex;
+          background-color: #fafafa;
+          padding: 5px;
+          border-radius: 3px;
+          width: 100px;
+          justify-content: center;
+
+          .clickable {
+            cursor: pointer;
+          }
+
+          @media screen and (max-width: 480px) {
+            width: 75px;
+          }
+        }
+      }
+
+      .input {
+        all: unset;
+        width: 75px;
+
+        @media screen and (max-width: 480px) {
+          width: 50px;
+        }
+      }
+
+      .summary {
+        background-color: @sub-color;
+        color: @text-color;
+        font-weight: bold;
+      }
+
+      .info {
+        width: auto;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      @media screen and (max-width: 900px) {
+        img {
+          width: 50px;
+        }
+      }
+      @media screen and (max-width: 300px) {
+        .photo {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        font-size: small;
+      }
+
+      @media screen and (max-width: 300px) {
+        font-size: 6pt;
+      }
+
+    }
+
+
+  }
+
+  .registration {
+    width: 400px;
+    padding: 20px;
+    border: 3px solid #fafafa;
+
+    h2 {
+      text-align: center;
+    }
+
+    .input {
+      width: auto;
+      background-color: @sub-color;
+      padding: 10px;
+      border-radius: 3px;
+      margin: 10px 0px;
+
+      input {
+        all: unset;
+        color: @text-color;
+        width: 100%;
+
+        &::placeholder {
+          color: @text-color;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1210px) {
+      width: 250px;
+    }
+
+    @media screen and (max-width: 900px) {
+      width: auto;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.button {
+  background-color: @accent-first;
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+
+  &:active {
+    background-color: @accent-second;
+  }
+
+  h3 {
+    padding: 3px;
+    margin: 0;
+  }
+}

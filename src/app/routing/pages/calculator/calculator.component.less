@@ -1,0 +1,70 @@
+@import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css";
+
+@main-color: #1f2041ff;
+@sub-color: #4b3f72ff;
+@accent-first: #ffc857;
+@accent-second: #119da4ff;
+@accent-third: #119da4ff;
+@text-color: #fafafa;
+@text-subcolor: #999999;
+
+.block {
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 10%);
+  margin: 20px 0;
+  padding: 20px;
+
+  h2 {
+    font-size: x-large;
+  }
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    font-size: xx-large;
+    font-weight: bold;
+  }
+}
+
+
+
+.input-box {
+  background-color: @sub-color;
+  padding: 12px 0;
+  color: white;
+  border-radius: 3px;
+  margin: 5px 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  input {
+    all: unset;
+    padding: 0 10px;
+    flex: 1;
+
+    &::placeholder {
+      color: #fafafa;
+    }
+  }
+}
+
+
+.checkbox {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+
+  input {
+    width: 24px;
+  }
+
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
+}

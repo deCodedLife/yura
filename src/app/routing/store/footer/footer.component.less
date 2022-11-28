@@ -1,0 +1,78 @@
+@main-color: #1f2041ff;
+@sub-color: #4b3f72ff;
+@accent-first: #ffc857;
+@accent-second: #119da4ff;
+@accent-third: #119da4ff;
+@text-color: #fafafa;
+@text-subcolor: #999999;
+
+.footer-body {
+  width: -moz-available;
+  color: @text-color;
+  background-color: @sub-color;
+}
+
+.main-content {
+  width: 1400px;
+  margin: auto;
+}
+
+.padding {
+  padding: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+}
+
+.info div {
+  flex: 1;
+}
+
+.info div * {
+  display: block;
+}
+
+.schedule-block {
+  text-align: center;
+}
+
+.contacts-block {
+  text-align: right;
+}
+
+.placement-block {
+  color: @text-subcolor;
+}
+
+.hr {
+  width: 100%;
+  height: 1px;
+  background-color: @text-subcolor;
+  margin: 25px 0px;
+}
+
+@media screen and (max-width: 1400px) {
+  .main-content {
+    width: 1200px;
+  }
+}
+
+@media screen and (max-width: 1210px) {
+  .main-content {
+    width: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 640px){
+  .info {
+    flex-direction: column;
+  }
+
+  .info * {
+    text-align: left;
+  }
+}
+

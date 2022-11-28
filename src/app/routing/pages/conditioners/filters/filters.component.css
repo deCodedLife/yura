@@ -1,0 +1,54 @@
+.price-filter {
+  width: 100%;
+}
+.price-filter .input-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #f2f3f5;
+  border-radius: 3px;
+  border: 2px solid #fafafa;
+  overflow: hidden;
+}
+.price-filter input {
+  flex: 1;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+}
+.filters {
+  padding: 20px;
+  width: 360px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ffc857;
+}
+.filters::-webkit-scrollbar {
+  width: 5px;
+}
+.filters::-webkit-scrollbar-track {
+  background-color: #fafafa;
+}
+.filters::-webkit-scrollbar-thumb {
+  background-color: #ffc857;
+  border-radius: 3px;
+}
+.filters h4 {
+  padding: 0;
+}
+@media screen and (max-width: 1400px) {
+  .filters {
+    width: 310px;
+  }
+}
+@media screen and (max-width: 1210px) {
+  .filters {
+    width: 260px;
+  }
+}
+@media screen and (max-width: 860px) {
+  .filters {
+    display: none;
+  }
+}
+/*# sourceMappingURL=filters.component.css.map */

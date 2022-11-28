@@ -1,0 +1,179 @@
+@main-color: #1f2041;
+@sub-color: #4b3f72;
+@accent-first: #ffc857;
+@accent-second: #119da4;
+@accent-third: #119da4;
+@text-color: white;
+
+.header-body {
+  width: 100%;
+}
+
+.logo-link {
+  display: flex;
+  column-gap: 10px;
+}
+
+.subheader {
+  width: -moz-max-content;
+  height: 32px;
+
+}
+
+.subheader {
+  background-color: @sub-color;
+}
+
+.main-content {
+  width: 1400px;
+  height: 100%;
+  margin: auto;
+
+  display: flex;
+  column-gap: 10px;
+
+  @media screen and (max-width: 1400px) {
+    width: 1200px;
+  }
+
+  @media screen and (max-width: 1210px) {
+    width: auto;
+    margin: 0 10px;
+  }
+}
+
+.header-body {
+  width: 100%;
+  height: 72px;
+  color: @text-color;
+  background-color: @sub-color;
+
+  .unmargin{
+    margin: 0;
+  }
+
+  h1 {
+    .unmargin()
+  }
+
+  h2 {
+    .unmargin()
+  }
+
+  h3 {
+    .unmargin();
+  }
+
+
+
+  .gap {
+    width: 50px;
+  }
+
+  .flex-right {
+    margin-left: auto;
+  }
+
+
+
+  .logo {
+    width: 48px;
+    height: 48px;
+    fill: white;
+  }
+
+  .new-logo {
+    width: 150px;
+  }
+
+  .name {
+    color: @accent-first;
+  }
+}
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background-color: white;
+  border-radius: 3px;
+  padding: 2px;
+
+  width: 400px;
+
+  input {
+    all: unset;
+    font: 16px system-ui;
+    color: #161616;
+    height: 100%;
+    width: 100%;
+
+    padding: 4px 10px;
+
+    box-sizing: content-box;
+    border: none;
+    border-radius: 3px;
+
+    &:active {
+      border: none;
+    }
+
+    &::placeholder {
+      font: 16px system-ui;
+      color: #606060;
+    }
+  }
+
+}
+
+.top-item {
+  display: grid;
+
+  @media screen and (max-width: 860px) {
+    display: none;
+  }
+}
+
+.subheader {
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
+}
+
+#mobile-burger-button {
+  display: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 860px) {
+    display: grid;
+  }
+}
+
+
+
+.cart-number {
+  width: 20px;
+  height: 20px;
+
+  padding: 2px;
+  position: absolute;
+
+  margin-top: 10px;
+  margin-left: 10px;
+
+  display: grid;
+  align-content: center;
+
+  p {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  background-color: #CE2D4F;
+  border-radius: 50%;
+}

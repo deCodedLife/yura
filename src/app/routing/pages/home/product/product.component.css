@@ -1,0 +1,54 @@
+.card {
+  padding: 5px;
+}
+.content {
+  color: black;
+  background-color: white;
+  width: -moz-max-content;
+  padding: 10px;
+  border-radius: 3px;
+  overflow: hidden;
+  text-align: center;
+}
+.card img {
+  width: 100%;
+  user-select: none;
+}
+.card img:hover {
+  cursor: pointer;
+}
+h4 {
+  padding: 0;
+  margin: 0;
+}
+h2 {
+  word-break: break-all;
+  font-size: medium;
+}
+h3 {
+  font-size: medium;
+}
+.button {
+  width: 100%;
+  padding: 5px 0;
+  margin: auto;
+  color: #fafafa;
+  background-color: #4b3f72ff;
+  border-radius: 3px;
+  user-select: none;
+}
+.button:hover {
+  cursor: pointer;
+}
+.button:active {
+  background-color: #119da4ff;
+}
+@media screen and (max-width: 480px) {
+  h2 {
+    font-size: small;
+  }
+  h3 {
+    font-size: small;
+  }
+}
+/*# sourceMappingURL=product.component.css.map */

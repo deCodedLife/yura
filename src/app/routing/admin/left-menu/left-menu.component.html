@@ -1,0 +1,38 @@
+<div class="menu">
+  <img src="assets/Logo2.png" alt="Logo">
+  <a [routerLink]="'admin/dashboard'">
+    <button>
+      <mat-icon>dashboard</mat-icon>
+      <p [routerLink]="'admin/dashboard'">Заказы</p>
+    </button>
+  </a>
+
+  <a [routerLink]="'admin/conditioners'">
+    <button>
+      <mat-icon>shopping cart</mat-icon>
+      <p>Кондиционеры</p>
+    </button>
+  </a>
+
+  <a [routerLink]="'/admin/conditioners-types'">
+    <button>
+      <mat-icon>settings</mat-icon>
+      <p>Типы кондиционеров</p>
+    </button>
+  </a>
+
+  <a [routerLink]="'/admin/services'">
+    <button>
+      <mat-icon>settings</mat-icon>
+      <p>Услуги</p>
+    </button>
+  </a>
+
+  <a [routerLink]="'/admin/clients'">
+    <button>
+      <mat-icon>people</mat-icon>
+      <p>Клиенты</p>
+    </button>
+  </a>
+
+</div>

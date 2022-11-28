@@ -1,0 +1,21 @@
+<div class="body">
+  <div class="block">
+    <h1>Калькулятор стоимости</h1>
+    <div style="padding: 10px 0"></div>
+    <div class="input-box"><input placeholder="Введите адрес"></div>
+
+    <app-service-category
+      *ngFor="let group of content; index as i"
+      [group]="group"
+      (changed)="update($event, i)"
+    ></app-service-category>
+
+    <br>
+
+    <h2>
+      Ориентировачная стоимость  {{ TotalSum.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' })  }}
+    </h2>
+
+  </div>
+
+</div>

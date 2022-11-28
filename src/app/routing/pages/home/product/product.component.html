@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="content">
+    <a [routerLink]="'/conditioner/' + product.id">
+      <img src="{{ API_URL + product.image }}" [alt]="product.product_name">
+    </a>
+    <h2>
+      {{ product.model }}
+    </h2>
+    <h3>
+      {{ product.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
+    </h3>
+    <div class="button">
+      <h4>
+        В корзину
+      </h4>
+    </div>
+  </div>
+</div>

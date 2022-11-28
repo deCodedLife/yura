@@ -1,0 +1,92 @@
+<div class="filters">
+  <div style="display: flex; flex-direction: row; column-gap: 10px">
+    <h2>Фильтры</h2>
+    <div class="center-in">
+      <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="32px" viewBox="0 0 24 24" width="32px" fill="#ffc857"><g><path d="M0,0h24 M24,24H0" fill="none"/><path d="M7,6h10l-5.01,6.3L7,6z M4.25,5.61C6.27,8.2,10,13,10,13v6c0,0.55,0.45,1,1,1h2c0.55,0,1-0.45,1-1v-6 c0,0,3.72-4.8,5.74-7.39C20.25,4.95,19.78,4,18.95,4H5.04C4.21,4,3.74,4.95,4.25,5.61z"/><path d="M0,0h24v24H0V0z" fill="none"/></g></svg>
+    </div>
+  </div>
+
+  <app-rangebar
+    [min_value]="findMinValue(products, 'price')"
+    [max_value]="findMaxValue(products, 'price')"
+    (onChanged)="max_price = $event; applyFilters()"
+    caption="Цена"
+    postfix="₽"
+    [current]="max_price"
+  ></app-rangebar>
+
+  <app-check-list
+    caption="Производитель"
+    [items]="manufacturersList"
+    (changed)="manufacturersTerm = $event; applyFilters()"
+  ></app-check-list>
+
+  <app-check-list
+    caption="Тип"
+    [items]="conditionersTypesList"
+    (changed)="conditionersTypesTerm = $event; applyFilters()"
+  ></app-check-list>
+
+  <app-rangebar
+    [min_value]="findMinValue(products, 'served_area')"
+    [max_value]="findMaxValue(products, 'served_area')"
+    (onChanged)="min_served_area = $event; applyFilters()"
+    caption="Обслуживаемая площадь"
+    postfix="м2"
+    [current]="min_served_area"
+  ></app-rangebar>
+
+  <app-rangebar
+    [min_value]="findMinValue(products, 'external_block_height')"
+    [max_value]="findMaxValue(products, 'external_block_height')"
+    (onChanged)="max_external_block_height = $event; applyFilters()"
+    caption="Высота внешнего блока"
+    postfix="мм"
+    [current]="max_external_block_height"
+  ></app-rangebar>
+
+  <app-rangebar
+    [min_value]="findMinValue(products, 'external_block_width')"
+    [max_value]="findMaxValue(products, 'external_block_width')"
+    (onChanged)="max_external_block_width = $event; applyFilters()"
+    caption="Ширина внешнего блока"
+    postfix="мм"
+    [current]="max_external_block_width"
+  ></app-rangebar>
+
+  <app-rangebar
+    [min_value]="findMinValue(products, 'external_block_depth')"
+    [max_value]="findMaxValue(products, 'external_block_depth')"
+    (onChanged)="max_external_block_depth = $event; applyFilters()"
+    caption="Глубина внешнего блока"
+    postfix="мм"
+    [current]="max_external_block_depth"
+  ></app-rangebar>
+
+  <app-rangebar
+    [min_value]="findMinValue(products, 'internal_block_width')"
+    [max_value]="findMaxValue(products, 'internal_block_width')"
+    (onChanged)="max_internal_block_width = $event; applyFilters()"
+    caption="Высота внутреннего блока"
+    postfix="мм"
+    [current]="max_internal_block_width"
+  ></app-rangebar>
+
+  <app-rangebar
+    [min_value]="findMinValue(products, 'internal_block_height')"
+    [max_value]="findMaxValue(products, 'internal_block_height')"
+    (onChanged)="max_internal_block_height = $event; applyFilters()"
+    caption="Ширина внешнего блока"
+    postfix="мм"
+    [current]="max_internal_block_height"
+  ></app-rangebar>
+
+  <app-rangebar
+    [min_value]="findMinValue(products, 'internal_block_depth')"
+    [max_value]="findMaxValue(products, 'internal_block_depth')"
+    (onChanged)="max_internal_block_depth = $event; applyFilters()"
+    caption="Глубина внутреннего блока"
+    postfix="мм"
+    [current]="max_internal_block_depth"
+  ></app-rangebar>
+</div>

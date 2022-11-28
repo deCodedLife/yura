@@ -1,0 +1,136 @@
+.header-body {
+  width: 100%;
+}
+.logo-link {
+  display: flex;
+  column-gap: 10px;
+}
+.subheader {
+  width: -moz-max-content;
+  height: 32px;
+}
+.subheader {
+  background-color: #4b3f72;
+}
+.main-content {
+  width: 1400px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  column-gap: 10px;
+}
+@media screen and (max-width: 1400px) {
+  .main-content {
+    width: 1200px;
+  }
+}
+@media screen and (max-width: 1210px) {
+  .main-content {
+    width: auto;
+    margin: 0 10px;
+  }
+}
+.header-body {
+  width: 100%;
+  height: 72px;
+  color: white;
+  background-color: #4b3f72;
+}
+.header-body .unmargin {
+  margin: 0;
+}
+.header-body h1 {
+  margin: 0;
+}
+.header-body h2 {
+  margin: 0;
+}
+.header-body h3 {
+  margin: 0;
+}
+.header-body .gap {
+  width: 50px;
+}
+.header-body .flex-right {
+  margin-left: auto;
+}
+.header-body .logo {
+  width: 48px;
+  height: 48px;
+  fill: white;
+}
+.header-body .new-logo {
+  width: 150px;
+}
+.header-body .name {
+  color: #ffc857;
+}
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  border-radius: 3px;
+  padding: 2px;
+  width: 400px;
+}
+.searchbar input {
+  all: unset;
+  font: 16px system-ui;
+  color: #161616;
+  height: 100%;
+  width: 100%;
+  padding: 4px 10px;
+  box-sizing: content-box;
+  border: none;
+  border-radius: 3px;
+}
+.searchbar input:active {
+  border: none;
+}
+.searchbar input::placeholder {
+  font: 16px system-ui;
+  color: #606060;
+}
+.top-item {
+  display: grid;
+}
+@media screen and (max-width: 860px) {
+  .top-item {
+    display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .subheader {
+    display: none;
+  }
+}
+#mobile-burger-button {
+  display: none;
+}
+#mobile-burger-button:hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 860px) {
+  #mobile-burger-button {
+    display: grid;
+  }
+}
+.cart-number {
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 10px;
+  display: grid;
+  align-content: center;
+  background-color: #CE2D4F;
+  border-radius: 50%;
+}
+.cart-number p {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+/*# sourceMappingURL=head.component.css.map */

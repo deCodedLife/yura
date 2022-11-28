@@ -1,0 +1,10 @@
+table {
+  @apply w-full;
+}
+table tr {
+  @apply py-1;
+}
+table tr td {
+  @apply text-center font-mono;
+}
+/*# sourceMappingURL=listbox.component.css.map */

@@ -1,0 +1,4 @@
+<div class="range-bar">
+  <h3>{{ caption + " " + value.toString() + postfix }}</h3>
+  <input type="range" [min]="min_value" [max]="max_value" [value]="value" [(ngModel)]="value" (change)="onChanged.emit(value)">
+</div>

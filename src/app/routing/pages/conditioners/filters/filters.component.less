@@ -1,0 +1,68 @@
+@main-color: #1f2041ff;
+@sub-color: #4b3f72ff;
+@accent-first: #ffc857;
+@accent-second: #119da4ff;
+@accent-third: #119da4ff;
+@text-color: #fafafa;
+@text-subcolor: #999999;
+
+.price-filter {
+  width: 100%;
+
+  .input-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #f2f3f5;
+    border-radius: 3px;
+    border: 2px solid #fafafa;
+    overflow: hidden;
+  }
+
+  input {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+
+  }
+}
+
+.filters {
+  padding: 20px;
+  width: 360px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: @accent-first;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #fafafa;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: @accent-first;
+    border-radius: 3px;
+  }
+
+  h4 {
+    padding: 0;
+  }
+
+  @media screen and (max-width: 1400px) {
+    width: 310px;
+  }
+
+  @media screen and (max-width: 1210px) {
+    width: 260px;
+  }
+
+  @media screen and (max-width: 860px) {
+    display: none;
+  }
+}

@@ -1,0 +1,34 @@
+<div
+  *ngIf="group.group.display == 1"
+  class="content"
+>
+  <div class="dropdown">
+    <div class="dropMain" (click)="isToggled = !isToggled">
+      <h4>{{ group.group.title }}</h4>
+      <div class="dropdown-hide" [class.hidden]="!isToggled">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg>
+      </div>
+      <div class="dropdown-show" [class.hidden]="isToggled">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>
+      </div>
+    </div>
+    <ul [class.show]="isToggled" [class.hide]="!isToggled">
+      <div *ngFor="let item of group.services; index as index">
+        <li class="dropdown-element">
+          <div class="center-in">
+            <h4>{{ item.title }}</h4>
+          </div>
+
+          <div class="counter">
+            <div class="input-box">
+              <input type="number" (change)="change($event, index)" min="0" [value]="item.amount">
+            </div>
+            <div class="unit">
+              <h4>шт</h4>
+            </div>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

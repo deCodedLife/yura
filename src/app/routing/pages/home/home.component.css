@@ -1,0 +1,51 @@
+.banner-content {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  row-gap: 10px;
+  margin: 10px 0;
+}
+.banner-content * {
+  flex: 1;
+}
+@media screen and (max-width: 1210px) {
+  .banner-content {
+    margin: 10px;
+  }
+}
+@media screen and (max-width: 680px) {
+  .banner-content {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 480px) {
+  .banner-content {
+    display: block;
+  }
+}
+app-baner {
+  flex: 1;
+}
+.card-carousel {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 5px 0;
+}
+.card-carousel * {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+@media screen and (max-width: 1210px) {
+  .card-carousel * {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+  }
+}
+@media screen and (max-width: 680px) {
+  .card-carousel * {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+/*# sourceMappingURL=home.component.css.map */

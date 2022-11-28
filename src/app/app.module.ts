@@ -9,10 +9,30 @@ import { HomeModule } from "./routing/pages/home/home.module";
 import { PopularProductsService } from "./services/popular-products.service";
 import { ProductsService } from "./services/products.service";
 import { ConditionersModule } from "./routing/pages/conditioners/conditioners.module";
+import { CookieModule } from "ngx-cookie";
+import { ShoppingCartModule } from "./routing/pages/shopping-cart/shopping-cart.module";
+import { ShoppingCartComponent } from './routing/pages/shopping-cart/shopping-cart.component';
+import { CalculatorComponent } from './routing/pages/calculator/calculator.component';
+import { ServiceCategoryComponent } from './routing/pages/calculator/service-category/service-category.component';
+import { NotFoundComponent } from './routing/pages/not-found/not-found.component';
+import { AdminModule } from "./routing/admin/admin.module";
+import { DashboardComponent } from './routing/pages/dashboard/dashboard.component';
+import { AdminConditionersComponent } from './routing/pages/admin-conditioners/admin-conditioners.component';
+import { MatIconModule } from "@angular/material/icon";
+import { InputboxComponent } from './components/inputbox/inputbox.component';
+import { ListboxComponent } from './components/listbox/listbox.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ShoppingCartComponent,
+    CalculatorComponent,
+    ServiceCategoryComponent,
+    NotFoundComponent,
+    DashboardComponent,
+    AdminConditionersComponent,
+    InputboxComponent,
+    ListboxComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,9 +40,19 @@ import { ConditionersModule } from "./routing/pages/conditioners/conditioners.mo
     HomeModule,
     HeadModule,
     StoreModule,
-    ConditionersModule
+    AdminModule,
+    ShoppingCartModule,
+    ConditionersModule,
+    ConditionersModule,
+    CookieModule.withOptions(),
+    MatIconModule
   ],
   providers: [PopularProductsService, ProductsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    InputboxComponent,
+    ListboxComponent
+  ]
 })
+
 export class AppModule { }

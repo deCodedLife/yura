@@ -1,0 +1,159 @@
+.center-in {
+  display: grid;
+  align-content: center;
+}
+.block {
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+.block h1 {
+  padding: 20px;
+}
+.block .category {
+  padding: 0 20px;
+}
+@media screen and (max-width: 480px) {
+  .block .category {
+    padding: 10px 20px;
+    font-size: large;
+  }
+}
+.content {
+  display: flex;
+  flex-direction: row;
+}
+.content .products {
+  flex: 1;
+  padding: 10px;
+}
+.content .products table {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+.content .products table .products {
+  text-align: center;
+}
+.content .products table .photo img {
+  width: 64px;
+  height: 64px;
+}
+@media screen and (max-width: 480px) {
+  .content .products table .price {
+    display: none;
+  }
+}
+.content .products table .input-back {
+  width: 100px  ;
+}
+.content .products table .input-back .input-box {
+  display: flex;
+  background-color: #fafafa;
+  padding: 5px;
+  border-radius: 3px;
+  width: 100px;
+  justify-content: center;
+}
+.content .products table .input-back .input-box .clickable {
+  cursor: pointer;
+}
+@media screen and (max-width: 480px) {
+  .content .products table .input-back .input-box {
+    width: 75px;
+  }
+}
+.content .products table .input {
+  all: unset;
+  width: 75px;
+}
+@media screen and (max-width: 480px) {
+  .content .products table .input {
+    width: 50px;
+  }
+}
+.content .products table .summary {
+  background-color: #4b3f72;
+  color: white;
+  font-weight: bold;
+}
+.content .products table .info {
+  width: auto;
+  text-align: center;
+  font-weight: bold;
+}
+@media screen and (max-width: 900px) {
+  .content .products table img {
+    width: 50px;
+  }
+}
+@media screen and (max-width: 300px) {
+  .content .products table .photo {
+    display: none;
+  }
+}
+@media screen and (max-width: 640px) {
+  .content .products table {
+    font-size: small;
+  }
+}
+@media screen and (max-width: 300px) {
+  .content .products table {
+    font-size: 6pt;
+  }
+}
+.content .registration {
+  width: 400px;
+  padding: 20px;
+  border: 3px solid #fafafa;
+}
+.content .registration h2 {
+  text-align: center;
+}
+.content .registration .input {
+  width: auto;
+  background-color: #4b3f72;
+  padding: 10px;
+  border-radius: 3px;
+  margin: 10px 0px;
+}
+.content .registration .input input {
+  all: unset;
+  color: white;
+  width: 100%;
+}
+.content .registration .input input::placeholder {
+  color: white;
+}
+@media screen and (max-width: 1210px) {
+  .content .registration {
+    width: 250px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .content .registration {
+    width: auto;
+  }
+}
+@media screen and (max-width: 900px) {
+  .content {
+    flex-direction: column-reverse;
+  }
+}
+.button {
+  background-color: #ffc857;
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+.button:active {
+  background-color: #119da4;
+}
+.button h3 {
+  padding: 3px;
+  margin: 0;
+}
+/*# sourceMappingURL=shopping-cart.component.css.map */
