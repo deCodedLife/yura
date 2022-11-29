@@ -21,6 +21,8 @@ import { AdminConditionersComponent } from './routing/pages/admin-conditioners/a
 import { MatIconModule } from "@angular/material/icon";
 import { InputboxComponent } from './components/inputbox/inputbox.component';
 import { ListboxComponent } from './components/listbox/listbox.component';
+import { AdminConditionersAddComponent } from './routing/pages/admin-conditioners-add/admin-conditioners-add.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { ListboxComponent } from './components/listbox/listbox.component';
     AdminConditionersComponent,
     InputboxComponent,
     ListboxComponent,
+    AdminConditionersAddComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,

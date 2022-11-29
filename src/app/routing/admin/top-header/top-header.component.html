@@ -9,7 +9,7 @@
     <div class="centered">
       <div class="input">
         <mat-icon *ngIf="searchTerm.trim().length == 0">search</mat-icon>
-        <input [(ngModel)]="searchTerm">
+        <input [(ngModel)]="searchTerm" (ngModelChange)="update($event)">
       </div>
     </div>
   </div>

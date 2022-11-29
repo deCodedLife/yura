@@ -4,6 +4,8 @@
 .app-container .app-body {
   @apply w-full flex flex-col;
   padding-left: 290px;
+  height: 100%;
+  overflow-y: auto;
 }
 .app-container .app-left-menu {
   padding: 0;
@@ -16,5 +18,8 @@
 .container {
   @apply bg-white m-4 p-4 rounded block;
   overflow-y: auto;
+}
+.margins {
+  height: 300px;
 }
 /*# sourceMappingURL=admin.component.css.map */

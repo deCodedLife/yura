@@ -18,4 +18,8 @@ export class TopHeaderComponent implements OnInit {
   ngOnInit() {
     this.headerService.title.subscribe( newTitle => this.title = newTitle )
   }
+
+  update(e: string) {
+    this.headerService.searchTerm.next( e )
+  }
 }

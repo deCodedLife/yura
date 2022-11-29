@@ -6,4 +6,5 @@ import {Subject} from "rxjs";
 })
 export class HeaderService {
   title = new Subject<string>()
+  searchTerm = new Subject<string>()
 }

@@ -7,6 +7,7 @@ import {CalculatorComponent} from "./routing/pages/calculator/calculator.compone
 import {SigninComponent} from "./routing/pages/signin/signin.component";
 import {DashboardComponent} from "./routing/pages/dashboard/dashboard.component";
 import {AdminConditionersComponent} from "./routing/pages/admin-conditioners/admin-conditioners.component";
+import {AdminConditionersAddComponent} from "./routing/pages/admin-conditioners-add/admin-conditioners-add.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,11 @@ const routes: Routes = [
     path: "admin/conditioners",
     pathMatch: "full",
     component: AdminConditionersComponent
+  },
+  {
+    path: 'admin/conditioners/add',
+    pathMatch: "full",
+    component: AdminConditionersAddComponent
   }
 ];
 

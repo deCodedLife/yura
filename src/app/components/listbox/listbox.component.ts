@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {IField} from "../../services/fieldItem.interface";
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-listbox',
@@ -9,9 +10,23 @@ import {IField} from "../../services/fieldItem.interface";
 
 export class ListboxComponent {
 
-  @Input() listItems: any[]
-  @Input() fields: IField[]
+  @Input() listItems: any[] = []
+  @Input() fields: IField[] = []
+  @Input() searchTerm: Subject<string>
 
-  ngOnInit() {}
+  @Input() filtered: any[] = []
+
+  ngOnInit() {
+    this.searchTerm.subscribe( term => {
+      if ( term.trim().length === 0 ) {
+        this.filtered = this.listItems
+        return
+      }
+
+      this.filtered = this.listItems.filter( item =>
+        this.fields.some( field => item[ field.article ].toString().toLowerCase().includes( term.toLowerCase() ) )
+      )
+    } )
+  }
 
 }

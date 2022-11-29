@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProductsService} from "../../../services/products.service";
 import {IProduct} from "../../../services/product.interface";
 import {FieldsService} from "../../../services/fields.service";
@@ -15,11 +15,12 @@ export class AdminConditionersComponent implements OnInit {
   constructor(
     private conditionersService: ProductsService,
     private fieldsService: FieldsService,
-    private headerService: HeaderService
+    public headerService: HeaderService
   ) {}
 
   fields: IField[] = []
   conditioners: IProduct[] = []
+  searchTerm: string
 
   ngOnInit() {
     this.fieldsService.getSchema( 'conditioners' ).subscribe( response => this.fields = response.data.filter( item => item.display ) )

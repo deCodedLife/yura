@@ -1,6 +1,14 @@
 <div class="admin-body">
+  <app-button
+    title="Добавить"
+    icon="add"
+    link="add"
+  ></app-button>
   <app-listbox
+    #listbox
     [fields]="fields"
     [listItems]="conditioners"
+    [filtered]="conditioners"
+    [searchTerm]="headerService.searchTerm"
   ></app-listbox>
 </div>

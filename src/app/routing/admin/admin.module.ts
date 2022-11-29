@@ -13,15 +13,15 @@ import {FormsModule} from "@angular/forms";
     LeftMenuComponent,
     TopHeaderComponent
   ],
-    exports: [
-        AdminComponent
-    ],
+  exports: [
+      AdminComponent
+  ],
   imports: [
     CommonModule,
     RouterOutlet,
     MatIconModule,
     RouterLink,
     FormsModule
-  ]
+  ],
 })
 export class AdminModule { }
