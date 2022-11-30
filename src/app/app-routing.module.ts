@@ -57,7 +57,7 @@ const routes: Routes = [
     component: AdminAddObjectComponent
   },
   {
-    path: 'admin/update/:object',
+    path: 'admin/:object/:id',
     component: AdminUpdateObjectComponent
   }
 ];

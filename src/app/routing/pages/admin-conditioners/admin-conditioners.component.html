@@ -5,10 +5,10 @@
     link="../add/conditioners"
   ></app-button>
   <app-listbox
-    #listbox
     [fields]="fields"
     [listItems]="conditioners"
     [filtered]="conditioners"
     [searchTerm]="headerService.searchTerm"
+    (onEdit)="editObject($event)"
   ></app-listbox>
 </div>

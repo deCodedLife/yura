@@ -11,6 +11,9 @@
         {{ item[ article.article ] }}
       </p>
     </td>
+    <td class="pointer" (click)="onEdit.emit(item.id)" >
+      <mat-icon>edit</mat-icon>
+    </td>
   </tr>
   </tbody>
 </table>

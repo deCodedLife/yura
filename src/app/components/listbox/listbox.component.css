@@ -7,4 +7,7 @@ table tr {
 table tr td {
   @apply text-center font-mono;
 }
+.pointer {
+  cursor: pointer;
+}
 /*# sourceMappingURL=listbox.component.css.map */

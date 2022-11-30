@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IField} from "../../services/fieldItem.interface";
 import {Subject} from "rxjs";
 
@@ -12,9 +12,9 @@ export class ListboxComponent {
 
   @Input() listItems: any[] = []
   @Input() fields: IField[] = []
-  @Input() searchTerm: Subject<string>
-
   @Input() filtered: any[] = []
+  @Input() searchTerm: Subject<string>
+  @Output() onEdit = new EventEmitter<number>()
 
   ngOnInit() {
     this.searchTerm.subscribe( term => {
