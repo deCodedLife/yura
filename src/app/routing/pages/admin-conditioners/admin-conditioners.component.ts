@@ -4,6 +4,7 @@ import {IProduct} from "../../../services/product.interface";
 import {FieldsService} from "../../../services/fields.service";
 import {IField} from "../../../services/fieldItem.interface";
 import {HeaderService} from "../../../services/header.service";
+import {ObjectService} from "../../../services/object.service";
 
 @Component({
   selector: 'app-admin-conditioners',
@@ -13,7 +14,7 @@ import {HeaderService} from "../../../services/header.service";
 
 export class AdminConditionersComponent implements OnInit {
   constructor(
-    private conditionersService: ProductsService,
+    private objectService: ObjectService,
     private fieldsService: FieldsService,
     public headerService: HeaderService
   ) {}
@@ -24,7 +25,7 @@ export class AdminConditionersComponent implements OnInit {
 
   ngOnInit() {
     this.fieldsService.getSchema( 'conditioners' ).subscribe( response => this.fields = response.data.filter( item => item.display ) )
-    this.conditionersService.getProducts().subscribe( response => this.conditioners = response.data )
+    this.objectService.getObject( 'conditioners' ).subscribe( response => this.conditioners = response.data )
     this.headerService.title.next( "Кондиционеры" )
   }
 }

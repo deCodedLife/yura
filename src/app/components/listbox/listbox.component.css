@@ -1,5 +1,5 @@
 table {
-  @apply w-full;
+  @apply w-full text-lg;
 }
 table tr {
   @apply py-1;

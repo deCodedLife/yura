@@ -1,0 +1,16 @@
+.input {
+  @apply bg-gray-100 rounded px-4 py-3 my-4 flex text-lg;
+  margin-top: 0;
+}
+.input mat-icon {
+  @apply px-3;
+}
+.input input {
+  all: unset;
+  width: inherit;
+  flex: 1;
+}
+h3 {
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=inputbox.component.css.map */

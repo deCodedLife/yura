@@ -21,8 +21,14 @@ import { AdminConditionersComponent } from './routing/pages/admin-conditioners/a
 import { MatIconModule } from "@angular/material/icon";
 import { InputboxComponent } from './components/inputbox/inputbox.component';
 import { ListboxComponent } from './components/listbox/listbox.component';
-import { AdminConditionersAddComponent } from './routing/pages/admin-conditioners-add/admin-conditioners-add.component';
 import { ButtonComponent } from './components/button/button.component';
+import { AdminAddObjectComponent } from './routing/pages/admin-add-object/admin-add-object.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { ComboboxComponent } from './components/combobox/combobox.component';
+import {FormsModule} from "@angular/forms";
+import { AdminServicesComponent } from './routing/pages/admin-services/admin-services.component';
+import { AdminUpdateObjectComponent } from './routing/pages/admin-update-object/admin-update-object.component';
+import { TextareaComponent } from './components/textarea/textarea.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +41,13 @@ import { ButtonComponent } from './components/button/button.component';
     AdminConditionersComponent,
     InputboxComponent,
     ListboxComponent,
-    AdminConditionersAddComponent,
     ButtonComponent,
+    AdminAddObjectComponent,
+    CheckboxComponent,
+    ComboboxComponent,
+    AdminServicesComponent,
+    AdminUpdateObjectComponent,
+    TextareaComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +60,8 @@ import { ButtonComponent } from './components/button/button.component';
     ConditionersModule,
     ConditionersModule,
     CookieModule.withOptions(),
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [PopularProductsService, ProductsService],
   bootstrap: [AppComponent],

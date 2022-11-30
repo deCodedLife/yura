@@ -14,7 +14,7 @@
   @apply w-full bg-purple-500 grid;
 }
 a {
-  @apply w-full font-sans text-sm font-light;
+  @apply w-full font-sans text-sm font-bold;
 }
 a p {
   @apply px-5;

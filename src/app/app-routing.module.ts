@@ -7,7 +7,9 @@ import {CalculatorComponent} from "./routing/pages/calculator/calculator.compone
 import {SigninComponent} from "./routing/pages/signin/signin.component";
 import {DashboardComponent} from "./routing/pages/dashboard/dashboard.component";
 import {AdminConditionersComponent} from "./routing/pages/admin-conditioners/admin-conditioners.component";
-import {AdminConditionersAddComponent} from "./routing/pages/admin-conditioners-add/admin-conditioners-add.component";
+import {AdminAddObjectComponent} from "./routing/pages/admin-add-object/admin-add-object.component";
+import {AdminServicesComponent} from "./routing/pages/admin-services/admin-services.component";
+import {AdminUpdateObjectComponent} from "./routing/pages/admin-update-object/admin-update-object.component";
 
 const routes: Routes = [
   {
@@ -46,9 +48,17 @@ const routes: Routes = [
     component: AdminConditionersComponent
   },
   {
-    path: 'admin/conditioners/add',
+    path: "admin/services",
     pathMatch: "full",
-    component: AdminConditionersAddComponent
+    component: AdminServicesComponent
+  },
+  {
+    path: 'admin/add/:object',
+    component: AdminAddObjectComponent
+  },
+  {
+    path: 'admin/update/:object',
+    component: AdminUpdateObjectComponent
   }
 ];
 

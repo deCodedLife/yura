@@ -5,4 +5,8 @@ export interface IField {
   null: string
   default: string
   display: boolean
+  display_type: string,
+  take_from: string,
+  list_items: any[]
+  value: any
 }
