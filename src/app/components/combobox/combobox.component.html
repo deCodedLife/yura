@@ -1,0 +1,9 @@
+<div class="combobox">
+  <h3> {{ placeholder }} </h3>
+  <div class="combobox-body">
+    <input [(ngModel)]="value">
+    <span class="hidden-container">
+      <input *ngFor="let item of objectsList; index as i" [value]="item" (click)="update(item)" readonly>
+  </span>
+  </div>
+</div>

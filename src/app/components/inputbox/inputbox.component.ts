@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-inputbox',
@@ -6,19 +6,14 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./inputbox.component.less']
 })
 
-export class InputboxComponent implements OnInit {
+export class InputboxComponent {
   @Input() icon: string = ""
   @Input() digits: boolean = false
   @Input() placeholder: string = ""
+  @Input() value: string
   @Output() edited = new EventEmitter<string>()
-
-  value: string
 
   update(v: string) {
     this.edited.emit( this.value )
-  }
-
-  ngOnInit() {
-    console.log( this.placeholder )
   }
 }

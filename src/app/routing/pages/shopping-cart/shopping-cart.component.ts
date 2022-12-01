@@ -34,7 +34,7 @@ export class ShoppingCartComponent implements OnInit {
 
   summary = 0
   cartList: IAbstractProduct[] = []
-  API_URL = "http://localhost:8080"
+  API_URL = "https://coded.life"
 
   updateCount(index: number, event: Event) {
     this.cartList[ index ].amount = parseInt ( (<HTMLInputElement>event.target).value )

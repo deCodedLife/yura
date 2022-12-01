@@ -14,7 +14,7 @@ export interface IServiceGroupResponse {
 export class ServicesGroupsService {
   constructor(private http: HttpClient) { }
 
-  API_URL = "http://localhost:8080"
+  API_URL = "https://coded.life"
 
   getServicesGroups() {
     return this.http.get<IServiceGroupResponse>( this.API_URL + "/services_groups" )

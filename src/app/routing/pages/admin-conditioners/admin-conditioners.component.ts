@@ -31,7 +31,7 @@ export class AdminConditionersComponent implements OnInit {
 
   ngOnInit() {
     this.fieldsService.getSchema( 'conditioners' ).subscribe( response => this.fields = response.data.filter( item => item.display ) )
-    this.objectService.getObject( 'conditioners' ).subscribe( response => this.conditioners = response.data )
+    this.objectService.getObjects( 'conditioners' ).subscribe(response => this.conditioners = response.data )
     this.headerService.title.next( "Кондиционеры" )
   }
 }

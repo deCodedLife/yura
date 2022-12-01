@@ -12,7 +12,7 @@ export interface IManufacturerRequest {
 })
 
 export class ManufacturersService {
-  API_URL = "http://localhost:8080"
+  API_URL = "https://coded.life"
   constructor(private http: HttpClient) {}
 
   getManufacturers() {

@@ -14,7 +14,7 @@ export interface IServiceResponse {
 export class ServicesService {
   constructor(private http: HttpClient) { }
 
-  API_URL = "http://localhost:8080"
+  API_URL = "https://coded.life"
 
   getServiceByID(serviceID: number) {
     return this.http.get<IServiceResponse>( this.API_URL + "/services", {

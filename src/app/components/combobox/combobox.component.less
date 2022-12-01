@@ -1,0 +1,56 @@
+.combobox {
+
+  @apply my-3 w-full rounded;
+
+  .combobox-body {
+    @apply text-lg;
+
+    .fake-body {
+      display: block;
+    }
+
+    .hidden-container {
+      @apply my-2 bg-gray-100;
+      display: none;
+      max-height: 260px;
+      overflow-y: auto;
+
+      input {
+        caret-color: transparent;
+        cursor: pointer;
+        &:hover {
+          @apply font-bold;
+        }
+      }
+
+    }
+
+    input {
+      all: unset;
+      @apply w-full;
+
+      &:focus-within {
+        display: block;
+        .child-elements {
+          display: block;
+        }
+      }
+    }
+
+    &:focus-within {
+      .hidden-container {
+        display: block;
+      }
+    }
+
+  }
+
+  .combobox-body {
+    @apply bg-gray-100 p-3;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+}

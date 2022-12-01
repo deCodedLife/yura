@@ -1,0 +1,14 @@
+<div class="admin-body">
+  <app-button
+    title="Добавить"
+    icon="add"
+    link="../add/services"
+  ></app-button>
+  <app-listbox
+    [fields]="fields"
+    [listItems]="services"
+    [filtered]="services"
+    [searchTerm]="headerService.searchTerm"
+    (onEdit)="editObject($event)"
+  ></app-listbox>
+</div>

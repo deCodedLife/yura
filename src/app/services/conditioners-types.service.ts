@@ -11,7 +11,7 @@ export interface IConditionerTypeRequest {
   providedIn: 'root'
 })
 export class ConditionersTypesService {
-  API_URL = "http://localhost:8080"
+  API_URL = "https://coded.life"
   constructor(private http: HttpClient) {}
 
   getConditionersTypes() {

@@ -1,0 +1,42 @@
+.combobox {
+  @apply my-3 w-full rounded;
+}
+.combobox .combobox-body {
+  @apply text-lg;
+}
+.combobox .combobox-body .fake-body {
+  display: block;
+}
+.combobox .combobox-body .hidden-container {
+  @apply my-2 bg-gray-100;
+  display: none;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.combobox .combobox-body .hidden-container input {
+  caret-color: transparent;
+  cursor: pointer;
+}
+.combobox .combobox-body .hidden-container input:hover {
+  @apply font-bold;
+}
+.combobox .combobox-body input {
+  all: unset;
+  @apply w-full;
+}
+.combobox .combobox-body input:focus-within {
+  display: block;
+}
+.combobox .combobox-body input:focus-within .child-elements {
+  display: block;
+}
+.combobox .combobox-body:focus-within .hidden-container {
+  display: block;
+}
+.combobox .combobox-body {
+  @apply bg-gray-100 p-3;
+}
+.combobox h3 {
+  margin: 0;
+}
+/*# sourceMappingURL=combobox.component.css.map */

@@ -9,7 +9,7 @@ import {IProduct} from "../../../../services/product.interface";
 
 export class ProductComponent {
 
-  API_URL = "http://localhost:8080"
+  API_URL = "https://coded.life"
   @Input() product: IProduct
   @Output() cardEvent = new EventEmitter()
 

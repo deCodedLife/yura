@@ -15,7 +15,7 @@ export class FieldsService {
     private http: HttpClient
   ) { }
 
-  API_URL = "http://localhost:8080"
+  API_URL = "https://coded.life"
 
   getSchema(object: string) {
     return this.http.get<IFieldsResponse>( this.API_URL + '/' + object + '/schema' )

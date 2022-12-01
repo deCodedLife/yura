@@ -12,7 +12,7 @@ export interface IPopularPeoductsResponse {
 })
 export class PopularProductsService {
 
-  API_URL = "http://localhost:8080"
+  API_URL = "https://coded.life"
   constructor(private http: HttpClient) {}
 
   getPopular() {

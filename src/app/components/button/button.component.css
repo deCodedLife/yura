@@ -1,0 +1,8 @@
+button {
+  all: unset;
+  @apply flex content-center rounded font-sans font-bold text-lg bg-gray-800 px-2 py-1 text-white cursor-pointer;
+}
+button p {
+  margin: 0;
+}
+/*# sourceMappingURL=button.component.css.map */
