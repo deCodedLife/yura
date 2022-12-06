@@ -1,0 +1,9 @@
+.image-box {
+  @apply bg-gray-100 p-2 flex rounded;
+  overflow: hidden;
+}
+.image-box img {
+  height: 200px;
+  width: 200px;
+}
+/*# sourceMappingURL=imagebox.component.css.map */

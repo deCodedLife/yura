@@ -1,0 +1,11 @@
+<div class="my-4">
+  <h3>{{ placeholder }}</h3>
+  <div class="image-box">
+    <img [src]="image" class="rounded" alt="Изображение объекта">
+    <app-button
+      class="px-4"
+      type="file"
+      (fileSelected)="handleImage($event)"
+    ></app-button>
+  </div>
+</div>
