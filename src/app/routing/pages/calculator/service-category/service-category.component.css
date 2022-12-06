@@ -37,7 +37,7 @@
 }
 .dropdown .show .dropdown-element .counter {
   display: flex;
-  height: 58px;
+  height: 52px;
 }
 .dropdown .show .dropdown-element .unit {
   display: grid;

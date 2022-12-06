@@ -1,9 +1,9 @@
-<div class="app-container">
+<div class="app-container" *ngIf="location.path().includes('sign-in') == false">
   <app-left-menu></app-left-menu>
   <div class="app-body">
     <app-top-header></app-top-header>
     <div class="body">
-      <div class="container">
+      <div class="admin-container">
           <router-outlet></router-outlet>
       </div>
     </div>
@@ -12,3 +12,4 @@
     </div>
   </div>
 </div>
+<router-outlet *ngIf="location.path().includes('sign-in')"></router-outlet>

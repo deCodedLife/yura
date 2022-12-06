@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-textarea',
@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./textarea.component.less']
 })
 export class TextareaComponent {
+  @Input() icon: string = ""
+  @Input() digits: boolean = false
+  @Input() placeholder: string = ""
+  @Input() isPassword: boolean = false
+  @Input() value: string
+  @Output() edited = new EventEmitter<string>()
 
+  update(v: string) {
+    this.edited.emit( this.value )
+  }
+
+  getType() {
+    return this.digits ? 'number' : this.isPassword ? 'password' : 'string'
+  }
 }

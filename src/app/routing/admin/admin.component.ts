@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-admin',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin.component.less']
 })
 export class AdminComponent {
-
+  constructor(public location: Location) {
+  }
 }

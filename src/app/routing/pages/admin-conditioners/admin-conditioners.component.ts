@@ -1,11 +1,10 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ProductsService} from "../../../services/products.service";
-import {IProduct} from "../../../services/product.interface";
-import {FieldsService} from "../../../services/fields.service";
-import {IField} from "../../../services/fieldItem.interface";
+import {Component, OnInit} from '@angular/core';
+import {IProduct} from "../../../services/interfaces/product.interface";
+import {IField} from "../../../services/interfaces/fieldItem.interface";
 import {HeaderService} from "../../../services/header.service";
 import {ObjectService} from "../../../services/object.service";
-import {ActivatedRoute, Router, RouterLink, RouterModule} from "@angular/router";
+import {Router} from "@angular/router";
+import {AppCookieService} from "../../../services/app-cookie.service";
 
 @Component({
   selector: 'app-admin-conditioners',
@@ -16,8 +15,8 @@ import {ActivatedRoute, Router, RouterLink, RouterModule} from "@angular/router"
 export class AdminConditionersComponent implements OnInit {
   constructor(
     private objectService: ObjectService,
-    private fieldsService: FieldsService,
     public headerService: HeaderService,
+    private appCookies: AppCookieService,
     private router: Router
   ) {}
 
@@ -30,7 +29,12 @@ export class AdminConditionersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fieldsService.getSchema( 'conditioners' ).subscribe( response => this.fields = response.data.filter( item => item.display ) )
+    if ( this.appCookies.isAuthorized() == false ) {
+      this.router.navigateByUrl( "admin/sign-in" )
+      return
+    }
+
+    this.objectService.getSchema( 'conditioners' ).subscribe( response => this.fields = response.data.filter( item => item.display ) )
     this.objectService.getObjects( 'conditioners' ).subscribe(response => this.conditioners = response.data )
     this.headerService.title.next( "Кондиционеры" )
   }

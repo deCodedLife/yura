@@ -25,10 +25,15 @@ import { ButtonComponent } from './components/button/button.component';
 import { AdminAddObjectComponent } from './routing/pages/admin-add-object/admin-add-object.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ComboboxComponent } from './components/combobox/combobox.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AdminServicesComponent } from './routing/pages/admin-services/admin-services.component';
 import { AdminUpdateObjectComponent } from './routing/pages/admin-update-object/admin-update-object.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
+import { SignInComponent } from "./routing/pages/signin/sign-in.component";
+import { AdminServicesGroupsComponent } from './routing/pages/admin-services-groups/admin-services-groups.component';
+import { ImageboxComponent } from './components/imagebox/imagebox.component';
+import { AdminReceiptsComponent } from './routing/pages/admin-receipts/admin-receipts.component';
+import { FieldsboxComponent } from './components/fieldsbox/fieldsbox.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +53,11 @@ import { TextareaComponent } from './components/textarea/textarea.component';
     AdminServicesComponent,
     AdminUpdateObjectComponent,
     TextareaComponent,
+    SignInComponent,
+    AdminServicesGroupsComponent,
+    ImageboxComponent,
+    AdminReceiptsComponent,
+    FieldsboxComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +71,8 @@ import { TextareaComponent } from './components/textarea/textarea.component';
     ConditionersModule,
     CookieModule.withOptions(),
     MatIconModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [PopularProductsService, ProductsService],
   bootstrap: [AppComponent],

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from "ngx-cookie";
-import { IProduct } from "../../../services/product.interface";
+import { IProduct } from "../../../services/interfaces/product.interface";
 import { ProductsService } from "../../../services/products.service";
-import { CookieCartService } from "../../../services/cookie-cart.service";
+import { AppCookieService } from "../../../services/app-cookie.service";
 import {ServicesService} from "../../../services/services.service";
-import {IService} from "../../../services/service.interface";
+import {IService} from "../../../services/interfaces/service.interface";
 import {tap} from "rxjs";
 
 export interface IAbstractProduct {
@@ -29,12 +29,22 @@ export class ShoppingCartComponent implements OnInit {
     private cookiesService: CookieService,
     private productsService: ProductsService,
     private servicesService: ServicesService,
-    private cartCookieService: CookieCartService
+    private cartCookieService: AppCookieService
   ) {}
 
   summary = 0
   cartList: IAbstractProduct[] = []
   API_URL = "https://coded.life"
+
+  removeFromCard(product: IAbstractProduct) {
+    if ( product.productReference != null ) {
+      this.cartCookieService.deleteProduct( product.productReference.id )
+    }
+    if ( product.serviceReference != null ) {
+      this.cartCookieService.deleteService( product.serviceReference.id )
+    }
+    this.update()
+  }
 
   updateCount(index: number, event: Event) {
     this.cartList[ index ].amount = parseInt ( (<HTMLInputElement>event.target).value )
@@ -47,7 +57,8 @@ export class ShoppingCartComponent implements OnInit {
     this.cartList.forEach(item => this.summary += item.summary )
   }
 
-  ngOnInit() {
+  update() {
+    this.cartList = []
     this.cartCookieService.recalculate()
 
     let cartProducts = this.cookiesService.getObject( "products" ) as number[]
@@ -88,7 +99,10 @@ export class ShoppingCartComponent implements OnInit {
     } )
 
     this.updateSummary()
+  }
 
+  ngOnInit() {
+    this.update()
   }
 
 }

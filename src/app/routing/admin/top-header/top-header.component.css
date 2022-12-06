@@ -9,14 +9,14 @@
 h2 {
   margin: 0;
 }
-.input {
+.input-box {
   @apply bg-gray-100 rounded px-4 py-3 flex;
   width: 300px;
 }
-.input mat-icon {
-  @apply px-3;
+.input-box mat-icon {
+  @apply px-0;
 }
-.input input {
+.input-box input {
   all: unset;
   width: inherit;
   flex: 1;

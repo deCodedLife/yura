@@ -1,0 +1,22 @@
+<div class="page">
+  <div class="auth">
+    <div class="form">
+      <app-inputbox
+        placeholder="Логин"
+        (edited)="username = $event"
+      ></app-inputbox>
+      <app-inputbox
+        placeholder="Пароль"
+        (edited)="password = $event"
+        [isPassword]="true"
+      ></app-inputbox>
+      <app-button
+        title=" Войти"
+        (triggered)="signIn()"
+      ></app-button>
+    </div>
+  </div>
+  <div class="image">
+
+  </div>
+</div>

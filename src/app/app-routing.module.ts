@@ -3,13 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from "./routing/pages/home/home.component";
 import { ConditionersComponent } from "./routing/pages/conditioners/conditioners.component";
 import { ShoppingCartComponent } from "./routing/pages/shopping-cart/shopping-cart.component";
-import {CalculatorComponent} from "./routing/pages/calculator/calculator.component";
-import {SigninComponent} from "./routing/pages/signin/signin.component";
-import {DashboardComponent} from "./routing/pages/dashboard/dashboard.component";
-import {AdminConditionersComponent} from "./routing/pages/admin-conditioners/admin-conditioners.component";
-import {AdminAddObjectComponent} from "./routing/pages/admin-add-object/admin-add-object.component";
-import {AdminServicesComponent} from "./routing/pages/admin-services/admin-services.component";
-import {AdminUpdateObjectComponent} from "./routing/pages/admin-update-object/admin-update-object.component";
+import { CalculatorComponent } from "./routing/pages/calculator/calculator.component";
+import { SignInComponent } from "./routing/pages/signin/sign-in.component";
+import { DashboardComponent } from "./routing/pages/dashboard/dashboard.component";
+import { AdminConditionersComponent } from "./routing/pages/admin-conditioners/admin-conditioners.component";
+import { AdminAddObjectComponent } from "./routing/pages/admin-add-object/admin-add-object.component";
+import { AdminServicesComponent } from "./routing/pages/admin-services/admin-services.component";
+import { AdminUpdateObjectComponent } from "./routing/pages/admin-update-object/admin-update-object.component";
+import {AdminServicesGroupsComponent} from "./routing/pages/admin-services-groups/admin-services-groups.component";
+import {AdminReceiptsComponent} from "./routing/pages/admin-receipts/admin-receipts.component";
 
 const routes: Routes = [
   {
@@ -33,9 +35,14 @@ const routes: Routes = [
     component: CalculatorComponent
   },
   {
+    path: "admin",
+    redirectTo: "admin/sign-in",
+    pathMatch: "full"
+  },
+  {
     path: 'admin/sign-in',
     pathMatch: "full",
-    component: SigninComponent
+    component: SignInComponent
   },
   {
     path: "admin/dashboard",
@@ -53,8 +60,17 @@ const routes: Routes = [
     component: AdminServicesComponent
   },
   {
+    path: "admin/services-groups",
+    pathMatch: "full",
+    component: AdminServicesGroupsComponent
+  },
+  {
     path: 'admin/add/:object',
     component: AdminAddObjectComponent
+  },
+  {
+    path: "admin/receipt/:id",
+    component: AdminReceiptsComponent
   },
   {
     path: 'admin/:object/:id',

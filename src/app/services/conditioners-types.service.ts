@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IConditionerType} from "./conditioner-type.interface";
+import {IConditionerType} from "./interfaces/conditioner-type.interface";
 
 export interface IConditionerTypeRequest {
   status_code: number

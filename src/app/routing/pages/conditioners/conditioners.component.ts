@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { ProductsService } from "../../../services/products.service";
-import { IProduct } from "../../../services/product.interface";
+import { IProduct } from "../../../services/interfaces/product.interface";
 import { CookieService } from "ngx-cookie";
-import {CookieCartService} from "../../../services/cookie-cart.service";
+import {AppCookieService} from "../../../services/app-cookie.service";
 
 @Component({
   selector: 'app-conditioners',
@@ -14,7 +14,7 @@ export class ConditionersComponent implements OnInit {
   constructor(
     private products: ProductsService,
     private cookieService: CookieService,
-    private cookieCartService: CookieCartService
+    private cookieCartService: AppCookieService
   ) {}
 
   productsList: IProduct[] = []
@@ -31,10 +31,7 @@ export class ConditionersComponent implements OnInit {
   }
 
   addToCard(product: IProduct) {
-    let cartProducts = this.cookieService.getObject( "products" ) as number[]
-    cartProducts.push( product.id )
-    this.cookieService.putObject( "products", cartProducts )
-    this.cookieCartService.recalculate()
+    this.cookieCartService.addProduct( product.id )
   }
 
   sortPages() {

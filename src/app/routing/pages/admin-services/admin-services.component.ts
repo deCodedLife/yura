@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import {ProductsService} from "../../../services/products.service";
-import {FieldsService} from "../../../services/fields.service";
 import {HeaderService} from "../../../services/header.service";
-import {IField} from "../../../services/fieldItem.interface";
-import {IProduct} from "../../../services/product.interface";
+import {IField} from "../../../services/interfaces/fieldItem.interface";
 import {ObjectService} from "../../../services/object.service";
 import {Router} from "@angular/router";
+import {AppCookieService} from "../../../services/app-cookie.service";
 
 @Component({
   selector: 'app-admin-services',
@@ -16,13 +14,13 @@ import {Router} from "@angular/router";
 export class AdminServicesComponent {
   constructor(
     private objectService: ObjectService,
-    private fieldsService: FieldsService,
     public headerService: HeaderService,
+    private appCookies: AppCookieService,
     private router: Router
   ) {}
 
   fields: IField[] = []
-  services: IProduct[] = []
+  services: object[] = []
   searchTerm: string
 
   editObject(id: number) {
@@ -30,7 +28,12 @@ export class AdminServicesComponent {
   }
 
   ngOnInit() {
-    this.fieldsService.getSchema( 'services' ).subscribe( response => this.fields = response.data.filter( item => item.display ) )
+    if ( this.appCookies.isAuthorized() == false ) {
+      this.router.navigateByUrl( "admin/sign-in" )
+      return
+    }
+
+    this.objectService.getSchema( 'services' ).subscribe( response => this.fields = response.data.filter( item => item.display ) )
     this.objectService.getObjects( 'services' ).subscribe(response => this.services = response.data )
     this.headerService.title.next( "Услуги" )
   }

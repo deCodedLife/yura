@@ -1,25 +1,10 @@
 <app-button
   title="Добавить"
   icon="add"
-  (triggered)="createObject()"
+  type="button"
+  (triggered)="this.objectsService.createObject(objectName, fields)"
 ></app-button>
-<div *ngFor="let item of fields; index as i">
-  <app-inputbox
-    *ngIf="item.display_type == 'string' || item.display_type == 'float' || item.display_type == 'number'"
-    [placeholder]="item.title"
-    [digits]="item.display_type == 'float' || item.display_type == 'number'"
-    (edited)="update($event, i)"
-  ></app-inputbox>
-  <app-checkbox
-    *ngIf="item.display_type == 'checkbox'"
-    [placeholder]="item.title"
-    [toggled]="true"
-    (changed)="update($event, i)"
-  ></app-checkbox>
-  <app-combobox
-    *ngIf="item.display_type == 'combobox'"
-    [placeholder]="item.title"
-    [objectsList]="item.list_items"
-    (changed)="update(item.list_items.indexOf($event), i)"
-  ></app-combobox>
-</div>
+<app-fieldsbox
+  [fields]="fields"
+  (fieldsUpdated)="this.fields = $event"
+></app-fieldsbox>

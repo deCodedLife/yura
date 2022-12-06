@@ -1,0 +1,18 @@
+.page {
+  @apply flex w-full h-full absolute;
+}
+.auth {
+  @apply w-2/4 h-full;
+  display: grid;
+  align-content: center;
+}
+.form {
+  @apply block p-6 rounded;
+  width: 500px;
+  margin: auto;
+  z-index: 9999;
+}
+.image {
+  @apply bg-red-100 w-2/4;
+}
+/*# sourceMappingURL=sign-in.component.css.map */

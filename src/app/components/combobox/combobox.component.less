@@ -16,8 +16,10 @@
       overflow-y: auto;
 
       input {
+        @apply font-medium;
         caret-color: transparent;
         cursor: pointer;
+
         &:hover {
           @apply font-bold;
         }
@@ -27,7 +29,7 @@
 
     input {
       all: unset;
-      @apply w-full;
+      @apply w-full px-3 font-bold;
 
       &:focus-within {
         display: block;

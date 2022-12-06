@@ -1,0 +1,20 @@
+.input-box {
+  @apply bg-gray-100 rounded px-6 py-3 my-4 flex text-lg;
+  margin-top: 0;
+}
+.input-box mat-icon {
+  @apply p-0;
+  padding: 0;
+}
+.input-box textarea {
+  all: unset;
+  width: inherit;
+  flex: 1;
+}
+h3 {
+  margin-bottom: 0;
+}
+.pointer {
+  cursor: pointer;
+}
+/*# sourceMappingURL=textarea.component.css.map */

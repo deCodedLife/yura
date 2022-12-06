@@ -23,6 +23,7 @@
     <div class="card-carousel" style="padding: 0 20px;">
       <app-product
         *ngFor="let item of productsList"
+        (cardEvent)="addToCard(item)"
         [product]="item"
       ></app-product>
     </div>

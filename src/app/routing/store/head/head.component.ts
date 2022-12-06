@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CookieService} from "ngx-cookie";
-import {CookieCartService} from "../../../services/cookie-cart.service";
+import {AppCookieService} from "../../../services/app-cookie.service";
 
 @Component({
   selector: 'app-head',
@@ -10,8 +10,8 @@ import {CookieCartService} from "../../../services/cookie-cart.service";
 
 export class HeadComponent implements OnInit{
   constructor(
-    private cookiesService: CookieService,
-    private cookieCartService: CookieCartService
+    private cookiesService: AppCookieService,
+    private cookieCartService: AppCookieService
   ) {}
   cartProductsCount = 0
 

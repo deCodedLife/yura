@@ -1,10 +1,10 @@
-<div>
+<div class="text-sm">
   <h3>{{ caption }}</h3>
   <div
     class="checkbox"
     *ngFor="let item of items"
   >
     <input type="checkbox" (change)="applyTerm(item, $event)">
-    <p>{{ item.title }}</p>
+    <p class="font-bold text-xs">{{ item.title }}</p>
   </div>
 </div>

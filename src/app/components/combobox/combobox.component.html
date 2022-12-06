@@ -4,6 +4,6 @@
     <input [(ngModel)]="value">
     <span class="hidden-container">
       <input *ngFor="let item of objectsList; index as i" [value]="item" (click)="update(item)" readonly>
-  </span>
+    </span>
   </div>
 </div>

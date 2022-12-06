@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IServiceGroup} from "./services-groups.interface";
+import {IServiceGroup} from "./interfaces/services-groups.interface";
 
 export interface IServiceGroupResponse {
   status_code: number

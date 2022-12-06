@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CookieCartService } from "./services/cookie-cart.service";
+import { AppCookieService } from "./services/app-cookie.service";
 import {Location} from "@angular/common";
 
 @Component({
@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'yura';
 
   constructor(
-    private cartCookieService: CookieCartService,
+    private cartCookieService: AppCookieService,
     public location: Location
   ) {
     cartCookieService.recalculate()

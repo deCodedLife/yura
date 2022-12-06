@@ -9,6 +9,12 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class ButtonComponent {
   @Input() link: string = ""
   @Input() title: string
-  @Input() icon: string
+  @Input() icon: string = ""
+  @Input() type: string = ""
   @Output() triggered = new EventEmitter()
+  @Output() fileSelected = new EventEmitter<FileList>()
+
+  handleFile(event: Event) {
+    this.fileSelected.emit((<HTMLInputElement>event.target).files)
+  }
 }

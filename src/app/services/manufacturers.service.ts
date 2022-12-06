@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IManufacturer} from "./manufacturer.interface";
+import {IManufacturer} from "./interfaces/manufacturer.interface";
 
 export interface IManufacturerRequest {
   status_code: number

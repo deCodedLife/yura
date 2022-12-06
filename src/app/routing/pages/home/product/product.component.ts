@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {IProduct} from "../../../../services/product.interface";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {IProduct} from "../../../../services/interfaces/product.interface";
 
 @Component({
   selector: 'app-product',
@@ -8,7 +8,8 @@ import {IProduct} from "../../../../services/product.interface";
 })
 export class ProductComponent {
 
-  API_URL = "http://localhost:8080"
+  API_URL = "https://coded.life"
   @Input() product: IProduct
+  @Output() cardEvent = new EventEmitter()
 
 }

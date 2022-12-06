@@ -1,7 +1,7 @@
 <div>
   <h3 *ngIf="placeholder.trim().length > 0" >{{ placeholder }}</h3>
-  <div class="input">
+  <div class="input-box">
     <mat-icon *ngIf="icon.trim().length > 0">{{ icon }}</mat-icon>
-    <input [type]="digits ? 'number' : 'string'" min="1" [(ngModel)]="value" (ngModelChange)="update($event)">
+    <input [type]="getType()" min="1" [(ngModel)]="value" (ngModelChange)="update($event)">
   </div>
 </div>

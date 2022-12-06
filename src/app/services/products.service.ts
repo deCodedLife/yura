@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {IProduct} from "./product.interface";
+import {IProduct} from "./interfaces/product.interface";
 import {delay} from "rxjs";
 
 export interface IProductsResponse {

@@ -9,7 +9,9 @@
     <h3>
       {{ product.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
     </h3>
-    <div class="button">
+    <div class="button"
+         (click)="cardEvent.emit()"
+    >
       <h4>
         В корзину
       </h4>

@@ -1,1 +1,7 @@
-<p>textarea works!</p>
+<div>
+  <h3 *ngIf="placeholder.trim().length > 0" >{{ placeholder }}</h3>
+  <div class="input-box">
+    <mat-icon *ngIf="icon.trim().length > 0">{{ icon }}</mat-icon>
+    <textarea rows="8" [(ngModel)]="value" (ngModelChange)="update($event)"></textarea>
+  </div>
+</div>

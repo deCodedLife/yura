@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IPopularProduct} from "./popularProduct.interface";
+import {IPopularProduct} from "./interfaces/popularProduct.interface";
 
 export interface IPopularPeoductsResponse {
   status_code: number,

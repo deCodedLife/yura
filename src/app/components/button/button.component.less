@@ -1,8 +1,28 @@
 button {
   all: unset;
-  @apply flex content-center rounded font-sans font-bold text-lg bg-gray-800 px-2 py-1 text-white cursor-pointer;
+  @apply my-4 flex content-center rounded font-sans font-bold text-lg bg-gray-800 px-2 py-1 text-white cursor-pointer;
 
   p {
+    @apply px-1;
     margin: 0;
+  }
+}
+
+div {
+  @apply my-4 rounded font-sans font-bold text-lg bg-gray-800 px-2 py-1 text-white cursor-pointer;
+
+  input {
+    all: unset;
+    text-align-last: center;
+    width: 200px;
+    @apply rounded text-center;
+
+    &::-webkit-file-upload-button {
+      display: none;
+    }
+
+    &::-ms-browse {
+      all: unset;
+    }
   }
 }

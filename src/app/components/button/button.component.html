@@ -1,16 +1,22 @@
 <a
-  *ngIf="link.trim().length != 0"
+  *ngIf="type == 'link'"
   [routerLink]="link">
   <button>
-    <mat-icon>{{ icon }}</mat-icon>
+    <mat-icon *ngIf="icon.length > 0">{{ icon }}</mat-icon>
     <p> {{ title }} </p>
   </button>
 </a>
 <button
-  *ngIf="link.trim().length == 0"
+  *ngIf="type == 'button'"
   (click)="triggered.emit()"
 >
-  <mat-icon>{{ icon }}</mat-icon>
+  <mat-icon *ngIf="icon.length > 0">{{ icon }}</mat-icon>
   <p> {{ title }} </p>
 </button>
+<div
+  *ngIf="type == 'file'"
+>
+  <mat-icon *ngIf="icon.length > 0">{{ icon }}</mat-icon>
+  <input type="file" (change)="handleFile($event)" accept="image/*">
+</div>
 

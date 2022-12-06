@@ -14,6 +14,7 @@
   overflow-y: auto;
 }
 .combobox .combobox-body .hidden-container input {
+  @apply font-medium;
   caret-color: transparent;
   cursor: pointer;
 }
@@ -22,7 +23,7 @@
 }
 .combobox .combobox-body input {
   all: unset;
-  @apply w-full;
+  @apply w-full px-3 font-bold;
 }
 .combobox .combobox-body input:focus-within {
   display: block;

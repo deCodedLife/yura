@@ -1,8 +1,9 @@
 import {Component, Input} from '@angular/core';
-import {FieldsService} from "../../../services/fields.service";
-import {IField} from "../../../services/fieldItem.interface";
-import {ActivatedRoute} from "@angular/router";
+import {IField} from "../../../services/interfaces/fieldItem.interface";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ObjectService} from "../../../services/object.service";
+import {AppCookieService} from "../../../services/app-cookie.service";
+import {HeaderService} from "../../../services/header.service";
 
 @Component({
   selector: 'app-admin-add-object',
@@ -11,44 +12,27 @@ import {ObjectService} from "../../../services/object.service";
 })
 export class AdminAddObjectComponent {
   constructor(
-    private fieldsService: FieldsService,
     private route: ActivatedRoute,
-    private objectsService: ObjectService
+    public objectsService: ObjectService,
+    private appCookies: AppCookieService,
+    private router: Router,
+    private headerService: HeaderService
   ) {}
 
   @Input() object: object = {}
-  @Input() objectObject: string = ""
+  @Input() objectName: string = ""
   @Input() fields: IField[] = []
 
-  update(value: any, index: number) {
-    this.fields[ index ].value = value
-  }
-
-  createObject() {
-    let request = Object.create(null)
-    let filtered = this.fields.filter( field => field.display_type != null && field.value != null )
-    filtered.forEach( field => Object.defineProperty(request, field.article,
-      { "value": field.value,
-        enumerable: true,
-        configurable: true
-      })
-    )
-
-    this.objectsService.createObject(this.objectObject, <object>request).subscribe(response => {
-      console.log( response.data )
-
-      if ( /^\d+$/.test( (<string>response.data) ) ) {
-        alert( "Успешно" )
-        return
-      }
-
-      alert( "Что то пошло не так" )
-    } )
-  }
-
   ngOnInit() {
-    this.objectObject = this.route.snapshot.paramMap.get('object');
-    this.fieldsService.getSchema( this.objectObject ).subscribe(response => {
+    if ( this.appCookies.isAuthorized() == false ) {
+      this.router.navigateByUrl( "admin/sign-in" )
+      return
+    }
+
+    this.headerService.title.next( "Добавить объект" )
+
+    this.objectName = this.route.snapshot.paramMap.get('object');
+    this.objectsService.getSchema( this.objectName ).subscribe(response => {
       this.fields = response.data
 
       for ( let i = 0; i < this.fields.length; i++ ) {

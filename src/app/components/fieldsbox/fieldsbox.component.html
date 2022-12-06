@@ -1,0 +1,34 @@
+<div *ngFor="let item of fields; index as i">
+  <app-inputbox
+    *ngIf="item.display_type == 'string' || item.display_type == 'float' || item.display_type == 'number'"
+    [placeholder]="item.title"
+    [digits]="item.display_type == 'float' || item.display_type == 'number'"
+    (edited)="update($event, i)"
+    [value]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
+  ></app-inputbox>
+  <app-checkbox
+    *ngIf="item.display_type == 'checkbox'"
+    [placeholder]="item.title"
+    [toggled]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
+    (changed)="update($event, i)"
+  ></app-checkbox>
+  <app-combobox
+    *ngIf="item.display_type == 'combobox'"
+    [placeholder]="item.title"
+    [objectsList]="item.list_items"
+    [value]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
+    (changed)="update(item.list_items.indexOf($event), i)"
+  ></app-combobox>
+  <app-textarea
+    *ngIf="item.display_type == 'textarea'"
+    [placeholder]="item.title "
+    [value]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
+    (edited)="update($event, i)"
+  ></app-textarea>
+  <app-imagebox
+    *ngIf="item.display_type == 'image'"
+    [placeholder]="item.title"
+    (edited)="update($event, i)"
+    [image]="isNull(object[ item.article ]) ? API_URL + '/assets/conditioner.jpg' : API_URL + object[ item.article ]"
+  ></app-imagebox>
+</div>

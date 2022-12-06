@@ -1,8 +1,9 @@
 import {Component, Input} from '@angular/core';
-import {FieldsService} from "../../../services/fields.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ObjectService} from "../../../services/object.service";
-import {IField} from "../../../services/fieldItem.interface";
+import {IField} from "../../../services/interfaces/fieldItem.interface";
+import {AppCookieService} from "../../../services/app-cookie.service";
+import {HeaderService} from "../../../services/header.service";
 
 @Component({
   selector: 'app-admin-update-object',
@@ -12,34 +13,27 @@ import {IField} from "../../../services/fieldItem.interface";
 
 export class AdminUpdateObjectComponent {
   constructor(
-    private fieldsService: FieldsService,
     private route: ActivatedRoute,
-    private objectsService: ObjectService
+    public objectsService: ObjectService,
+    private appCookies: AppCookieService,
+    private router: Router,
+    private headerServeice: HeaderService
   ) {}
 
   @Input() objectName: string = ""
   @Input() objectID: number = 0
   @Input() fields: IField[] = []
   @Input() object: any = {}
-
-  update(value: any, index: number) {
-    this.object[ this.fields[ index ].article ] = value
-  }
-
-  updateObject() {
-    this.objectsService.updateObject(this.objectName, this.object, this.objectID).subscribe(response => {
-      console.log( response.data )
-
-      if ( /^\d+$/.test( (<string>response.data) ) ) {
-        alert( "Успешно" )
-        return
-      }
-
-      alert( "Что то пошло не так" )
-    } )
-  }
+  API_URL = "https://coded.life"
 
   ngOnInit() {
+    if ( this.appCookies.isAuthorized() == false ) {
+      this.router.navigateByUrl( "admin/sign-in" )
+      return
+    }
+
+    this.headerServeice.title.next( "Обновить объект" )
+
     this.objectName = this.route.snapshot.paramMap.get('object');
     this.objectID = parseInt( this.route.snapshot.paramMap.get('id') )
 
@@ -47,7 +41,7 @@ export class AdminUpdateObjectComponent {
       this.object = response.data[0]
     } )
 
-    this.fieldsService.getSchema( this.objectName ).subscribe(itemResponse => {
+    this.objectsService.getSchema( this.objectName ).subscribe(itemResponse => {
       this.fields = itemResponse.data
 
       for ( let i = 0; i < this.fields.length; i++ ) {
@@ -58,7 +52,6 @@ export class AdminUpdateObjectComponent {
         let type = take_from[1]
 
         if ( field.display_type == 'combobox' ) {
-          console.log( field.article )
           this.objectsService.getObjects( requiredObject ).subscribe(subItemResponse => {
             subItemResponse.data.forEach( item => {
               if ( typeof(this.fields[i].list_items) == "undefined") {

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {IField} from "../../services/fieldItem.interface";
+import {IField} from "../../services/interfaces/fieldItem.interface";
 import {Subject} from "rxjs";
 
 @Component({
@@ -14,6 +14,7 @@ export class ListboxComponent {
   @Input() fields: IField[] = []
   @Input() filtered: any[] = []
   @Input() searchTerm: Subject<string>
+  @Input() activeIcon = "edit"
   @Output() onEdit = new EventEmitter<number>()
 
   ngOnInit() {

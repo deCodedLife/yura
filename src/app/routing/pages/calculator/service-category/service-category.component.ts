@@ -19,11 +19,14 @@ export class ServiceCategoryComponent implements OnInit {
   ngOnInit() {
     this.serviceServices.getServiceByGroup( this.group.group.id ).subscribe( response => {
       this.group.services = response.data
+      console.log( response.data )
     } )
   }
 
   change(event: Event, index: number) {
-    this.group.services[ index ].amount = parseInt( (<HTMLInputElement>event.target).value )
+    let value = parseInt( (<HTMLInputElement>event.target).value )
+    if ( isNaN(value) ) value = 0
+    this.group.services[ index ].amount = value
     this.changed.emit( this.group )
   }
 }

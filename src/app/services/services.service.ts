@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {IService} from "./service.interface";
+import {IService} from "./interfaces/service.interface";
 import {HttpClient, HttpParams} from "@angular/common/http";
 
 export interface IServiceResponse {

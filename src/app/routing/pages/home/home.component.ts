@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {PopularProductsService} from "../../../services/popular-products.service";
 import {ProductsService} from "../../../services/products.service";
-import {IProduct} from "../../../services/product.interface";
-import {IResponse} from "../../../services/response.interface";
+import {IProduct} from "../../../services/interfaces/product.interface";
+import {IResponse} from "../../../services/interfaces/response.interface";
 import {IDropContent} from "./banner/drop-content.interface";
 import {tap} from "rxjs";
+import {CookieService} from "ngx-cookie";
+import {AppCookieService} from "../../../services/app-cookie.service";
 
 @Component({
   selector: 'app-home',
@@ -13,8 +15,17 @@ import {tap} from "rxjs";
 })
 
 export class HomeComponent implements OnInit {
-  constructor(private popularProducts: PopularProductsService, private products: ProductsService) {}
+  constructor(
+    private popularProducts: PopularProductsService,
+    private products: ProductsService,
+    private cookieService: CookieService,
+    private cookieCartService: AppCookieService
+  ) {}
   productsList: IProduct[] = []
+
+  addToCard(product: IProduct) {
+    this.cookieCartService.addProduct( product.id )
+  }
 
   productsDropdowns: IDropContent[] = [
     {

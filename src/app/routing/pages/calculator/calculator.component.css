@@ -1,7 +1,5 @@
-@import "tailwindcss/base.css";
-@import "tailwindcss/components.css";
-@import "tailwindcss/utilities.css";
 .block {
+  @apply text-xs;
   border-radius: 3px;
   background-color: white;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
@@ -9,12 +7,12 @@
   padding: 20px;
 }
 .block h2 {
-  font-size: x-large;
+  @apply text-lg;
 }
 .block h1 {
+  @apply text-xl;
   padding: 0;
   margin: 0;
-  font-size: xx-large;
   font-weight: bold;
 }
 .input-box {

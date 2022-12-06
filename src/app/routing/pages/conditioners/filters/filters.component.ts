@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {IProduct} from "../../../../services/product.interface";
+import {IProduct} from "../../../../services/interfaces/product.interface";
 import {IManufacturerRequest, ManufacturersService} from "../../../../services/manufacturers.service";
-import {IManufacturer} from "../../../../services/manufacturer.interface";
+import {IManufacturer} from "../../../../services/interfaces/manufacturer.interface";
 import {Observable} from "rxjs";
-import {IConditionerType} from "../../../../services/conditioner-type.interface";
+import {IConditionerType} from "../../../../services/interfaces/conditioner-type.interface";
 import {ConditionersTypesService} from "../../../../services/conditioners-types.service";
 
 @Component({

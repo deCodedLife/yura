@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ServicesGroupsService} from "../../../services/services-groups.service";
-import {IServiceGroup} from "../../../services/services-groups.interface";
-import {IService} from "../../../services/service.interface";
+import {IServiceGroup} from "../../../services/interfaces/services-groups.interface";
+import {IService} from "../../../services/interfaces/service.interface";
 import {CookieService} from "ngx-cookie";
-import {CookieCartService} from "../../../services/cookie-cart.service";
+import {AppCookieService} from "../../../services/app-cookie.service";
 
 export interface IDisplayGroup {
   group: IServiceGroup
@@ -20,7 +20,7 @@ export class CalculatorComponent implements OnInit {
   constructor(
     private servicesGroupsService: ServicesGroupsService,
     private cookieService: CookieService,
-    private cookieCartService: CookieCartService
+    private cookieCartService: AppCookieService
   ) {}
 
   servicesGroups: IServiceGroup[] = []
