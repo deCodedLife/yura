@@ -7,3 +7,10 @@
     width: 200px;
   }
 }
+
+.required {
+  &::before {
+    content: '* ';
+  @apply text-red-600 text-xl;
+  }
+}

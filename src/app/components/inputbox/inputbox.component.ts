@@ -12,6 +12,7 @@ export class InputboxComponent {
   @Input() placeholder: string = ""
   @Input() isPassword: boolean = false
   @Input() value: string
+  @Input() required: boolean = false
   @Output() edited = new EventEmitter<string>()
 
   update(v: string) {

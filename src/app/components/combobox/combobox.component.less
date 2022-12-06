@@ -13,10 +13,12 @@
       @apply my-2 bg-gray-100;
       display: none;
       max-height: 260px;
+      overflow-x: hidden;
       overflow-y: auto;
 
       input {
         @apply font-medium;
+        width: 100%;
         caret-color: transparent;
         cursor: pointer;
 
@@ -55,4 +57,11 @@
     margin: 0;
   }
 
+}
+
+.required {
+  &::before {
+    content: '* ';
+  @apply text-red-600 text-xl;
+  }
 }

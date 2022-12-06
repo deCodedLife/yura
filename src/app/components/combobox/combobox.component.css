@@ -11,10 +11,12 @@
   @apply my-2 bg-gray-100;
   display: none;
   max-height: 260px;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 .combobox .combobox-body .hidden-container input {
   @apply font-medium;
+  width: 100%;
   caret-color: transparent;
   cursor: pointer;
 }
@@ -39,5 +41,9 @@
 }
 .combobox h3 {
   margin: 0;
+}
+.required::before {
+  content: '* ';
+  @apply text-red-600 text-xl;
 }
 /*# sourceMappingURL=combobox.component.css.map */

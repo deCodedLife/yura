@@ -8,6 +8,7 @@ export interface IField {
   display_type: string,
   take_from: string,
   list_items: any[]
+  selected_item: number
   value: any
 }
 

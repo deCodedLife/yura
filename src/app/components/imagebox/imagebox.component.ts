@@ -10,6 +10,7 @@ export class ImageboxComponent {
   @Input() image: string | ArrayBuffer = ""
   @Input() placeholder = ""
   @Output() edited = new EventEmitter<File>()
+  @Input() required: boolean = false
 
   handleImage(inputData: FileList) {
     let reader = new FileReader()

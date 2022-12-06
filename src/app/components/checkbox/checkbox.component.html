@@ -4,6 +4,8 @@
     <span class="slider round"></span>
   </label>
   <div class="centered">
-    <h3>{{ placeholder }}</h3>
+    <h3 [ngClass]="{
+      'required': required
+    }">{{ placeholder }}</h3>
   </div>
 </div>

@@ -1,5 +1,9 @@
 <div class="combobox">
-  <h3> {{ placeholder }} </h3>
+  <h3
+    *ngIf="placeholder.trim().length > 0"
+    [ngClass]="{
+      'required': required
+    }"> {{ placeholder }} </h3>
   <div class="combobox-body">
     <input [(ngModel)]="value">
     <span class="hidden-container">

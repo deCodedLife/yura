@@ -69,3 +69,10 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.required {
+  &::before {
+    content: '* ';
+    @apply text-red-600 text-xl;
+  }
+}

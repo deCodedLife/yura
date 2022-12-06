@@ -6,4 +6,8 @@
   height: 200px;
   width: 200px;
 }
+.required::before {
+  content: '* ';
+  @apply text-red-600 text-xl;
+}
 /*# sourceMappingURL=imagebox.component.css.map */

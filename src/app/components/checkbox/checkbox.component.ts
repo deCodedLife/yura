@@ -9,5 +9,6 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class CheckboxComponent {
   @Input() placeholder: string = ""
   @Input() toggled: boolean = false
+  @Input() required: boolean = false
   @Output() changed = new EventEmitter<boolean>()
 }

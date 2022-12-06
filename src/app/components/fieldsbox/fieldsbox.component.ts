@@ -10,12 +10,16 @@ export class FieldsboxComponent {
 
   API_URL = "https://coded.life"
   @Input() fields: IField[] = []
-  @Input() object: object = {}
+  @Input() object: object
   @Output() fieldsUpdated = new EventEmitter<IField[]>()
 
   update(value: any, index: number) {
     this.fields[ index ].value = value
     this.fieldsUpdated.emit( this.fields )
+  }
+
+  getIndex(property: any) {
+    return parseInt( property ) - 1
   }
 
   isNull(data: any) {

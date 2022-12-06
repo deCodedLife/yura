@@ -17,4 +17,8 @@ h3 {
 .pointer {
   cursor: pointer;
 }
+.required::before {
+  content: '* ';
+  @apply text-red-600 text-xl;
+}
 /*# sourceMappingURL=textarea.component.css.map */
