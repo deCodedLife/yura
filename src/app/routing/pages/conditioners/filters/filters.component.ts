@@ -1,10 +1,8 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IProduct} from "../../../../services/interfaces/product.interface";
-import {IManufacturerRequest, ManufacturersService} from "../../../../services/manufacturers.service";
 import {IManufacturer} from "../../../../services/interfaces/manufacturer.interface";
-import {Observable} from "rxjs";
 import {IConditionerType} from "../../../../services/interfaces/conditioner-type.interface";
-import {ConditionersTypesService} from "../../../../services/conditioners-types.service";
+import {ObjectService} from "../../../../services/object.service";
 
 @Component({
   selector: 'app-filters',
@@ -14,8 +12,7 @@ import {ConditionersTypesService} from "../../../../services/conditioners-types.
 export class FiltersComponent {
 
   constructor(
-    private manufacturers: ManufacturersService,
-    private conditionerTypes: ConditionersTypesService
+    private objectService: ObjectService
   ) {
   }
 
@@ -73,11 +70,11 @@ export class FiltersComponent {
     this.max_internal_block_height = this.findMaxValue(this.products, "internal_block_height")
     this.max_internal_block_depth = this.findMaxValue(this.products, "internal_block_depth")
 
-    this.manufacturers.getManufacturers().subscribe( response => {
-      this.manufacturersList = response.data
+    this.objectService.getObjects( "manufacturers" ).subscribe( response => {
+      this.manufacturersList = response.data as IManufacturer[]
     } )
-    this.conditionerTypes.getConditionersTypes().subscribe( response => {
-      this.conditionersTypesList = response.data
+    this.objectService.getObjects( "conditioners_types",  ).subscribe( response => {
+      this.conditionersTypesList = response.data as IConditionerType[]
     } )
   }
 

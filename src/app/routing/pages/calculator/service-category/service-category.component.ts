@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IDisplayGroup} from "../calculator.component";
-import {ServicesService} from "../../../../services/services.service";
+import {ObjectService} from "../../../../services/object.service";
+import {HttpParams} from "@angular/common/http";
 
 @Component({
   selector: 'app-service-category',
@@ -9,7 +10,7 @@ import {ServicesService} from "../../../../services/services.service";
 })
 
 export class ServiceCategoryComponent implements OnInit {
-  constructor(private serviceServices: ServicesService) {}
+  constructor(private objectsService: ObjectService) {}
 
   @Input() group: IDisplayGroup
   @Output() changed = new EventEmitter<IDisplayGroup>()
@@ -17,7 +18,11 @@ export class ServiceCategoryComponent implements OnInit {
   isToggled = false
 
   ngOnInit() {
-    this.serviceServices.getServiceByGroup( this.group.group.id ).subscribe( response => {
+    this.objectsService.getWithParams( "services", new HttpParams({
+      fromObject: {
+        "group_id": this.group.group.id
+      }
+    }) ).subscribe( response => {
       this.group.services = response.data
       console.log( response.data )
     } )

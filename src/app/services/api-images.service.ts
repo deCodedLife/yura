@@ -12,7 +12,7 @@ export interface IImageResponse {
 })
 export class ApiImagesService {
 
-  API_URL = "https://coded.life"
+  API_URL = "/api"
 
   constructor(private http: HttpClient) {}
 

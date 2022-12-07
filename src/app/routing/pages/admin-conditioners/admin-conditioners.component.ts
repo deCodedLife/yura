@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {IProduct} from "../../../services/interfaces/product.interface";
 import {IField} from "../../../services/interfaces/fieldItem.interface";
 import {HeaderService} from "../../../services/header.service";
 import {ObjectService} from "../../../services/object.service";
@@ -21,7 +20,7 @@ export class AdminConditionersComponent implements OnInit {
   ) {}
 
   fields: IField[] = []
-  conditioners: IProduct[] = []
+  conditioners: object[] = []
   searchTerm: string
 
   editObject(id: number) {

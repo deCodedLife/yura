@@ -14,7 +14,7 @@ export interface IAuthData {
 })
 export class AuthService {
   constructor(private http: HttpClient) { }
-  API_URL = "https://coded.life"
+  API_URL = "/api"
 
   signIn(authData: IAuthData) {
     return this.http.post<IResponse>( this.API_URL + '/' + 'sign-in', JSON.stringify( <object>authData ) )

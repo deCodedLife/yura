@@ -1,7 +1,7 @@
 <div class="card">
   <div class="content">
     <a [routerLink]="'/conditioner/' + product.id">
-      <img src="{{ API_URL + product.image }}" [alt]="product.product_name">
+      <img src="{{ '/api' + product.image }}" [alt]="product.product_name">
     </a>
     <h2>
       {{ product.model }}

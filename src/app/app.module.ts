@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { HeadModule } from "./routing/store/head/head.module";
 import { StoreModule } from "./routing/store/store.module";
 import { HomeModule } from "./routing/pages/home/home.module";
-import { PopularProductsService } from "./services/popular-products.service";
-import { ProductsService } from "./services/products.service";
 import { ConditionersModule } from "./routing/pages/conditioners/conditioners.module";
 import { CookieModule } from "ngx-cookie";
 import { ShoppingCartModule } from "./routing/pages/shopping-cart/shopping-cart.module";
@@ -34,6 +32,7 @@ import { AdminServicesGroupsComponent } from './routing/pages/admin-services-gro
 import { ImageboxComponent } from './components/imagebox/imagebox.component';
 import { AdminReceiptsComponent } from './routing/pages/admin-receipts/admin-receipts.component';
 import { FieldsboxComponent } from './components/fieldsbox/fieldsbox.component';
+import { AdminClientsComponent } from './routing/pages/admin-clients/admin-clients.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +56,8 @@ import { FieldsboxComponent } from './components/fieldsbox/fieldsbox.component';
     AdminServicesGroupsComponent,
     ImageboxComponent,
     AdminReceiptsComponent,
-    FieldsboxComponent
+    FieldsboxComponent,
+    AdminClientsComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +74,7 @@ import { FieldsboxComponent } from './components/fieldsbox/fieldsbox.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [PopularProductsService, ProductsService],
+  providers: [],
   bootstrap: [AppComponent],
   exports: [
     InputboxComponent,

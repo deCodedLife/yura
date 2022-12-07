@@ -10,6 +10,7 @@ import {Subject} from "rxjs";
 
 export class ListboxComponent {
 
+  @Input() placeholder: string = ""
   @Input() listItems: any[] = []
   @Input() fields: IField[] = []
   @Input() filtered: any[] = []

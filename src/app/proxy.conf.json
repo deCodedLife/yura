@@ -1,0 +1,9 @@
+{
+  "/api": {
+    "target": "https://coded.life",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": { "/api": "" }
+  }
+}

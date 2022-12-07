@@ -1,8 +1,8 @@
 <app-button
   title="Добавить"
   icon="add"
-  type="button"
-  (triggered)="this.objectsService.createObject(objectName, fields)"
+  type="submit"
+  (triggered)="this.objectsService.createObject(objectName, fields, true)"
 ></app-button>
 <app-fieldsbox
   [fields]="fields"

@@ -7,8 +7,6 @@ import {IProduct} from "../../../../services/interfaces/product.interface";
   styleUrls: ['./product.component.less']
 })
 export class ProductComponent {
-
-  API_URL = "https://coded.life"
   @Input() product: IProduct
   @Output() cardEvent = new EventEmitter()
 

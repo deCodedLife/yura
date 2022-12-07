@@ -1,0 +1,114 @@
+@main-color: #1f2041;
+@sub-color: #4b3f72;
+@accent-first: #ffc857;
+@accent-second: #119da4;
+@accent-third: #119da4;
+@text-color: white;
+
+
+.center-in {
+  display: grid;
+  align-content: center;
+}
+
+.block {
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 10px rgb(0 0 0 / 10%);
+  margin: 20px 0;
+
+  h1 {
+    padding: 20px;
+  }
+
+  .category {
+    padding: 0 20px;
+  }
+}
+
+.products {
+  flex: 1;
+  padding: 10px;
+
+  table {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    @apply rounded;
+    overflow: hidden;
+
+    td {
+      @apply py-2;
+    }
+
+    .products {
+      text-align: center;
+    }
+
+    .photo {
+
+      img {
+        width: 64px;
+        height: 64px;
+        margin: auto;
+        @apply rounded;
+      }
+
+    }
+
+    .input-back {
+      width: 100px  ;
+
+      .input-box {
+        display: flex;
+        background-color: #fafafa;
+        padding: 5px;
+        border-radius: 3px;
+        width: 100%;
+        justify-content: center;
+
+        .clickable {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .input-box {
+      all: unset;
+      width: 75px;
+    }
+
+    .summary {
+      background-color: @sub-color;
+      color: @text-color;
+      font-weight: bold;
+    }
+
+    .info {
+      width: auto;
+      text-align: center;
+      font-weight: bold;
+    }
+
+  }
+
+
+}
+
+.button {
+  background-color: @accent-first;
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+
+  &:active {
+    background-color: @accent-second;
+  }
+
+  h3 {
+    padding: 3px;
+    margin: 0;
+  }
+}

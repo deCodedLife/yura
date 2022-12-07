@@ -1,4 +1,8 @@
 <table class="list-container">
+  <h3
+    *ngIf="placeholder.trim().length > 0"
+  > {{ placeholder }} </h3>
+
   <thead>
   <th *ngFor="let field of fields" >
     <p>{{field.title}}</p>

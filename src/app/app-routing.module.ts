@@ -12,6 +12,7 @@ import { AdminServicesComponent } from "./routing/pages/admin-services/admin-ser
 import { AdminUpdateObjectComponent } from "./routing/pages/admin-update-object/admin-update-object.component";
 import {AdminServicesGroupsComponent} from "./routing/pages/admin-services-groups/admin-services-groups.component";
 import {AdminReceiptsComponent} from "./routing/pages/admin-receipts/admin-receipts.component";
+import {AdminClientsComponent} from "./routing/pages/admin-clients/admin-clients.component";
 
 const routes: Routes = [
   {
@@ -58,6 +59,11 @@ const routes: Routes = [
     path: "admin/services",
     pathMatch: "full",
     component: AdminServicesComponent
+  },
+  {
+    path: "admin/clients",
+    pathMatch: "full",
+    component: AdminClientsComponent
   },
   {
     path: "admin/services-groups",

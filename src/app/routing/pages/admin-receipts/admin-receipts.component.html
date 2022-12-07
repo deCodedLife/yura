@@ -2,17 +2,85 @@
   <app-button
     class="px-2"
     title="Обновить"
-    type="button"
+    type="submit"
+    (triggered)="updateSale()"
     icon="edit"
   ></app-button>
   <app-button
     class="px-2"
     title="Закрыть"
-    type="button"
+    type="submit"
     icon="checked"
   ></app-button>
 </div>
 <app-fieldsbox
+  (fieldsUpdated)="saleFields = $event"
   [object]="saleObject"
   [fields]="saleFields"
 ></app-fieldsbox>
+
+<div class="w-full">
+  <app-combobox
+    placeholder="Товар или услуга"
+    [objectsList]="arrayByKey(allProducts, 'title')"
+    (itemSelected)="selectedItem = allProducts[ $event ]"
+  ></app-combobox>
+  <app-button
+    title="Добавить"
+    type="submit"
+    icon="add"
+    (triggered)="addProduct()"
+  ></app-button>
+</div>
+
+<div
+  class="products"
+>
+  <table cellspacing="0" id="products">
+    <thead>
+      <th class="photo">Фото</th>
+      <th>Название</th>
+      <th>Количество</th>
+      <th class="price">Цена</th>
+      <th>Сумма</th>
+    </thead>
+    <tbody>
+      <tr class="product" *ngFor="let cartItem of productCart; index as i">
+        <td class="photo">
+          <img src="{{ '/api' + cartItem.image }}" [alt]="cartItem.title">
+        </td>
+        <td>
+          {{ cartItem.title }}
+        </td>
+        <td class="input-back">
+          <div class="input-box">
+            <input class="input-box" type="number" min="1" (change)="updateCount(i, $event)" value="{{ cartItem.amount }}">
+            <div class="center-in">
+              <svg
+                (click)="removeFromCard(cartItem)"
+                class="clickable"
+                xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+            </div>
+          </div>
+        </td>
+        <td>
+          {{ cartItem.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
+        </td>
+        <td>
+          {{ cartItem.summary.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
+        </td>
+      </tr>
+      <tr class="summary">
+        <td>
+          Итого
+        </td>
+        <td class="photo"></td>
+        <td></td>
+        <td class="price"></td>
+        <td>
+          {{ summary.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

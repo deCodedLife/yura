@@ -12,6 +12,7 @@ export class ComboboxComponent implements OnChanges {
   @Input() objectsList: string[] = []
   @Input() value: string = ""
   @Output() changed = new EventEmitter<string>()
+  @Output() itemSelected = new EventEmitter<number>()
   @Input() required: boolean = false
 
   ngOnChanges() {
@@ -19,13 +20,14 @@ export class ComboboxComponent implements OnChanges {
       if ( /^\d+$/.test( this.value ) ) this.value = this.objectsList[ parseInt( this.value ) ]
       else if ( this.value == "" ) {
         this.value = this.objectsList[0]
-        this.changed.emit( this.value )
+        this.update( this.value, 1 )
       }
     }
   }
 
-  update(e: string) {
+  update(e: string, index: number) {
     this.value = e
     this.changed.emit( this.value )
+    this.itemSelected.emit( index++ )
   }
 }

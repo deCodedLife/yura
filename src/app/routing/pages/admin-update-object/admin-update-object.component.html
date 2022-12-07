@@ -1,7 +1,8 @@
 <app-button
   title="Обновить"
   icon="edit"
-  (triggered)="objectsService.createObject(objectName, fields)"
+  type="submit"
+  (triggered)="objectsService.updateObject(objectName, fields, objectID, true)"
 ></app-button>
 <app-fieldsbox
   [fields]="fields"

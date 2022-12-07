@@ -7,7 +7,7 @@
   </button>
 </a>
 <button
-  *ngIf="type == 'button'"
+  *ngIf="type == 'submit'"
   (click)="triggered.emit()"
 >
   <mat-icon *ngIf="icon.length > 0">{{ icon }}</mat-icon>

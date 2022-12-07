@@ -1,12 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {PopularProductsService} from "../../../services/popular-products.service";
-import {ProductsService} from "../../../services/products.service";
 import {IProduct} from "../../../services/interfaces/product.interface";
-import {IResponse} from "../../../services/interfaces/response.interface";
 import {IDropContent} from "./banner/drop-content.interface";
-import {tap} from "rxjs";
 import {CookieService} from "ngx-cookie";
 import {AppCookieService} from "../../../services/app-cookie.service";
+import {ObjectService} from "../../../services/object.service";
+import {HttpParams} from "@angular/common/http";
 
 @Component({
   selector: 'app-home',
@@ -16,8 +14,7 @@ import {AppCookieService} from "../../../services/app-cookie.service";
 
 export class HomeComponent implements OnInit {
   constructor(
-    private popularProducts: PopularProductsService,
-    private products: ProductsService,
+    private objectService: ObjectService,
     private cookieService: CookieService,
     private cookieCartService: AppCookieService
   ) {}
@@ -77,13 +74,17 @@ export class HomeComponent implements OnInit {
     /**
      * Get popular products
      */
-    this.popularProducts.getPopular().subscribe( response => {
+    this.objectService.getObjects( "popular_products" ).subscribe( response => {
 
       /**
        * Get data about each popular product
        */
       response.data.forEach( product => {
-        this.products.getProduct( product.product_id.toString() ).subscribe( response => {
+        this.objectService.getWithParams( "conditioners", new HttpParams({
+          fromObject: {
+            id: product.product_id.toString()
+          }
+        }) ).subscribe( response => {
           /**
            * API always provide GET request as array of items
            * It will be array even if it's a single item =(

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from "ngx-cookie";
 import { IProduct } from "../../../services/interfaces/product.interface";
-import { ProductsService } from "../../../services/products.service";
 import { AppCookieService } from "../../../services/app-cookie.service";
-import {ServicesService} from "../../../services/services.service";
 import {IService} from "../../../services/interfaces/service.interface";
 import {tap} from "rxjs";
+import {ObjectService} from "../../../services/object.service";
+import {HttpParams} from "@angular/common/http";
 
 export interface IAbstractProduct {
   image: string
@@ -27,14 +27,12 @@ export interface IAbstractProduct {
 export class ShoppingCartComponent implements OnInit {
   constructor(
     private cookiesService: CookieService,
-    private productsService: ProductsService,
-    private servicesService: ServicesService,
+    private objectsService: ObjectService,
     private cartCookieService: AppCookieService
   ) {}
 
   summary = 0
   cartList: IAbstractProduct[] = []
-  API_URL = "https://coded.life"
 
   removeFromCard(product: IAbstractProduct) {
     if ( product.productReference != null ) {
@@ -65,14 +63,18 @@ export class ShoppingCartComponent implements OnInit {
     let cartServices = this.cookiesService.getObject( "services" ) as number[]
 
     cartProducts.forEach( productID => {
-      this.productsService.getProduct( productID.toString() ).pipe( tap( _ => {
+      this.objectsService.getWithParams( "conditioners", new HttpParams({
+        fromObject: {
+          id: productID.toString()
+        }
+      }) ).pipe( tap( _ => {
         this.updateSummary()
       } ) ).subscribe( response => {
         this.cartList.push( {
           productReference: response.data[0],
           amount: 1,
           price: response.data[0].price,
-          image: this.API_URL + response.data[0].image,
+          image: '/api/' + response.data[0].image,
           title: response.data[0].product_name,
           subTitle: response.data[0].model,
           serviceReference: null,
@@ -82,14 +84,18 @@ export class ShoppingCartComponent implements OnInit {
     } )
 
     cartServices.forEach( serviceID => {
-      this.servicesService.getServiceByID( serviceID ).pipe( tap( _ => {
+      this.objectsService.getWithParams( "services", new HttpParams({
+        fromObject: {
+          id: serviceID
+        }
+      }) ).pipe( tap( _ => {
         this.updateSummary()
       } ) ).subscribe( response => {
         this.cartList.push({
           productReference: null,
           amount: 1,
           price: response.data[0].price,
-          image: "assets/services-cart.png",
+          image: "/assets/service-cart.png",
           title: response.data[0].title,
           subTitle: "",
           serviceReference: response.data[0],

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import { ProductsService } from "../../../services/products.service";
 import { IProduct } from "../../../services/interfaces/product.interface";
 import { CookieService } from "ngx-cookie";
 import {AppCookieService} from "../../../services/app-cookie.service";
+import {ObjectService} from "../../../services/object.service";
 
 @Component({
   selector: 'app-conditioners',
@@ -12,7 +12,7 @@ import {AppCookieService} from "../../../services/app-cookie.service";
 
 export class ConditionersComponent implements OnInit {
   constructor(
-    private products: ProductsService,
+    private objects: ObjectService,
     private cookieService: CookieService,
     private cookieCartService: AppCookieService
   ) {}
@@ -45,7 +45,7 @@ export class ConditionersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products.getProducts().subscribe( response => {
+    this.objects.getObjects( "conditioners" ).subscribe( response => {
       this.productsList = response.data
       this.sortedList = response.data
       this.isLoading = false

@@ -1,0 +1,83 @@
+.center-in {
+  display: grid;
+  align-content: center;
+}
+.block {
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+.block h1 {
+  padding: 20px;
+}
+.block .category {
+  padding: 0 20px;
+}
+.products {
+  flex: 1;
+  padding: 10px;
+}
+.products table {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  @apply rounded;
+  overflow: hidden;
+}
+.products table td {
+  @apply py-2;
+}
+.products table .products {
+  text-align: center;
+}
+.products table .photo img {
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  @apply rounded;
+}
+.products table .input-back {
+  width: 100px  ;
+}
+.products table .input-back .input-box {
+  display: flex;
+  background-color: #fafafa;
+  padding: 5px;
+  border-radius: 3px;
+  width: 100%;
+  justify-content: center;
+}
+.products table .input-back .input-box .clickable {
+  cursor: pointer;
+}
+.products table .input-box {
+  all: unset;
+  width: 75px;
+}
+.products table .summary {
+  background-color: #4b3f72;
+  color: white;
+  font-weight: bold;
+}
+.products table .info {
+  width: auto;
+  text-align: center;
+  font-weight: bold;
+}
+.button {
+  background-color: #ffc857;
+  padding: 5px;
+  border-radius: 3px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+.button:active {
+  background-color: #119da4;
+}
+.button h3 {
+  padding: 3px;
+  margin: 0;
+}
+/*# sourceMappingURL=admin-receipts.component.css.map */
