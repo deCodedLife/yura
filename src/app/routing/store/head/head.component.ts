@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CookieService} from "ngx-cookie";
 import {AppCookieService} from "../../../services/app-cookie.service";
 
 @Component({
@@ -17,5 +16,6 @@ export class HeadComponent implements OnInit{
 
   ngOnInit() {
     this.cookieCartService.cookieUpdated.subscribe( number => this.cartProductsCount = number )
+    this.cookiesService.recalculate()
   }
 }

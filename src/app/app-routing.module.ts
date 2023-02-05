@@ -13,6 +13,12 @@ import { AdminUpdateObjectComponent } from "./routing/pages/admin-update-object/
 import {AdminServicesGroupsComponent} from "./routing/pages/admin-services-groups/admin-services-groups.component";
 import {AdminReceiptsComponent} from "./routing/pages/admin-receipts/admin-receipts.component";
 import {AdminClientsComponent} from "./routing/pages/admin-clients/admin-clients.component";
+import {
+  IndustrialRefrigerationUnitsComponent
+} from "./routing/pages/industrial-refrigeration-units/industrial-refrigeration-units.component";
+import {
+  AdminIndustrialRefrigerationUnitsComponent
+} from "./routing/pages/admin-industrial-refrigeration-units/admin-industrial-refrigeration-units.component";
 
 const routes: Routes = [
   {
@@ -34,6 +40,11 @@ const routes: Routes = [
     path: 'calculator',
     pathMatch: "full",
     component: CalculatorComponent
+  },
+  {
+    path: "industrial-refrigeration-units",
+    pathMatch: "full",
+    component: IndustrialRefrigerationUnitsComponent
   },
   {
     path: "admin",
@@ -69,6 +80,11 @@ const routes: Routes = [
     path: "admin/services-groups",
     pathMatch: "full",
     component: AdminServicesGroupsComponent
+  },
+  {
+    path: "admin/industrial-refrigeration-units",
+    pathMatch: "full",
+    component: AdminIndustrialRefrigerationUnitsComponent
   },
   {
     path: 'admin/add/:object',

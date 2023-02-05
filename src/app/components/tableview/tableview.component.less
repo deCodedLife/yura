@@ -1,0 +1,76 @@
+@main-color: #1f2041;
+@sub-color: #4b3f72;
+@accent-first: #ffc857;
+@accent-second: #119da4;
+@accent-third: #119da4;
+@text-color: white;
+
+.table {
+  @apply flex;
+
+  table {
+    @apply w-full text-center overflow-hidden rounded;
+
+    thead {
+      background-color: @sub-color;
+
+      th {
+        @apply py-2 text-white;
+      }
+    }
+
+    td {
+      @apply py-2;
+    }
+
+    .products {
+      text-align: center;
+    }
+
+    .photo {
+
+      img {
+        width: 64px;
+        height: 64px;
+        margin: auto;
+        @apply rounded;
+      }
+
+    }
+
+    .input-back {
+      width: 100px;
+
+      .input-box {
+        @apply flex rounded w-full justify-items-center;
+        background-color: #fafafa;
+        padding: 5px;
+        justify-content: center;
+
+        .clickable {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .input-box {
+      all: unset;
+      width: 75px;
+    }
+
+    .summary {
+      background-color: @sub-color;
+      color: @text-color;
+      font-weight: bold;
+    }
+
+    .info {
+      width: auto;
+      text-align: center;
+      font-weight: bold;
+    }
+
+  }
+
+
+}

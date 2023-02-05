@@ -33,6 +33,10 @@ import { ImageboxComponent } from './components/imagebox/imagebox.component';
 import { AdminReceiptsComponent } from './routing/pages/admin-receipts/admin-receipts.component';
 import { FieldsboxComponent } from './components/fieldsbox/fieldsbox.component';
 import { AdminClientsComponent } from './routing/pages/admin-clients/admin-clients.component';
+import { TableviewComponent } from './components/tableview/tableview.component';
+import { IndustrialRefrigerationUnitsComponent } from './routing/pages/industrial-refrigeration-units/industrial-refrigeration-units.component';
+import { AdminIndustrialRefrigerationUnitsComponent } from './routing/pages/admin-industrial-refrigeration-units/admin-industrial-refrigeration-units.component';
+import { IndustrialServiceComponent } from './routing/pages/industrial-refrigeration-units/industrial-service/industrial-service.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,11 @@ import { AdminClientsComponent } from './routing/pages/admin-clients/admin-clien
     ImageboxComponent,
     AdminReceiptsComponent,
     FieldsboxComponent,
-    AdminClientsComponent
+    AdminClientsComponent,
+    TableviewComponent,
+    IndustrialRefrigerationUnitsComponent,
+    AdminIndustrialRefrigerationUnitsComponent,
+    IndustrialServiceComponent
   ],
   imports: [
     BrowserModule,

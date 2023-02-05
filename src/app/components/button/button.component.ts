@@ -11,6 +11,7 @@ export class ButtonComponent {
   @Input() title: string
   @Input() icon: string = ""
   @Input() type: string = ""
+  @Input() extensions: string = "image/*"
   @Output() triggered = new EventEmitter()
   @Output() fileSelected = new EventEmitter<FileList>()
 

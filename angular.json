@@ -64,14 +64,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "yura:build",
-            "proxyConfig": "src/app/proxy.conf.json",
+            "browserTarget": "yura:build:production",
+            "proxyConfig": "src/proxy.conf.json",
             "port": 443,
             "ssl": true
           },
           "configurations": {
             "production": {
-              "browserTarget": "yura:build:production"
+              "port": 443,
+              "ssl": true
             },
             "development": {
               "browserTarget": "yura:build:development"
@@ -106,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "95e7ab58-5d20-40d1-876e-ad38eacd10b6"
   }
 }

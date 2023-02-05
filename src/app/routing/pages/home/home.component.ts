@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   productsList: IProduct[] = []
 
   addToCard(product: IProduct) {
-    this.cookieCartService.addProduct( product.id )
+    this.cookieCartService.addProduct( {id: product.id, count: 1}, "products" )
   }
 
   productsDropdowns: IDropContent[] = [

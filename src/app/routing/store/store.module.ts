@@ -4,12 +4,16 @@ import { StoreComponent } from './store.component';
 import { HeadModule } from "./head/head.module";
 import { FooterComponent } from './footer/footer.component';
 import { RouterLink, RouterOutlet } from "@angular/router";
+import { SnowComponent } from './snow/snow.component';
+import { IceComponent } from './snow/ice/ice.component';
 
 
 @NgModule({
   declarations: [
     StoreComponent,
-    FooterComponent
+    FooterComponent,
+    SnowComponent,
+    IceComponent
   ],
   imports: [
     CommonModule,
@@ -17,6 +21,6 @@ import { RouterLink, RouterOutlet } from "@angular/router";
     RouterOutlet,
     RouterLink,
   ],
-  exports:[StoreComponent]
+    exports: [StoreComponent, SnowComponent]
 })
 export class StoreModule { }

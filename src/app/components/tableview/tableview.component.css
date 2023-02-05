@@ -1,0 +1,51 @@
+.table {
+  @apply flex;
+}
+.table table {
+  @apply w-full text-center overflow-hidden rounded;
+}
+.table table thead {
+  background-color: #4b3f72;
+}
+.table table thead th {
+  @apply py-2 text-white;
+}
+.table table td {
+  @apply py-2;
+}
+.table table .products {
+  text-align: center;
+}
+.table table .photo img {
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  @apply rounded;
+}
+.table table .input-back {
+  width: 100px;
+}
+.table table .input-back .input-box {
+  @apply flex rounded w-full justify-items-center;
+  background-color: #fafafa;
+  padding: 5px;
+  justify-content: center;
+}
+.table table .input-back .input-box .clickable {
+  cursor: pointer;
+}
+.table table .input-box {
+  all: unset;
+  width: 75px;
+}
+.table table .summary {
+  background-color: #4b3f72;
+  color: white;
+  font-weight: bold;
+}
+.table table .info {
+  width: auto;
+  text-align: center;
+  font-weight: bold;
+}
+/*# sourceMappingURL=tableview.component.css.map */

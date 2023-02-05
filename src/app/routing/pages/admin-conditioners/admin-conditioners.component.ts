@@ -4,6 +4,7 @@ import {HeaderService} from "../../../services/header.service";
 import {ObjectService} from "../../../services/object.service";
 import {Router} from "@angular/router";
 import {AppCookieService} from "../../../services/app-cookie.service";
+import {ImportService} from "../../../services/import.service";
 
 @Component({
   selector: 'app-admin-conditioners',
@@ -16,7 +17,8 @@ export class AdminConditionersComponent implements OnInit {
     private objectService: ObjectService,
     public headerService: HeaderService,
     private appCookies: AppCookieService,
-    private router: Router
+    private router: Router,
+    private importService: ImportService
   ) {}
 
   fields: IField[] = []
@@ -25,6 +27,17 @@ export class AdminConditionersComponent implements OnInit {
 
   editObject(id: number) {
     this.router.navigateByUrl( "admin/conditioners/" + id )
+  }
+
+  importFromExel(inputData: FileList) {
+    this.importService.importFile( inputData[0], ["conditioners"] ).subscribe( (response) => {
+      if ( response.status_code != 200 ) {
+        alert( response.data )
+        return
+      }
+
+      window.location.reload()
+    } )
   }
 
   ngOnInit() {

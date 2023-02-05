@@ -1,11 +1,23 @@
-<app-button
-  title="Обновить"
-  icon="edit"
-  type="submit"
-  (triggered)="objectsService.updateObject(objectName, fields, objectID, true)"
-></app-button>
+<div class="flex">
+  <app-button
+    title="Обновить"
+    icon="edit"
+    type="submit"
+    (triggered)="objectsService.updateObject(objectName, fields, objectID, true)"
+  ></app-button>
+  <app-button
+    class="px-2"
+    title="Удалить"
+    icon="delete"
+    type="submit"
+    (triggered)="deleteObject()"
+  ></app-button>
+</div>
 <app-fieldsbox
   [fields]="fields"
   [object]="object"
-  (fieldsUpdated)="this.fields = $event"
+  (fieldsUpdated)="fields = $event"
 ></app-fieldsbox>
+<h3 *ngIf="fields.length == 0">
+  Загрузка данных
+</h3>

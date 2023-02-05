@@ -1,0 +1,8 @@
+.container {
+  flex-wrap: wrap;
+}
+.container * {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+/*# sourceMappingURL=industrial-refrigeration-units.component.css.map */

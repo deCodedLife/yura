@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {IResponse} from "./object.service";
+import {IProxyRequest, IResponse} from "./object.service";
 import {tap} from "rxjs";
 
 export interface IAuthData {
@@ -14,10 +14,17 @@ export interface IAuthData {
 })
 export class AuthService {
   constructor(private http: HttpClient) { }
-  API_URL = "/api"
+  API_URL = "/api/index.php"
+  ORIGIN_API_URL = "https://95.142.40.58"
 
   signIn(authData: IAuthData) {
-    return this.http.post<IResponse>( this.API_URL + '/' + 'sign-in', JSON.stringify( <object>authData ) )
+    let httpRequest: IProxyRequest = {
+      api_url: this.ORIGIN_API_URL  + '/sign-in',
+      method: "POST",
+      data: <object>authData
+    }
+
+    return this.http.post<IResponse>( this.ORIGIN_API_URL + '/sign-in', <object>authData )
   }
 
 }

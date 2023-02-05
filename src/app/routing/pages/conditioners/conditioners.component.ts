@@ -31,7 +31,7 @@ export class ConditionersComponent implements OnInit {
   }
 
   addToCard(product: IProduct) {
-    this.cookieCartService.addProduct( product.id )
+    this.cookieCartService.addProduct( {id: product.id, count: 1}, "products" )
   }
 
   sortPages() {

@@ -11,7 +11,7 @@
   <tbody>
   <tr *ngFor="let item of filtered" >
     <td *ngFor="let article of fields" >
-      <p>
+      <p *ngIf="item[ article.article ] != '%!s(\u003cnil\u003e)'">
         {{ item[ article.article ] }}
       </p>
     </td>

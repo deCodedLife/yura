@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpSentEvent} from "@angular/common/http";
-import {FormGroup} from "@angular/forms";
 
 export interface IImageResponse {
   status_code: number
@@ -12,7 +11,7 @@ export interface IImageResponse {
 })
 export class ApiImagesService {
 
-  API_URL = "/api"
+  API_URL = "https://95.142.40.58"
 
   constructor(private http: HttpClient) {}
 

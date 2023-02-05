@@ -1,19 +1,19 @@
 .container {
+  display: block;
   padding: 5px;
+  @apply h-full;
 }
 .container .card {
-  width: 100%;
-  padding: 10px 5px;
-  border-radius: 3px;
-  overflow: hidden;
-  background-color: white;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  @apply rounded overflow-hidden flex flex-col drop-shadow-lg text-center h-full w-full bg-white;
 }
 .container .card img {
   width: 100%;
+  min-width: 200px;
+  min-height: 200px;
+  max-height: 250px;
 }
 .container .card h3 {
+  @apply my-2;
   width: 100%;
   text-align: center;
   word-break: break-word;

@@ -1,15 +1,16 @@
-<div class="admin-body">
-  <app-button
-    title="Добавить"
-    icon="add"
-    type="link"
-    link="../add/services"
-  ></app-button>
-  <app-listbox
-    [fields]="fields"
-    [listItems]="services"
-    [filtered]="services"
-    [searchTerm]="headerService.searchTerm"
-    (onEdit)="editObject($event)"
-  ></app-listbox>
-</div>
+<app-button
+  title="Добавить"
+  icon="add"
+  type="link"
+  link="../add/services"
+></app-button>
+<app-listbox
+  [fields]="fields"
+  [listItems]="services"
+  [filtered]="services"
+  [searchTerm]="headerService.searchTerm"
+  (onEdit)="editObject($event)"
+></app-listbox>
+<h3 *ngIf="services.length == 0">
+  Загрузка данных
+</h3>

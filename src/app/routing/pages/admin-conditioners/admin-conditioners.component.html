@@ -1,15 +1,25 @@
-<div class="admin-body">
+<div class="buttons-row">
   <app-button
     title="Добавить"
     icon="add"
     type="link"
     link="../add/conditioners"
   ></app-button>
-  <app-listbox
-    [fields]="fields"
-    [listItems]="conditioners"
-    [filtered]="conditioners"
-    [searchTerm]="headerService.searchTerm"
-    (onEdit)="editObject($event)"
-  ></app-listbox>
+  <app-button
+    title="Импорт из Exel"
+    icon="insert_drive_file"
+    type="file"
+    extensions="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+    (fileSelected)="importFromExel($event)"
+  ></app-button>
 </div>
+<app-listbox
+  [fields]="fields"
+  [listItems]="conditioners"
+  [filtered]="conditioners"
+  [searchTerm]="headerService.searchTerm"
+  (onEdit)="editObject($event)"
+></app-listbox>
+<h3 *ngIf="conditioners.length == 0">
+  Загрузка данных
+</h3>

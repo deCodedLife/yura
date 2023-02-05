@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Subject } from "rxjs";
 import { CookieService } from "ngx-cookie";
-import {IAuthData} from "./auth.service";
+import { IAuthData } from "./auth.service";
+
+export interface ICookieProduct {
+  id: number
+  count: number
+}
 
 @Injectable({
   providedIn: 'root'
@@ -43,31 +48,43 @@ export class AppCookieService {
     this.cookieService.put( "token", userData.token )
   }
 
-  addProduct(id: number) {
-    let products = this.cookieService.getObject( "products" ) as number[]
-    products.push( id )
-    this.cookieService.putObject( "products", products )
+  get( type: string ): ICookieProduct[] {
+    let productList: ICookieProduct[] = []
+    let products = this.cookieService.getObject( type ) as number[]
+
+    products.forEach( (product, index) => {
+      if ( index % 2 != 0 ) return
+      productList.push( {id: product, count: products[ index + 1 ]} )
+    } )
+
+    return productList
+  }
+
+  addProduct(product: ICookieProduct, type: string) {
+    let products = this.cookieService.getObject( type ) as number[]
+
+    products.push( product.id )
+    products.push( product.count )
+
+    this.cookieService.putObject( type, products )
     this.recalculate()
   }
 
-  addServices(id: number) {
-    let services = this.cookieService.getObject( "services" ) as number[]
-    services.push( id )
-    this.cookieService.putObject( "services", services )
-    this.recalculate()
+  reset() {
+    this.cookieService.putObject( "products", [] )
+    this.cookieService.putObject( "services", [] )
   }
 
-  deleteProduct(id: number) {
-    let products = this.cookieService.getObject( "products" ) as number[]
-    products.splice(products.indexOf( id ), 1)
-    this.cookieService.putObject( "products", products )
-    this.recalculate()
-  }
+  deleteProduct( id: number, type: string ) {
+    let products = this.cookieService.getObject( type ) as number[]
 
-  deleteService(id: number) {
-    let services = this.cookieService.getObject( "services" ) as number[]
-    services.splice(services.indexOf( id ), 1)
-    this.cookieService.putObject( "services", services )
+    products.forEach( ( product, index ) => {
+      if ( index % 2 != 0 || product != id ) return
+      products.splice( index, 2 )
+    } )
+
+    console.log( products, id )
+    this.cookieService.putObject( type, products )
     this.recalculate()
   }
 
@@ -85,7 +102,7 @@ export class AppCookieService {
       services = []
     }
 
-    this.cookieUpdated.next( products.length + services.length )
+    this.cookieUpdated.next( products.length / 2 + services.length / 2 )
   }
 
   cookieUpdated = new Subject<number>()

@@ -1,3 +1,8 @@
+export interface IListItem {
+  type: string
+  id: number
+}
+
 export interface IField {
   title: string
   article: string
@@ -7,7 +12,7 @@ export interface IField {
   display: boolean
   display_type: string,
   take_from: string,
-  list_items: any[]
+  list_items: IListItem[]
   selected_item: number
   value: any
 }

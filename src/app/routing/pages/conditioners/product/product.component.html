@@ -1,20 +1,24 @@
 <div class="container">
   <div class="card">
-    <img src="{{ '/api' + product.image }}">
-    <h3>
-      {{ product.model }}
-    </h3>
-    <h5>
-      {{ product.description }}
-    </h5>
-    <h3>
-      {{ product.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
-    </h3>
-    <div
-      class="button"
-      (click)="cardEvent.emit()"
-    >
-      В корзину
+    <img src="{{ 'https://95.142.40.58' + product.image }}">
+    <div class="py-3 px-2 flex flex-col" style="flex: 9999">
+      <h3>
+        {{ product.model }}
+      </h3>
+      <div class="flex" style="flex: 999;">
+        <h5 style="max-height: 110px; text-align: justify; overflow: hidden; text-overflow: ellipsis">
+          {{ product.description }}
+        </h5>
+      </div>
+      <h3>
+        {{ product.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
+      </h3>
+      <div
+        class="button"
+        (click)="cardEvent.emit()"
+      >
+        В корзину
+      </div>
     </div>
   </div>
 </div>

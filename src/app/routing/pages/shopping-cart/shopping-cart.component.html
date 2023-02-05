@@ -8,68 +8,19 @@
         <h2>
           Данные клиента
         </h2>
-        <div class="input-box"><input placeholder="ФИО"></div>
-        <div class="input-box"><input placeholder="Email"></div>
-        <div class="input-box"><input placeholder="Номер телефона"></div>
-        <div class="button"><h3>Оформить заказ</h3></div>
+        <div class="input-box"><input [(ngModel)]="clientName" placeholder="ФИО"></div>
+        <div class="input-box"><input [(ngModel)]="clientEmail" placeholder="Email"></div>
+        <div class="input-box"><input [(ngModel)]="phoneNumber" placeholder="Номер телефона"></div>
+        <div
+          class="button"
+          (click)="checkout()"
+        ><h3>Оформить заказ</h3></div>
       </div>
 
-      <div class="products" *ngIf="cartList.length == 0" >
-        <h3>
-          Loading content...
-        </h3>
-      </div>
-
-      <div
-        *ngIf="cartList.length > 0"
-        class="products"
-      >
-        <table cellspacing="0" id="products">
-          <tr class="info">
-            <td class="photo">Фото</td>
-            <td>Название</td>
-            <td>Количество</td>
-            <td class="price">Цена</td>
-            <td>Сумма</td>
-          </tr>
-          <tr class="product" *ngFor="let cartItem of cartList; index as i">
-            <td class="photo">
-              <img src="{{ cartItem.image }}" [alt]="cartItem.subTitle">
-            </td>
-            <td>
-              {{ cartItem.title }}
-            </td>
-            <td class="input-back">
-              <div class="input-box">
-                <input class="input-box" type="number" min="1" (change)="updateCount(i, $event)" value="{{ cartItem.amount }}">
-                <div class="center-in">
-                  <svg
-                    (click)="removeFromCard(cartItem)"
-                    class="clickable"
-                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-                </div>
-              </div>
-            </td>
-            <td class="price">
-              {{ cartItem.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
-            </td>
-            <td>
-              {{ cartItem.summary.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
-            </td>
-          </tr>
-          <tr class="summary">
-            <td>
-              Итого
-            </td>
-            <td class="photo"></td>
-            <td></td>
-            <td class="price"></td>
-            <td>
-              {{ summary.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
-            </td>
-          </tr>
-        </table>
-      </div>
+      <app-tableview
+        class="table"
+        (itemsUpdated)="updateCart($event)"
+      ></app-tableview>
     </div>
   </div>
 

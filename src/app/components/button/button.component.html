@@ -17,6 +17,6 @@
   *ngIf="type == 'file'"
 >
   <mat-icon *ngIf="icon.length > 0">{{ icon }}</mat-icon>
-  <input type="file" (change)="handleFile($event)" accept="image/*">
+  <input type="file" (change)="handleFile($event)" [accept]="extensions">
 </div>
 

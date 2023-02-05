@@ -32,28 +32,8 @@ export class AdminAddObjectComponent {
     this.headerService.title.next( "Добавить объект" )
 
     this.objectName = this.route.snapshot.paramMap.get('object');
-    this.objectsService.getSchema( this.objectName ).subscribe(response => {
-      this.fields = response.data
-
-      for ( let i = 0; i < this.fields.length; i++ ) {
-
-        let field = this.fields[i]
-        let take_from = field.take_from.split('/')
-        let object = take_from[0]
-        let type = take_from[1]
-
-        if ( field.display_type == 'combobox' ) {
-
-          this.objectsService.getObjects( object ).subscribe(response => {
-            response.data.forEach( item => {
-              if ( typeof( this.fields[i].list_items ) == "undefined") {
-                this.fields[i].list_items = []
-              }
-              this.fields[i].list_items.push( item[ type ] )
-            } )
-          } )
-        }
-      }
+    this.objectsService.getFields( this.objectName ).then( response => {
+      this.fields = response
     } )
   }
 }

@@ -18,8 +18,19 @@ export class FieldsboxComponent {
     this.fieldsUpdated.emit( this.fields )
   }
 
-  getIndex(property: any) {
-    return parseInt( property ) - 1
+  toInt( value: any ) {
+    return parseInt( value )
+  }
+
+  getIndex(item: IField): number {
+    let propertyID = parseInt( this.object[ item.article ] )
+    let objectID: number = 0
+
+    item.list_items.forEach( (field, index) => {
+      if ( field.id == propertyID ) objectID = index
+    } )
+
+    return objectID
   }
 
   isNull(data: any) {

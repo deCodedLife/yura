@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ServicesGroupsService} from "../../../services/services-groups.service";
+import {ObjectService} from "../../../services/object.service";
 import {IServiceGroup} from "../../../services/interfaces/services-groups.interface";
 import {IService} from "../../../services/interfaces/service.interface";
 import {CookieService} from "ngx-cookie";
@@ -18,7 +18,7 @@ export interface IDisplayGroup {
 
 export class CalculatorComponent implements OnInit {
   constructor(
-    private servicesGroupsService: ServicesGroupsService,
+    private objectService: ObjectService,
     private cookieService: CookieService,
     private cookieCartService: AppCookieService
   ) {}
@@ -35,21 +35,29 @@ export class CalculatorComponent implements OnInit {
   calculatePrice() {
     this.content.forEach( contentItem => {
       contentItem.services.forEach( service => {
-        if ( typeof( service.amount ) != "undefined") {
-          this.TotalSum += service.price * service.amount
-          let services = this.cookieService.getObject( "services" ) as number[]
-          if ( services.includes( service.id ) == false ) {
-            services.push( service.id )
-            this.cookieService.putObject( "services", services )
-            this.cookieCartService.recalculate()
-          }
-        }
+        if ( typeof( service.amount ) == "undefined" ) return
+
+        this.TotalSum += service.price * service.amount
+        this.cookieCartService.deleteProduct( service.id, "services" )
+        this.cookieCartService.addProduct( {id: service.id, count: service.amount}, "services" )
+
+        if ( typeof (service.additional_service_id) == "undefined" ) return;
+        this.content.forEach( groups => {
+          groups.services.forEach( add_service => {
+            if ( add_service.id != service.additional_service_id ) return
+            this.TotalSum += add_service.price
+            this.cookieCartService.deleteProduct( add_service.id, "services" )
+            this.cookieCartService.addProduct( { id: add_service.id, count: 1 }, "services" )
+          } )
+        } )
+
+        this.cookieCartService.recalculate()
       } )
     } )
   }
 
   ngOnInit() {
-    this.servicesGroupsService.getServicesGroups().subscribe( response => {
+    this.objectService.getObjects( "services_groups" ).subscribe( response => {
       this.servicesGroups = response.data
 
       this.servicesGroups.forEach( serviceGroup =>
@@ -58,6 +66,6 @@ export class CalculatorComponent implements OnInit {
           services: []
         })
       )
-    })
+    } )
   }
 }

@@ -1,10 +1,12 @@
-<div class="admin-body">
-  <app-listbox
-    [fields]="fields"
-    [listItems]="sales"
-    [filtered]="sales"
-    activeIcon="receipt_long"
-    [searchTerm]="headerService.searchTerm"
-    (onEdit)="openReceipt($event)"
-  ></app-listbox>
-</div>
+<app-listbox
+  activeIcon="receipt_long"
+  [fields]="fields"
+  [listItems]="sales"
+  [filtered]="sales"
+  [searchTerm]="headerService.searchTerm"
+  (onEdit)="openReceipt($event)"
+></app-listbox>
+
+<h3 *ngIf="sales.length == 0">
+  Загрузка данных
+</h3>

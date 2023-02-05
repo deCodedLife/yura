@@ -7,7 +7,7 @@ button p {
   margin: 0;
 }
 div {
-  @apply my-4 rounded font-sans font-bold text-lg bg-gray-800 px-2 py-1 text-white cursor-pointer;
+  @apply flex my-4 rounded font-sans font-bold text-lg bg-gray-800 px-2 py-1 text-white cursor-pointer;
 }
 div input {
   all: unset;

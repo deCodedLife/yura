@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {ObjectService} from "../../../services/object.service";
 import {HeaderService} from "../../../services/header.service";
 import {IField} from "../../../services/interfaces/fieldItem.interface";
+import {HttpParams} from "@angular/common/http";
 
 @Component({
   selector: 'app-dashboard',
@@ -38,7 +39,13 @@ export class DashboardComponent implements OnInit {
 
       response.data.forEach( saleData => {
 
-        this.objectService.getObject( 'clients', saleData[ 'client_id' ] ).subscribe( response => {
+        if ( saleData.active == false ) return
+
+        this.objectService.getWithParams( 'clients', new HttpParams({
+          fromObject: {
+            id: saleData[ 'client_id' ]
+          }
+        }) ).subscribe( response => {
 
           let data = response.data[0]
           data[ 'id' ] = saleData[ 'id' ]

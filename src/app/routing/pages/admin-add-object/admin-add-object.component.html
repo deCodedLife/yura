@@ -8,3 +8,6 @@
   [fields]="fields"
   (fieldsUpdated)="this.fields = $event"
 ></app-fieldsbox>
+<h3 *ngIf="fields.length == 0">
+  Загрузка данных
+</h3>

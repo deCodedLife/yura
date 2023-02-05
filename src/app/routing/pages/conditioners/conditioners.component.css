@@ -87,15 +87,25 @@
     max-width: 33.333%;
   }
 }
-@media screen and (max-width: 290px) {
+@media screen and (max-width: 480px) {
+  .products {
+    height: 600px;
+  }
+  .products {
+    padding: 0;
+  }
   .products * {
     flex: 0 0 50%;
     max-width: 50%;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 290px) {
   .products {
-    height: 600px;
+    padding: 0;
+  }
+  .products * {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 /*# sourceMappingURL=conditioners.component.css.map */

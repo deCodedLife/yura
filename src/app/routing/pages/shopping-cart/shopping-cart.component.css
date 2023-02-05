@@ -24,31 +24,31 @@
   display: flex;
   flex-direction: row;
 }
-.content .products {
+.content .table {
   flex: 1;
   padding: 10px;
 }
-.content .products table {
+.content .table table {
   width: 100%;
   padding: 10px;
   text-align: center;
 }
-.content .products table .products {
+.content .table table .products {
   text-align: center;
 }
-.content .products table .photo img {
+.content .table table .photo img {
   width: 64px;
   height: 64px;
 }
 @media screen and (max-width: 480px) {
-  .content .products table .price {
+  .content .table table .price {
     display: none;
   }
 }
-.content .products table .input-back {
+.content .table table .input-back {
   width: 100px  ;
 }
-.content .products table .input-back .input-box {
+.content .table table .input-back .input-box {
   display: flex;
   background-color: #fafafa;
   padding: 5px;
@@ -56,50 +56,50 @@
   width: 100%;
   justify-content: center;
 }
-.content .products table .input-back .input-box .clickable {
+.content .table table .input-back .input-box .clickable {
   cursor: pointer;
 }
 @media screen and (max-width: 480px) {
-  .content .products table .input-back .input-box {
+  .content .table table .input-back .input-box {
     width: 75px;
   }
 }
-.content .products table .input-box {
+.content .table table .input-box {
   all: unset;
   width: 75px;
 }
 @media screen and (max-width: 480px) {
-  .content .products table .input-box {
+  .content .table table .input-box {
     width: 50px;
   }
 }
-.content .products table .summary {
+.content .table table .summary {
   background-color: #4b3f72;
   color: white;
   font-weight: bold;
 }
-.content .products table .info {
+.content .table table .info {
   width: auto;
   text-align: center;
   font-weight: bold;
 }
 @media screen and (max-width: 900px) {
-  .content .products table img {
+  .content .table table img {
     width: 50px;
   }
 }
 @media screen and (max-width: 300px) {
-  .content .products table .photo {
+  .content .table table .photo {
     display: none;
   }
 }
 @media screen and (max-width: 640px) {
-  .content .products table {
+  .content .table table {
     font-size: small;
   }
 }
 @media screen and (max-width: 300px) {
-  .content .products table {
+  .content .table table {
     font-size: 6pt;
   }
 }

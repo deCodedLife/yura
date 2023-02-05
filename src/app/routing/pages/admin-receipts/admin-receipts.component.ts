@@ -1,23 +1,18 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HeaderService} from "../../../services/header.service";
-import {IField} from "../../../services/interfaces/fieldItem.interface";
-import {ObjectService} from "../../../services/object.service";
+import {IField, IListItem} from "../../../services/interfaces/fieldItem.interface";
+import {IRequest, ObjectService} from "../../../services/object.service";
 import {ActivatedRoute, Route} from "@angular/router";
 import {IProduct} from "../../../services/interfaces/product.interface";
 import {IService} from "../../../services/interfaces/service.interface";
 import {HttpParams} from "@angular/common/http";
 import {ISaleProduct} from "../../../services/interfaces/sale-product.interface";
 import {ISaleService} from "../../../services/interfaces/sale-service.interface";
+import {IAbstractProduct} from "../../../components/tableview/tableview.component";
+import {Subject} from "rxjs";
+import {TableDataService} from "../../../services/table-data.service";
 
-export interface IAbstractProduct {
-  id: number
-  image: string
-  title: string
-  price: number
-  amount: number
-  summary: number
-  reference: IProduct | IService
-}
+
 
 @Component({
   selector: 'app-admin-receipts',
@@ -28,7 +23,8 @@ export class AdminReceiptsComponent implements OnInit {
   constructor(
     private appheader: HeaderService,
     private objectService: ObjectService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dataService: TableDataService
   ) {
   }
 
@@ -42,14 +38,29 @@ export class AdminReceiptsComponent implements OnInit {
   saleID: number
   oldUserCart: IAbstractProduct[] = []
 
-  updateCount(index: number, event: Event) {
-    this.productCart[ index ].amount = parseInt ( (<HTMLInputElement>event.target).value )
-    this.productCart[ index ].summary = this.productCart[ index ].price * this.productCart[ index ].amount
-    this.updateSummary()
+  updateCart( products: IAbstractProduct[] ) {
+    this.productCart = products
+    this.dataService.tableContent$.next( this.productCart )
   }
 
-  removeFromCard(product: IAbstractProduct) {
-    this.productCart.splice( this.productCart.indexOf( product ), 1 )
+  updateReciept() {
+    let request: IField[] = []
+
+    this.saleFields.forEach( field => {
+      if ( typeof (field.value) == "undefined" ) field.value = this.saleObject[ field.article ]
+      request.push( field )
+    } )
+
+    this.objectService.updateObject( "sales", request, this.saleID, true )
+  }
+
+  closeReceipt() {
+    this.saleObject[ "active" ] = 0
+    this.updateReciept()
+  }
+
+  updateList() {
+    this.dataService.tableContent$.next( this.productCart )
   }
 
   addProduct() {
@@ -57,7 +68,24 @@ export class AdminReceiptsComponent implements OnInit {
       alert( "Ничего не выбрано" )
       return
     }
+
     this.productCart.push( this.selectedItem )
+
+    if ( this.isProduct( this.selectedItem ) ) {
+      this.updateList()
+      return;
+    }
+
+    if ( (<IService>this.selectedItem.reference).additional_service_id != null ) {
+      this.allProducts.forEach( product => {
+        if ( this.isProduct( product ) ) return
+        if ( product.reference.id != (<IService>this.selectedItem.reference).additional_service_id ) return;
+
+        this.productCart.push( product )
+      } )
+    }
+
+    this.updateList()
   }
 
   isProduct(item: object): item is IProduct {
@@ -97,29 +125,17 @@ export class AdminReceiptsComponent implements OnInit {
           request.push( field )
         } )
 
-        this.objectService.createObject( type, request, false )
+        this.objectService.createObject( type, request,false )
       } )
 
-      let request: IField[] = []
-
-      this.saleFields.forEach( field => {
-        if ( typeof (field.value) == "undefined" ) field.value = this.saleObject[ field.article ]
-        request.push( field )
-      } )
-
-      this.objectService.updateObject( "sales", request, this.saleID, true )
+      this.updateReciept()
     } )
 
   }
 
-  updateSummary(){
-    this.summary = 0
-    this.productCart.forEach(item => this.summary += item.summary )
-  }
-
-  arrayByKey( data: object[], key: string ): string[] {
-    let titleList: string[] = []
-    data.forEach( item => titleList.push( item[ key ] ) )
+  arrayByKey( data: object[], key: string ): IListItem[] {
+    let titleList: IListItem[] = []
+    data.forEach( (item, index) => titleList.push( { type: item[ key ], id: index } ) )
     return titleList
   }
 
@@ -154,106 +170,66 @@ export class AdminReceiptsComponent implements OnInit {
     } )
   }
 
-  addToCart( data: ISaleService | ISaleProduct, type: string ) {
+  addToCart( response: IRequest, type: string ) {
 
-    let amount = data.amount
-    let price = data.price
-    let summary = amount * price
-    this.summary += summary
+    if ( response.data == null ) return
 
-    this.objectService.getWithParams( type, new HttpParams( { fromObject: {
-        id: data.content_id
-      } } ) ).subscribe( response => {
+    response.data.forEach( item => {
+      item.content_id = type == "services" ? (<ISaleService>item).service_id : (<ISaleProduct>item).product_id
 
-      let product = response.data[0] as IService | IProduct
-      let isService = typeof(<object>product[ "model" ]) == "undefined"
+      let amount = item.amount
+      let price = item.price
+      let summary = amount * price
+      this.summary += summary
 
-      this.productCart.push({
-        id: data.id,
-        image: isService ? "/assets/service-cart.png" : (<object>product)["image"],
-        title: isService ? (<object>product)["title"] : (<object>product)["model"],
-        price: data.price,
-        amount: amount,
-        summary: summary,
-        reference: product
-      })
+      this.objectService.getWithParams( type, new HttpParams( { fromObject: {
+          id: item.content_id
+        } } ) ).subscribe( response => {
 
-      this.oldUserCart.push( this.productCart[ this.productCart.length - 1 ] )
+        let product = response.data[0] as IService | IProduct
+        let isService = typeof(<object>product[ "model" ]) == "undefined"
 
+        this.productCart.push({
+          id: item.id,
+          image: isService ? "/assets/service-cart.png" : (<object>product)["image"],
+          title: isService ? (<object>product)["title"] : (<object>product)["model"],
+          price: item.price,
+          amount: amount,
+          summary: summary,
+          reference: product
+        })
+
+        this.oldUserCart.push( this.productCart[ this.productCart.length - 1 ] )
+        this.dataService.tableContent$.next( this.productCart )
+
+      } )
     } )
   }
 
   getSaleDetails(objectID: number) {
     this.objectService.getWithParams( "sales_services", new HttpParams({fromObject: {
         sale_id: objectID
-      }}) ).subscribe( response => {
-      if ( response.data == null ) return
-
-      response.data.forEach( item => {
-        item = item as ISaleService
-        item.content_id = item.service_id
-        this.addToCart( item, "services" )
-      } )
-
-    } )
-
+      }}) ).subscribe( response => this.addToCart( response, "services" ) )
 
     this.objectService.getWithParams( "sales_products", new HttpParams({fromObject: {
         sale_id: objectID
-      }}) ).subscribe( response => {
-      if ( response.data == null ) return
-
-      response.data.forEach( item => {
-        item = item as ISaleProduct
-        item.content_id = item.product_id
-        this.addToCart( item, "conditioners" )
-      } )
-
-    } )
-  }
-
-  getSaleSchema() {
-    this.objectService.getSchema( "sales" ).subscribe( response => {
-      this.saleFields = response.data
-
-      for ( let i = 0; i < this.saleFields.length; i++ ) {
-
-        let field = this.saleFields[i]
-        let take_from = field.take_from.split('/')
-        let object = take_from[0]
-        take_from.splice(0, 1)
-        let types = take_from
-
-        if ( field.display_type == 'combobox' ) {
-
-          this.objectService.getObjects( object ).subscribe(response => {
-            response.data.forEach( item => {
-              if ( typeof( this.saleFields[i].list_items ) == "undefined") {
-                this.saleFields[i].list_items = []
-              }
-
-              let list_item = ""
-
-              types.forEach( type => {
-                list_item += item[ type ] + " "
-              } )
-
-              list_item.slice(0, -1)
-
-              this.saleFields[i].list_items.push( list_item )
-            } )
-          } )
-        }
-      }
-    } )
+      }}) ).subscribe( response => this.addToCart( response, "conditioners" ) )
   }
 
   ngOnInit() {
-    this.saleID = parseInt( this.route.snapshot.paramMap.get('id') )
-    this.getSaleDetails( this.saleID )
     this.appheader.title.next( "Заказ клиента" )
-    this.objectService.getObject( "sales", this.saleID ).subscribe( response => this.saleObject = response.data[0] )
-    this.getSaleSchema()
+
+    this.dataService.tableContent$.next([])
+    this.saleID = parseInt( this.route.snapshot.paramMap.get('id') )
+
+    this.getSaleDetails( this.saleID )
+
+    this.objectService.getWithParams( "sales", new HttpParams( {
+      fromObject: {
+        id: this.saleID
+      }
+    } ) ).subscribe( response => this.saleObject = response.data[0] )
+    this.objectService.getFields( "sales" ).then( response => this.saleFields = response )
     this.getAllProducts()
   }
 

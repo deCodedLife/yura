@@ -1,1 +1,13 @@
-<p>industrial-refrigeration-units works!</p>
+<div class="body">
+  <div class="block p-6">
+    <h1>Промхолод</h1>
+    <div class="w-full">
+      <div class="flex w-full flex-row container">
+        <app-industrial-service
+          *ngFor="let service of services"
+          [service]="service"
+        ></app-industrial-service>
+      </div>
+    </div>
+  </div>
+</div>

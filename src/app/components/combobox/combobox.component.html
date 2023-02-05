@@ -5,9 +5,9 @@
       'required': required
     }"> {{ placeholder }} </h3>
   <div class="combobox-body">
-    <input [(ngModel)]="value">
+    <input [(ngModel)]="value" (ngModelChange)="filter()">
     <span class="hidden-container">
-      <input *ngFor="let item of objectsList; index as i" [value]="item" (click)="update(item, i)" readonly>
+      <input *ngFor="let item of filteredList; index as i" [value]="item.type" (click)="update(item.type, i)" readonly>
     </span>
   </div>
 </div>

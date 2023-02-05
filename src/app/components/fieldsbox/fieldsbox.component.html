@@ -18,9 +18,11 @@
     *ngIf="item.display_type == 'combobox' && isNull(item.list_items) == false"
     [placeholder]="item.title"
     [objectsList]="item.list_items"
-    [value]="isNull(object[ item.article ]) ? '' : item.list_items[ getIndex(object[ item.article ]) ]"
-    (changed)="update(item.list_items.indexOf($event), i)"
+    (itemSelected)="update($event, i)"
     [required]="item.null == 'NO' && item.default.length == 0"
+
+    [preSet]="isNull(object[ item.article ]) ? undefined : toInt(object[ item.article ])"
+    [value]="isNull(object[ item.article ]) ? '' : item.list_items[ getIndex( item ) ].type"
   ></app-combobox>
   <app-textarea
     *ngIf="item.display_type == 'textarea'"

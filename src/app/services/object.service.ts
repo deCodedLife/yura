@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams, HttpParamsOptions} from "@angular/common/http";
+import {HttpClient, HttpParams } from "@angular/common/http";
 import {IField} from "./interfaces/fieldItem.interface";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ApiImagesService} from "./api-images.service";
-import {firstValueFrom, Observable} from "rxjs";
-import * as http from "http";
 
 export interface IFieldsResponse {
   status_code: number
@@ -21,6 +19,12 @@ export interface IResponse {
   data: any
 }
 
+export interface IProxyRequest {
+  api_url: string
+  method: string
+  data: object
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -32,29 +36,44 @@ export class ObjectService {
     private imageService: ApiImagesService
   ) {}
 
+  ORIGIN_API_URL = "https://95.142.40.58"
   API_URL = "/api"
 
   getObjects(object: string ) {
-    return this.http.get<IRequest>( this.API_URL + '/' + object )
+
+    let httpRequest: IProxyRequest = {
+      api_url: this.ORIGIN_API_URL  + `/${object}`,
+      method: "GET",
+      data: null
+    }
+
+    return this.http.get<IRequest>( this.ORIGIN_API_URL + `/${object}` )
   }
 
   getWithParams(object: string, params: HttpParams) {
-    return this.http.get<IRequest>( this.API_URL + '/' + object, { params: params })
-  }
 
-  getObject(object: string, id: number) {
-    return this.http.get<IRequest>( this.API_URL + '/' + object, {
-      params: new HttpParams({fromObject: {id: id}})
-    } )
+    let httpRequest: IProxyRequest = {
+      api_url: this.ORIGIN_API_URL + `/${object}?` + params.toString(),
+      method: "GET",
+      data: null
+    }
+
+    return this.http.get<IRequest>( this.ORIGIN_API_URL + `/${object}?` + params.toString() )
   }
 
   putObject( object: string, request: Object, id: number ) {
     delete request[ "id" ]
-    return this.http.put<IResponse>( this.API_URL + '/' + object + '/' + id, JSON.stringify(request) ).toPromise()
+
+    let httpRequest: IProxyRequest = {
+      api_url: this.ORIGIN_API_URL + `/${object}/${id}`,
+      method: "PUT",
+      data: <object>request
+    }
+
+    return this.http.put<IResponse>( this.ORIGIN_API_URL + `/${object}/${id}`, <object>request ).toPromise()
   }
 
   async updateObject(object: string, fields: IField[], id: number, shouldAlert: boolean) {
-
     let request = this.generateRequest(fields)
 
     if (typeof (request['image']) == 'undefined') {
@@ -76,9 +95,13 @@ export class ObjectService {
   }
 
   deleteObject( object: string, id: number ) {
-    return this.http.delete<IResponse>( this.API_URL + '/' + object + '/' + id, { headers: new HttpHeaders({
-        "Access-Control-Allow-Origin": "*"
-      }) } )
+    let httpRequest: IProxyRequest = {
+      api_url: this.ORIGIN_API_URL + `/${object}/${id}`,
+      method: "DELETE",
+      data: null
+    }
+
+    return this.http.post<IResponse>( this.API_URL, httpRequest )
   }
 
   generateRequest(fields: IField[]) {
@@ -95,11 +118,56 @@ export class ObjectService {
   }
 
   getSchema(object: string) {
-    return this.http.get<IFieldsResponse>( this.API_URL + '/' + object + '/schema' )
+    let httpRequest: IProxyRequest = {
+      api_url: this.ORIGIN_API_URL + `/${object}/schema`,
+      method: "GET",
+      data: null
+    }
+
+    return this.http.post<IFieldsResponse>( this.API_URL, httpRequest )
+  }
+
+  async getFields( object: string ) {
+    let fields: IField[]
+    let response = await this.getSchema( object ).toPromise()
+
+    fields = response.data as IField[]
+
+    for ( let i = 0; i < fields.length; i++ ) {
+
+      let field = fields[i]
+      let take_from = field.take_from.split('/')
+      let fieldObject = take_from[0]
+      take_from.splice(0, 1)
+      let objectTypes = take_from
+
+      if ( field.display_type == 'combobox' ) {
+
+        let objects = await this.getObjects( fieldObject ).toPromise()
+
+        objects.data.forEach( item => {
+          if ( typeof( fields[i].list_items ) == "undefined") {
+            fields[i].list_items = []
+          }
+
+          let list_item = ""
+
+          objectTypes.forEach( type => {
+            if ( item[ type ] != "%!s(\u003cnil\u003e)" )
+            list_item += item[ type ] + " "
+          } )
+          list_item.slice(0, -1)
+
+          fields[i].list_items.push( { type: list_item, id: item.id } )
+        } )
+      }
+    }
+
+    return fields
+
   }
 
   postImage(image: File) {
-
     let uploadForm: FormGroup
     let formData: FormData = new FormData()
     uploadForm = this.formBuilder.group(({
@@ -113,16 +181,22 @@ export class ObjectService {
   }
 
   postObject(object: string, request: Object ) {
-    return this.http.post<IResponse>( this.API_URL + "/" + object, JSON.stringify(request) ).toPromise()
+    let httpRequest: IProxyRequest = {
+      api_url: this.ORIGIN_API_URL + `/${object}`,
+      method: "POST",
+      data: <object>request
+    }
+
+    return this.http.post<IResponse>( this.API_URL, httpRequest ).toPromise()
   }
 
-  handleResponse( response: IResponse, last: boolean ): boolean {
+  handleResponse( response: IResponse, shouldAlert: boolean ): boolean {
     if ( response.status_code != 200 ) {
       alert( "Что то пошло не так" )
       return false
     }
 
-    if ( last ) alert( "Успешно" )
+    if ( shouldAlert ) alert( "Успешно" )
     return true
   }
 
