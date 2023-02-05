@@ -1,0 +1,32 @@
+@main-color: #1f2041ff;
+@sub-color: #4b3f72ff;
+@accent-first: #ffc857;
+@accent-second: #119da4ff;
+@accent-third: #119da4ff;
+@text-color: white;
+
+h4 {
+  padding: 0;
+  margin: 0;
+}
+
+.button {
+  width: 100%;
+  padding: 5px 0;
+  margin: auto;
+  text-align: center;
+
+  color: #fafafa;
+  background-color: @sub-color;
+  border-radius: 3px;
+
+  user-select: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: @accent-second;
+  }
+}

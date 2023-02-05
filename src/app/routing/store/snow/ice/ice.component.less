@@ -1,0 +1,28 @@
+.snow {
+  position: sticky;
+  background-color: white;
+
+  animation-name: snowFall;
+  animation-duration: var(--speed);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: calc(var(--size) / 2);
+  left: var(--xPos);
+  top: var(--yPos);
+
+  z-index: 9999999;
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(var(--yPos));
+  }
+
+  100% {
+    transform: translateY(var(--screenHeight));
+  }
+}

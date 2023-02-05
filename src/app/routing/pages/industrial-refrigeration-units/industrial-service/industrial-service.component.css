@@ -1,0 +1,21 @@
+h4 {
+  padding: 0;
+  margin: 0;
+}
+.button {
+  width: 100%;
+  padding: 5px 0;
+  margin: auto;
+  text-align: center;
+  color: #fafafa;
+  background-color: #4b3f72ff;
+  border-radius: 3px;
+  user-select: none;
+}
+.button:hover {
+  cursor: pointer;
+}
+.button:active {
+  background-color: #119da4ff;
+}
+/*# sourceMappingURL=industrial-service.component.css.map */
