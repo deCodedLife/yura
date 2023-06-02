@@ -1,0 +1,12 @@
+<div
+  class="flex"
+  (click)="itemClicked.emit(item)"
+  (contextmenu)="contextMenuClicked.emit($event)"
+>
+  <mat-icon *ngIf="item.isDir">folder</mat-icon>
+  <mat-icon *ngIf="item.isDir == false">description</mat-icon>
+  <p>
+    {{ item.fileName }}
+  </p>
+</div>
+

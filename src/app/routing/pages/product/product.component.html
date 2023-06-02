@@ -1,0 +1,113 @@
+<div class="body">
+  <div class="block">
+    <div class="main-content">
+      <div class="imageContent">
+        <img [src]="product.image">
+      </div>
+      <div class="shortInfo">
+        <h5>Производитель: Ballu</h5>
+        <h5>Модель: BSGRI-12HN</h5>
+        <h5>Наличие: В наличии</h5>
+
+        <div class="hr"></div>
+        <h3>
+          Основные характеристики
+        </h3>
+        <div class="main-characteristics">
+          <span>Мощность обогрева</span>
+          <span style="padding-left: 8px">8</span>
+        </div>
+        <div class="main-characteristics">
+          <span>Мощность охлаждения</span>
+          <span style="padding-left: 8px">7</span>
+        </div>
+        <div class="main-characteristics">
+          <span>Тип</span>
+          <span style="padding-left: 8px">Внутренний блок</span>
+        </div>
+        <div class="main-characteristics">
+          <span>Инвертов</span>
+          <span style="padding-left: 8px">Да</span>
+        </div>
+        <div class="main-characteristics">
+          <span>Режи работы</span>
+          <span style="padding-left: 8px">обогрев/охлаждение</span>
+        </div>
+
+        <div class="hr"></div>
+        <div class="priceFlex">
+          <div class="price">
+            <h4>
+              {{ product.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' }) }}
+            </h4>
+          </div>
+          <br>
+          <div class="input-box">
+            <div style="width: 30px" class="center-in">
+              <h4>-</h4>
+            </div>
+            <input min="1" max="100" value="1" type="number">
+            <div style="width: 30px" class="center-in">
+              <h4>+</h4>
+            </div>
+          </div>
+          <br>
+          <div class="center-in button">
+            <h4>В корзину</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="hr"></div>
+      <div class="description" style="padding: 20px">
+        <h2>
+          Описание
+        </h2>
+        <h5>
+          <h3>Основные характеристики:</h3>
+          Тип: внешний блок<br>
+          Режимы работы: охлаждение, обогрев<br>
+          Внешний блок: есть<br><br>
+
+          <h3>Конструкция:</h3>
+          Хладагент (фреон): R 410A<br><br>
+
+          <h3>Производительность и энергоэффективность:</h3>
+          Инвертор: есть<br>
+          Мощность охлаждения: 7 кВт<br>
+          Эффективность при охлаждении (EER): 3.21<br>
+          Эффективность при обогреве (COP): 3.62<br>
+          Потребляемая мощность при охлаждении: 2.18 кВт<br>
+          Потребляемая мощность при обогреве: 2.21 кВт<br>
+          Расход воздуха: 3600 м3/ч<br>
+          Обслуживаемая площадь: 70 м2<br>
+          Максимальная длина магистрали: 25 м<br>
+          Перепад высот: 15 м<br>
+          Мин. Рабочая температура при охлаждении: 18 °С<br>
+          Макс. Рабочая температура при охлаждении: 43 °С<br>
+          Мин. Рабочая температура при обогреве: -15 °С<br>
+          Макс. Рабочая температура при обогреве: 24 °С<br>
+          Мощность обогрева: 8 кВт<br>
+          Класс энергопотребления: А<br><br>
+
+          <h3>Шум:</h3>
+          Макс. Шум внешнего блока: 57 Дб<br><br>
+
+          <h3>Габариты и вес:</h3>
+          Вес внешнего блока: 66 кг<br>
+          Ширина внешнего блока: 950 мм<br>
+          Высота внешнего блока: 840 мм<br>
+          Глубина внешнего блока: 340 мм<br><br>
+
+          Гарантия: 1 год (+ 1 год сервисного обслуживания)<br>
+          Страна-производитель: Китай, Россия<br>
+          Производитель: Ballu Industrial Group. Китай, Hong Kong, 148 Connaught Road Central, Suite 18B<br>
+          Импортёр: ООО "Триовист", 220020, г. Минск, ПОБЕДИТЕЛЕЙ пр., дом № 100, офис 203; ООО "Русклимат-М", 220055, г. Минск, ул. Каменногорская, д.45; ООО "НТТ Импорт", 223060, Минская обл., Минский р-н, Новодворский с/с, д.40/2, офис 86, район д. Большое Стиклево.<br>
+          Сервисные центры: СЦ "Летта", г. Минск, ул. Маяковского, 14а, (017) 223-92-91, (017) 223-92-92, (017) 223-92-93, (017) 696-92-94, (017) 223-92-95<br>
+        </h5>
+      </div>
+    </div>
+  </div>
+
+</div>

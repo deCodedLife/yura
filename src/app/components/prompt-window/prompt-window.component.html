@@ -1,0 +1,13 @@
+<div id="background" class="fixed w-full h-full background"
+  [ngClass]="{
+    'visible': isVisible
+  }"
+>
+  <div class="absolute flex w-full h-full top-0 justify-center items-center">
+    <div id="body"
+         (click)="isVisible = false"
+    >
+    </div>
+    <app-prompt-content></app-prompt-content>
+  </div>
+</div>

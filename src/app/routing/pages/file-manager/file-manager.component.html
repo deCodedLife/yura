@@ -1,0 +1,12 @@
+<div>
+  <app-list-item
+    *ngFor="let file of filtered"
+    [item]="file"
+    (itemClicked)="clicked( $event )"
+    (contextMenuClicked)="invokeCtxMenu( $event, file )"
+  ></app-list-item>
+</div>
+
+<app-contex-menu
+  [menuItems]="ctxMenuItems"
+></app-contex-menu>
