@@ -11,7 +11,7 @@ export interface IImageResponse {
 })
 export class ApiImagesService {
 
-  API_URL = "https://95.142.40.58"
+  API_URL = "/api"
 
   constructor(private http: HttpClient) {}
 

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams } from "@angular/common/http";
 import {IField} from "./interfaces/fieldItem.interface";
-import {FormBuilder, FormGroup} from "@angular/forms";
 import {ApiImagesService} from "./api-images.service";
 
 export interface IFieldsResponse {
@@ -32,45 +31,20 @@ export interface IProxyRequest {
 export class ObjectService {
   constructor(
     private http: HttpClient,
-    private formBuilder: FormBuilder,
     private imageService: ApiImagesService
   ) {}
-
-  ORIGIN_API_URL = "https://95.142.40.58"
   API_URL = "/api"
-
   getObjects(object: string ) {
-
-    let httpRequest: IProxyRequest = {
-      api_url: this.ORIGIN_API_URL  + `/${object}`,
-      method: "GET",
-      data: null
-    }
-
-    return this.http.get<IRequest>( this.ORIGIN_API_URL + `/${object}` )
+    return this.http.get<IRequest>( this.API_URL + `/${object}` )
   }
 
   getWithParams(object: string, params: HttpParams) {
-
-    let httpRequest: IProxyRequest = {
-      api_url: this.ORIGIN_API_URL + `/${object}?` + params.toString(),
-      method: "GET",
-      data: null
-    }
-
-    return this.http.get<IRequest>( this.ORIGIN_API_URL + `/${object}?` + params.toString() )
+    return this.http.get<IRequest>( this.API_URL + `/${object}?` + params.toString() )
   }
 
   putObject( object: string, request: Object, id: number ) {
     delete request[ "id" ]
-
-    let httpRequest: IProxyRequest = {
-      api_url: this.ORIGIN_API_URL + `/${object}/${id}`,
-      method: "PUT",
-      data: <object>request
-    }
-
-    return this.http.put<IResponse>( this.ORIGIN_API_URL + `/${object}/${id}`, <object>request ).toPromise()
+    return this.http.put<IResponse>( this.API_URL + `/${object}/${id}`, <object>request ).toPromise()
   }
 
   async updateObject(object: string, fields: IField[], id: number, shouldAlert: boolean) {
@@ -86,7 +60,7 @@ export class ObjectService {
 
     delete request[ "image" ]
     Object.defineProperty(request, "image", {
-      value: '/assets/' + imageResponse.data[0],
+      value: 'https://klimsystems.ru/api/assets/' + imageResponse.data[0],
       enumerable: true,
       configurable: true
     })
@@ -95,13 +69,7 @@ export class ObjectService {
   }
 
   deleteObject( object: string, id: number ) {
-    let httpRequest: IProxyRequest = {
-      api_url: this.ORIGIN_API_URL + `/${object}/${id}`,
-      method: "DELETE",
-      data: null
-    }
-
-    return this.http.post<IResponse>( this.API_URL, httpRequest )
+    return this.http.delete<IResponse>( this.API_URL + `/${object}/${id}` )
   }
 
   generateRequest(fields: IField[]) {
@@ -118,20 +86,14 @@ export class ObjectService {
   }
 
   getSchema(object: string) {
-    let httpRequest: IProxyRequest = {
-      api_url: this.ORIGIN_API_URL + `/${object}/schema`,
-      method: "GET",
-      data: null
-    }
-
-    return this.http.post<IFieldsResponse>( this.API_URL, httpRequest )
+    return this.http.get<IFieldsResponse>( this.API_URL + `/${object}/schema` )
   }
 
   async getFields( object: string ) {
     let fields: IField[]
     let response = await this.getSchema( object ).toPromise()
 
-    fields = response.data as IField[]
+    fields = Object.create(response.data).schema as IField[]
 
     for ( let i = 0; i < fields.length; i++ ) {
 
@@ -145,21 +107,31 @@ export class ObjectService {
 
         let objects = await this.getObjects( fieldObject ).toPromise()
 
-        objects.data.forEach( item => {
-          if ( typeof( fields[i].list_items ) == "undefined") {
-            fields[i].list_items = []
-          }
+        if ( objects.data != null ) {
 
-          let list_item = ""
 
-          objectTypes.forEach( type => {
-            if ( item[ type ] != "%!s(\u003cnil\u003e)" )
-            list_item += item[ type ] + " "
+          objects.data.forEach( item => {
+
+            if ( typeof( fields[i].list_items ) == "undefined")
+              fields[i].list_items = []
+
+            let list_item = ""
+
+            if ( objectTypes != null ) {
+              objectTypes.forEach( type => {
+                if ( item[ type ] != "%!s(\u003cnil\u003e)" )
+                  list_item += item[ type ] + " "
+              } )
+              list_item.slice(0, -1)
+            }
+
+            fields[i].list_items.push( { type: list_item, id: item.id } )
           } )
-          list_item.slice(0, -1)
 
-          fields[i].list_items.push( { type: list_item, id: item.id } )
-        } )
+        }
+
+
+
       }
     }
 
@@ -168,26 +140,15 @@ export class ObjectService {
   }
 
   postImage(image: File) {
-    let uploadForm: FormGroup
-    let formData: FormData = new FormData()
-    uploadForm = this.formBuilder.group(({
-      image: ['']
-    }))
 
-    uploadForm.get('image').setValue( image )
-    formData.append('image', uploadForm.get('image').value)
+    let formData: FormData = new FormData()
+    formData.append( 'image', image)
 
     return this.imageService.uploadImage( formData ).toPromise()
   }
 
   postObject(object: string, request: Object ) {
-    let httpRequest: IProxyRequest = {
-      api_url: this.ORIGIN_API_URL + `/${object}`,
-      method: "POST",
-      data: <object>request
-    }
-
-    return this.http.post<IResponse>( this.API_URL, httpRequest ).toPromise()
+    return this.http.post<IResponse>( this.API_URL + `/${object}`, <object>request ).toPromise()
   }
 
   handleResponse( response: IResponse, shouldAlert: boolean ): boolean {
@@ -214,7 +175,7 @@ export class ObjectService {
 
     delete request[ "image" ]
     Object.defineProperty(request, "image", {
-      value: '/assets/' + response.data[0],
+      value: 'https://klimsystems.ru/api/assets/' + response.data[0],
       enumerable: true,
       configurable: true
     })

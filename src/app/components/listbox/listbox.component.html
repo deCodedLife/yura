@@ -15,7 +15,7 @@
         {{ item[ article.article ] }}
       </p>
     </td>
-    <td class="pointer" (click)="onEdit.emit(item.id)" >
+    <td class="pointer" style="display: flex; justify-content: right" (click)="onEdit.emit(item.id)" >
       <mat-icon>{{ activeIcon }}</mat-icon>
     </td>
   </tr>

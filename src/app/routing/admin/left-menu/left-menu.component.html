@@ -1,9 +1,17 @@
 <div class="menu">
   <img src="assets/Logo2.png" alt="Logo">
+
   <a [routerLink]="'admin/dashboard'">
     <button>
       <mat-icon>dashboard</mat-icon>
-      <p [routerLink]="'admin/dashboard'">Заказы</p>
+      <p>Заказы</p>
+    </button>
+  </a>
+
+  <a [routerLink]="'admin/fileManager'">
+    <button>
+      <mat-icon>folder</mat-icon>
+      <p>Файлы</p>
     </button>
   </a>
 
@@ -21,14 +29,14 @@
     </button>
   </a>
 
-  <a [routerLink]="'/admin/services-groups'">
+  <a [routerLink]="'/admin/services_groups'">
     <button>
       <mat-icon>settings</mat-icon>
       <p>Группы услуг</p>
     </button>
   </a>
 
-  <a [routerLink]="'/admin/industrial-refrigeration-units'">
+  <a [routerLink]="'/admin/industrial_refrigeration_units'">
     <button>
       <mat-icon>settings</mat-icon>
       <p>Промхолод</p>
@@ -39,6 +47,34 @@
     <button>
       <mat-icon>people</mat-icon>
       <p>Клиенты</p>
+    </button>
+  </a>
+
+  <a [routerLink]="'/admin/manufacturers'">
+    <button>
+      <mat-icon>people</mat-icon>
+      <p>Производители (dev)</p>
+    </button>
+  </a>
+
+  <a [routerLink]="'/admin/conditioners_types'">
+    <button>
+      <mat-icon>people</mat-icon>
+      <p>Типы кондиционеров (dev)</p>
+    </button>
+  </a>
+
+  <a [routerLink]="'/admin/control_types'">
+    <button>
+      <mat-icon>people</mat-icon>
+      <p>Типы управления (dev)</p>
+    </button>
+  </a>
+
+  <a [routerLink]="'/admin/freons'">
+    <button>
+      <mat-icon>people</mat-icon>
+      <p>Типы фреона (dev)</p>
     </button>
   </a>
 

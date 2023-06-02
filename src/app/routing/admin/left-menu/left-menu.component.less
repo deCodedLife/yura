@@ -1,7 +1,8 @@
 .menu {
-  @apply bg-gray-800 h-full fixed;
+  @apply h-full fixed;
   flex: 0 1;
   width: 290px;
+  background-color: #1e1e2d;
 
   img {
     @apply w-full py-10;
@@ -14,16 +15,17 @@
 }
 
 a {
-  @apply w-full font-sans text-sm font-bold;
+  @apply w-full font-sans text-sm font-sans;
 
   p {
-    @apply px-5;
+    @apply px-3;
   }
 }
 
 button {
   @apply text-white w-full py-4 px-7 flex;
   text-align: left;
+  align-items: center;
 
   &:hover {
     @apply bg-orange-300;

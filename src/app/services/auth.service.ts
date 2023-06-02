@@ -14,17 +14,11 @@ export interface IAuthData {
 })
 export class AuthService {
   constructor(private http: HttpClient) { }
-  API_URL = "/api/index.php"
-  ORIGIN_API_URL = "https://95.142.40.58"
+
+  API_URL = "/api"
 
   signIn(authData: IAuthData) {
-    let httpRequest: IProxyRequest = {
-      api_url: this.ORIGIN_API_URL  + '/sign-in',
-      method: "POST",
-      data: <object>authData
-    }
-
-    return this.http.post<IResponse>( this.ORIGIN_API_URL + '/sign-in', <object>authData )
+    return this.http.post<IResponse>( this.API_URL + '/sign-in', <object>authData )
   }
 
 }

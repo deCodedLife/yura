@@ -1,5 +1,9 @@
-<app-snow></app-snow>
-<div>
+<app-snow *ngIf="isWinter()"></app-snow>
+<div
+  (click)="ctxMenu.hide.next(false);"
+>
   <app-store *ngIf="location.path().includes('admin') == false"></app-store>
   <app-admin *ngIf="location.path().includes('admin')"></app-admin>
 </div>
+
+<app-prompt-window></app-prompt-window>

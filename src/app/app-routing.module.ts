@@ -6,19 +6,15 @@ import { ShoppingCartComponent } from "./routing/pages/shopping-cart/shopping-ca
 import { CalculatorComponent } from "./routing/pages/calculator/calculator.component";
 import { SignInComponent } from "./routing/pages/signin/sign-in.component";
 import { DashboardComponent } from "./routing/pages/dashboard/dashboard.component";
-import { AdminConditionersComponent } from "./routing/pages/admin-conditioners/admin-conditioners.component";
 import { AdminAddObjectComponent } from "./routing/pages/admin-add-object/admin-add-object.component";
-import { AdminServicesComponent } from "./routing/pages/admin-services/admin-services.component";
 import { AdminUpdateObjectComponent } from "./routing/pages/admin-update-object/admin-update-object.component";
-import {AdminServicesGroupsComponent} from "./routing/pages/admin-services-groups/admin-services-groups.component";
 import {AdminReceiptsComponent} from "./routing/pages/admin-receipts/admin-receipts.component";
-import {AdminClientsComponent} from "./routing/pages/admin-clients/admin-clients.component";
 import {
   IndustrialRefrigerationUnitsComponent
 } from "./routing/pages/industrial-refrigeration-units/industrial-refrigeration-units.component";
-import {
-  AdminIndustrialRefrigerationUnitsComponent
-} from "./routing/pages/admin-industrial-refrigeration-units/admin-industrial-refrigeration-units.component";
+import {AdminObjectComponent} from "./routing/pages/admin-object/admin-object.component";
+import {FileManagerComponent} from "./routing/pages/file-manager/file-manager.component";
+import {ProductComponent} from "./routing/pages/product/product.component";
 
 const routes: Routes = [
   {
@@ -30,6 +26,11 @@ const routes: Routes = [
     path: "conditioners",
     pathMatch: "full",
     component: ConditionersComponent
+  },
+  {
+    path: "product/:id",
+    pathMatch: "full",
+    component: ProductComponent
   },
   {
     path: 'shopping-card',
@@ -52,41 +53,6 @@ const routes: Routes = [
     pathMatch: "full"
   },
   {
-    path: 'admin/sign-in',
-    pathMatch: "full",
-    component: SignInComponent
-  },
-  {
-    path: "admin/dashboard",
-    pathMatch: "full",
-    component: DashboardComponent
-  },
-  {
-    path: "admin/conditioners",
-    pathMatch: "full",
-    component: AdminConditionersComponent
-  },
-  {
-    path: "admin/services",
-    pathMatch: "full",
-    component: AdminServicesComponent
-  },
-  {
-    path: "admin/clients",
-    pathMatch: "full",
-    component: AdminClientsComponent
-  },
-  {
-    path: "admin/services-groups",
-    pathMatch: "full",
-    component: AdminServicesGroupsComponent
-  },
-  {
-    path: "admin/industrial-refrigeration-units",
-    pathMatch: "full",
-    component: AdminIndustrialRefrigerationUnitsComponent
-  },
-  {
     path: 'admin/add/:object',
     component: AdminAddObjectComponent
   },
@@ -97,7 +63,28 @@ const routes: Routes = [
   {
     path: 'admin/:object/:id',
     component: AdminUpdateObjectComponent
-  }
+  },
+
+  {
+    path: 'admin/sign-in',
+    pathMatch: "full",
+    component: SignInComponent
+  },
+  {
+    path: "admin/dashboard",
+    pathMatch: "full",
+    component: DashboardComponent
+  },
+  {
+    path: "admin/fileManager",
+    pathMatch: "full",
+    component: FileManagerComponent
+  },
+  {
+    path: "admin/:object",
+    pathMatch: "full",
+    component: AdminObjectComponent
+  },
 ];
 
 @NgModule({

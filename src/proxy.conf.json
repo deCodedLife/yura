@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://95.142.40.58",
+    "target": "https://klimsystems.ru/api",
     "secure": false,
     "changeOrigin": true,
     "pathRewrite": {

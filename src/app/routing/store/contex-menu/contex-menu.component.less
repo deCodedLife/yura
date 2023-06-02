@@ -1,0 +1,22 @@
+.menu {
+  @apply py-2 rounded drop-shadow-md text-white font-bold absolute;
+  display: none;
+  max-width: 300px;
+  background-color: #1e1e2d;
+}
+
+.item {
+  @apply flex px-3 py-1 cursor-pointer;
+
+  &:hover {
+    @apply bg-gray-800 w-full;
+  }
+
+  p {
+    @apply px-2;
+  }
+}
+
+.visible {
+  display: block;
+}

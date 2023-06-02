@@ -34,8 +34,15 @@ export class DashboardComponent implements OnInit {
       return
     }
 
-    this.objectService.getSchema( 'clients' ).subscribe( response => this.fields = response.data.filter( item => item.display ) )
+    this.objectService.getSchema( 'clients' ).subscribe( response => {
+
+      this.fields = Object(response.data).schema.filter( item => item.display )
+      this.headerService.title.next( Object(response.data).table )
+
+    } )
     this.objectService.getObjects( 'sales' ).subscribe(response => {
+
+      if ( response.data == null ) return
 
       response.data.forEach( saleData => {
 

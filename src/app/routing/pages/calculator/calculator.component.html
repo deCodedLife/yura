@@ -1,5 +1,5 @@
 <div class="body">
-  <div class="block">
+  <div class="block flex flex-col">
     <h1>Калькулятор стоимости</h1>
     <div style="padding: 10px 0"></div>
     <div class="input-box"><input placeholder="Введите адрес"></div>
@@ -12,7 +12,9 @@
 
     <br>
 
-    <h2>
+    <div class="flex-1"></div>
+
+    <h2 class="">
       Ориентировачная стоимость  {{ TotalSum.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB' })  }}
     </h2>
 

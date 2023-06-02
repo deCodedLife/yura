@@ -1,13 +1,21 @@
 table {
   @apply w-full text-lg;
 
+  th {
+    @apply py-3;
+  }
+
   tr {
-  @apply py-1;
+    border-top: 1px dashed #bdbdbd;
 
     td {
-      @apply text-center font-mono;
+      @apply py-2 text-center font-mono text-sm;
     }
   }
+}
+
+thead {
+  //border-bottom: 1px dashed #868686;
 }
 
 .pointer {

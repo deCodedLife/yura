@@ -1,0 +1,17 @@
+<div class="menu"
+  *ngIf="menuItems.length > 0"
+  [style.left]="mouseEvent.XPos + 'px'"
+  [style.top]="mouseEvent.YPos + 'px'"
+  [ngClass]="{
+    'visible': isVisible
+  }"
+>
+  <div
+    class="item"
+    *ngFor="let item of menuItems"
+    (click)="selected( item )"
+  >
+    <mat-icon>{{ item.icon }}</mat-icon>
+    <p>{{ item.title }}</p>
+  </div>
+</div>

@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './left-menu.component.html',
   styleUrls: ['./left-menu.component.less']
 })
-export class LeftMenuComponent {
 
+
+
+export class LeftMenuComponent {
 }

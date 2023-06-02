@@ -13,7 +13,7 @@
 
     <div class="main-content">
       <app-filters
-        *ngIf="productsList.length > 1"
+        *ngIf="productsList.length > 0"
         [products]="productsList"
         (filtered)="applyFilters($event)"
       ></app-filters>

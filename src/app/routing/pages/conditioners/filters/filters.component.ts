@@ -49,31 +49,13 @@ export class FiltersComponent {
       sorted = sorted.filter( item => this.conditionersTypesTerm.some( term => item.type == term.id ) )
     }
 
-    sorted = sorted.filter( item => item.served_area >= this.min_served_area )
-    sorted = sorted.filter( item => item.external_block_height <= this.max_external_block_height )
-    sorted = sorted.filter( item => item.external_block_width <= this.max_external_block_width )
-    sorted = sorted.filter( item => item.external_block_depth <= this.max_external_block_depth )
-    sorted = sorted.filter( item => item.internal_block_width <= this.max_internal_block_width )
-    sorted = sorted.filter( item => item.internal_block_height <= this.max_internal_block_height )
-    sorted = sorted.filter( item => item.internal_block_depth <= this.max_internal_block_depth )
-
     this.filtered.emit( sorted )
   }
 
   ngOnInit() {
     this.max_price = this.findMaxValue(this.products, 'price')
-    this.min_served_area = this.findMinValue(this.products, 'served_area')
-    this.max_external_block_width = this.findMaxValue(this.products, "external_block_width")
-    this.max_external_block_depth = this.findMaxValue(this.products, "external_block_depth")
-    this.max_external_block_height = this.findMaxValue(this.products, "external_block_height")
-    this.max_internal_block_width = this.findMaxValue(this.products, "internal_block_width")
-    this.max_internal_block_height = this.findMaxValue(this.products, "internal_block_height")
-    this.max_internal_block_depth = this.findMaxValue(this.products, "internal_block_depth")
 
-    this.objectService.getObjects( "manufacturers" ).subscribe( response => {
-      this.manufacturersList = response.data as IManufacturer[]
-    } )
-    this.objectService.getObjects( "conditioners_types",  ).subscribe( response => {
+    this.objectService.getObjects( "conditioners_types"  ).subscribe( response => {
       this.conditionersTypesList = response.data as IConditionerType[]
     } )
   }

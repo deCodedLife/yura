@@ -12,7 +12,7 @@
     <tbody>
     <tr class="product" *ngFor="let cartItem of productsCart; index as i">
       <td class="photo">
-        <img src="{{ 'https://coded.life' + cartItem.image }}" [alt]="cartItem.title">
+        <img src="{{ cartItem.image }}" [alt]="cartItem.title">
       </td>
       <td>
         {{ cartItem.title }}

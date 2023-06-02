@@ -1,0 +1,19 @@
+<div #promptWindow id="content">
+  <app-inputbox
+    [placeholder]="title"
+    [value]="content"
+    (edited)="content = $event"
+  ></app-inputbox>
+  <div class="flex w-full gap-0.5 justify-end">
+    <app-button
+      title="Отмена"
+      type="submit"
+      (triggered)="prompt.hide()"
+    ></app-button>
+    <app-button
+      title="Подтвердить"
+      type="submit"
+      (triggered)="submit()"
+    ></app-button>
+  </div>
+</div>

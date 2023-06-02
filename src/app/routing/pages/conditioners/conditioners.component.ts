@@ -26,6 +26,7 @@ export class ConditionersComponent implements OnInit {
   limit = 12
 
   applyFilters(newData: IProduct[]) {
+    this.selectedPage = 0
     this.sortedList = newData
     this.sortPages()
   }
@@ -45,11 +46,24 @@ export class ConditionersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.objects.getObjects( "conditioners" ).subscribe( response => {
-      this.productsList = response.data
-      this.sortedList = response.data
-      this.isLoading = false
-      this.sortPages()
+    this.objects.getObjects( "manufacturers" ).subscribe( m_response => {
+      if ( m_response.status_code != 200 ) return
+
+      this.objects.getObjects( "conditioners" ).subscribe( response => {
+        response.data.forEach( (product, index) => {
+          let manufacturer = m_response.data.filter( item => item[ "id" ] == product[ "manufacturer" ] )[0]
+
+          product[ "price" ] = product[ "price" ] * manufacturer[ "coefficient" ] * manufacturer[ "exchange_rate" ]
+          product[ "price" ] = product[ "price" ].toFixed( 2 )
+          response.data[ index ] = product
+        } )
+
+        this.productsList = response.data
+        this.sortedList = response.data
+        this.isLoading = false
+        this.sortPages()
+      } )
+
     } )
   }
 

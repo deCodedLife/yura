@@ -122,6 +122,7 @@ export class ShoppingCartComponent implements OnInit {
     let cartProducts = this.cartCookieService.get( "products" )
     let cartServices = this.cartCookieService.get( "services" )
 
+
     cartProducts.forEach( product => {
       this.objectsService.getWithParams( "conditioners", new HttpParams({
         fromObject: {

@@ -20,7 +20,8 @@
     <h1 style="padding: 0 20px">
       Популярные товары
     </h1>
-    <div class="card-carousel" style="padding: 0 20px;">
+    <div *ngIf="productsList.length == 0" class="h-60 p-6">Загрузка товаров</div>
+    <div *ngIf="productsList.length > 1" class="card-carousel" style="padding: 0 20px;">
       <app-product
         *ngFor="let item of productsList"
         (cardEvent)="addToCard(item)"

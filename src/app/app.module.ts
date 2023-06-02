@@ -15,7 +15,6 @@ import { ServiceCategoryComponent } from './routing/pages/calculator/service-cat
 import { NotFoundComponent } from './routing/pages/not-found/not-found.component';
 import { AdminModule } from "./routing/admin/admin.module";
 import { DashboardComponent } from './routing/pages/dashboard/dashboard.component';
-import { AdminConditionersComponent } from './routing/pages/admin-conditioners/admin-conditioners.component';
 import { MatIconModule } from "@angular/material/icon";
 import { InputboxComponent } from './components/inputbox/inputbox.component';
 import { ListboxComponent } from './components/listbox/listbox.component';
@@ -24,19 +23,23 @@ import { AdminAddObjectComponent } from './routing/pages/admin-add-object/admin-
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { ComboboxComponent } from './components/combobox/combobox.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { AdminServicesComponent } from './routing/pages/admin-services/admin-services.component';
 import { AdminUpdateObjectComponent } from './routing/pages/admin-update-object/admin-update-object.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
 import { SignInComponent } from "./routing/pages/signin/sign-in.component";
-import { AdminServicesGroupsComponent } from './routing/pages/admin-services-groups/admin-services-groups.component';
 import { ImageboxComponent } from './components/imagebox/imagebox.component';
 import { AdminReceiptsComponent } from './routing/pages/admin-receipts/admin-receipts.component';
 import { FieldsboxComponent } from './components/fieldsbox/fieldsbox.component';
-import { AdminClientsComponent } from './routing/pages/admin-clients/admin-clients.component';
 import { TableviewComponent } from './components/tableview/tableview.component';
 import { IndustrialRefrigerationUnitsComponent } from './routing/pages/industrial-refrigeration-units/industrial-refrigeration-units.component';
-import { AdminIndustrialRefrigerationUnitsComponent } from './routing/pages/admin-industrial-refrigeration-units/admin-industrial-refrigeration-units.component';
 import { IndustrialServiceComponent } from './routing/pages/industrial-refrigeration-units/industrial-service/industrial-service.component';
+import { TestComponent } from './routing/pages/test/test.component';
+import { AdminObjectComponent } from './routing/pages/admin-object/admin-object.component';
+import { FileManagerComponent } from './routing/pages/file-manager/file-manager.component';
+import { ListItemComponent } from "./routing/pages/file-manager/list-item/list-item.component";
+import { NotificationComponent } from './components/notification/notification.component';
+import {PromptWindowComponent} from "./components/prompt-window/prompt-window.component";
+import { PromptContentComponent } from './components/prompt-window/prompt-content/prompt-content.component';
+import { ProductComponent } from './routing/pages/product/product.component';
 
 @NgModule({
   declarations: [
@@ -46,33 +49,35 @@ import { IndustrialServiceComponent } from './routing/pages/industrial-refrigera
     ServiceCategoryComponent,
     NotFoundComponent,
     DashboardComponent,
-    AdminConditionersComponent,
     InputboxComponent,
     ListboxComponent,
     ButtonComponent,
     AdminAddObjectComponent,
     CheckboxComponent,
     ComboboxComponent,
-    AdminServicesComponent,
     AdminUpdateObjectComponent,
     TextareaComponent,
     SignInComponent,
-    AdminServicesGroupsComponent,
     ImageboxComponent,
     AdminReceiptsComponent,
     FieldsboxComponent,
-    AdminClientsComponent,
     TableviewComponent,
     IndustrialRefrigerationUnitsComponent,
-    AdminIndustrialRefrigerationUnitsComponent,
-    IndustrialServiceComponent
+    IndustrialServiceComponent,
+    TestComponent,
+    AdminObjectComponent,
+    FileManagerComponent,
+    ListItemComponent,
+    NotificationComponent,
+    PromptWindowComponent,
+    PromptContentComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HomeModule,
     HeadModule,
-    StoreModule,
     AdminModule,
     ShoppingCartModule,
     ConditionersModule,
@@ -80,14 +85,16 @@ import { IndustrialServiceComponent } from './routing/pages/industrial-refrigera
     CookieModule.withOptions(),
     MatIconModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [
-    InputboxComponent,
-    ListboxComponent
-  ]
+    exports: [
+        InputboxComponent,
+        ListboxComponent,
+        ButtonComponent
+    ]
 })
 
 export class AppModule { }

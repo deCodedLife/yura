@@ -8,7 +8,6 @@ import {IField} from "../../services/interfaces/fieldItem.interface";
 })
 export class FieldsboxComponent {
 
-  API_URL = "https://coded.life"
   @Input() fields: IField[] = []
   @Input() object: object = {}
   @Output() fieldsUpdated = new EventEmitter<IField[]>()
