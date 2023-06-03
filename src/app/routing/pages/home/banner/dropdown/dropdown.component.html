@@ -1,5 +1,5 @@
 <div class="container">
-  <a routerLink="{{ content.link }}">
+  <a routerLink="{{ content.enabled ? content.link : '/' }}">
     <div class="card">
       <img src="{{ content.image }}" [alt]="content.title">
       <h3>

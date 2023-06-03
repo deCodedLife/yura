@@ -6,6 +6,7 @@ import { RouterLink, RouterOutlet } from "@angular/router";
 import { MatIconModule } from "@angular/material/icon";
 import { TopHeaderComponent } from './top-header/top-header.component';
 import {FormsModule} from "@angular/forms";
+import {MatTreeModule} from "@angular/material/tree";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {FormsModule} from "@angular/forms";
     RouterOutlet,
     MatIconModule,
     RouterLink,
-    FormsModule
+    FormsModule,
+    MatTreeModule
   ],
 })
 export class AdminModule { }

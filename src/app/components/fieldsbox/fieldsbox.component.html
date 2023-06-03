@@ -1,41 +1,48 @@
-<div *ngFor="let item of fields; index as i">
-  <app-inputbox
-    *ngIf="item.display_type == 'string' || item.display_type == 'float' || item.display_type == 'number'"
-    [placeholder]="item.title"
-    [digits]="item.display_type == 'float' || item.display_type == 'number'"
-    (edited)="update($event, i)"
-    [value]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
-    [required]="item.null == 'NO' && item.default.length == 0"
-  ></app-inputbox>
-  <app-checkbox
-    *ngIf="item.display_type == 'checkbox'"
-    [placeholder]="item.title"
-    [toggled]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
-    (changed)="update($event, i)"
-    [required]="item.null == 'NO' && item.default.length == 0"
-  ></app-checkbox>
-  <app-combobox
-    *ngIf="item.display_type == 'combobox' && isNull(item.list_items) == false"
-    [placeholder]="item.title"
-    [objectsList]="item.list_items"
-    (itemSelected)="update($event, i)"
-    [required]="item.null == 'NO' && item.default.length == 0"
+<div class="components-container">
+  <div *ngFor="let item of simpleItems; index as i">
+    <app-inputbox
+      *ngIf="item.display_type == 'string' || item.display_type == 'float' || item.display_type == 'number'"
+      [placeholder]="item.title"
+      [digits]="item.display_type == 'float' || item.display_type == 'number'"
+      (edited)="updateSimple($event, i)"
+      [value]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
+      [required]="item.null == 'NO' && item.default.length == 0"
+    ></app-inputbox>
+    <app-checkbox
+      *ngIf="item.display_type == 'checkbox'"
+      [placeholder]="item.title"
+      [toggled]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
+      (changed)="updateSimple($event, i)"
+      [required]="item.null == 'NO' && item.default.length == 0"
+    ></app-checkbox>
+    <app-combobox
+      *ngIf="item.display_type == 'combobox' && isNull(item.list_items) == false"
+      [placeholder]="item.title"
+      [objectsList]="item.list_items"
+      (itemSelected)="updateSimple($event, i)"
+      [required]="item.null == 'NO' && item.default.length == 0"
 
-    [preSet]="isNull(object[ item.article ]) ? undefined : toInt(object[ item.article ])"
-    [value]="isNull(object[ item.article ]) ? '' : item.list_items[ getIndex( item ) ].type"
-  ></app-combobox>
-  <app-textarea
-    *ngIf="item.display_type == 'textarea'"
-    [placeholder]="item.title "
-    [value]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
-    (edited)="update($event, i)"
-    [required]="item.null == 'NO' && item.default.length == 0"
-  ></app-textarea>
-  <app-imagebox
-    *ngIf="item.display_type == 'image'"
-    [placeholder]="item.title"
-    (edited)="update($event, i)"
-    [image]="isNull(object[ item.article ]) ? '/api/assets/conditioner.jpg' : object[ item.article ]"
-    [required]="item.null == 'NO' && item.default.length == 0"
-  ></app-imagebox>
+      [preSet]="isNull(object[ item.article ]) ? undefined : toInt(object[ item.article ])"
+      [value]="isNull(object[ item.article ]) ? '' : item.list_items[ getIndex( item ) ].type"
+    ></app-combobox>
+  </div>
+</div>
+
+<div class="components-container">
+  <div *ngFor="let item of heavyItems; index as i">
+    <app-textarea
+      *ngIf="item.display_type == 'textarea'"
+      [placeholder]="item.title "
+      [value]="isNull(object[ item.article ]) ? '' : object[ item.article ]"
+      (edited)="updateHeavy($event, i)"
+      [required]="item.null == 'NO' && item.default.length == 0"
+    ></app-textarea>
+    <app-imagebox
+      *ngIf="item.display_type == 'image'"
+      [placeholder]="item.title"
+      (edited)="updateHeavy($event, i)"
+      [image]="isNull(object[ item.article ]) ? '/api/assets/conditioner.jpg' : object[ item.article ]"
+      [required]="item.null == 'NO' && item.default.length == 0"
+    ></app-imagebox>
+  </div>
 </div>

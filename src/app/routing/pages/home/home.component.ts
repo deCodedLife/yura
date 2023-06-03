@@ -28,44 +28,52 @@ export class HomeComponent implements OnInit {
     {
       image: "assets/Кондиционеры Funai.png",
       title: "Бытовые кондиционеры",
-      link: "/conditioners"
+      link: "/conditioners",
+      enabled: true
     },
     {
       image: "assets/Полупромышленные.png",
       title: "Полупромышленные кондиционеры",
-      link: "/conditioners"
+      link: "/conditioners",
+      enabled: false
     },
     {
       image: "assets/промышленные.png",
       title: "Промышленный холод",
-      link: "/conditioners"
+      link: "/conditioners",
+      enabled: false
     },
     {
       image: "assets/Вентиляция.jpg",
       title: "Вентиляция",
-      link: "/conditioners"
+      link: "/conditioners",
+      enabled: false
     }
   ]
   servicesDropdowns: IDropContent[] = [
     {
       image: "assets/shapka5.png",
       title: "Проектирование и монтаж систем кондиционирования",
-      link: "/calculator"
+      link: "/calculator",
+      enabled: true
     },
     {
       image: "assets/промышленные.png",
       title: "Проектирование, монтаж и обслуживание промышленных холодильных установок",
-      link: "/services"
+      link: "/services",
+      enabled: false
     },
     {
       image: "assets/Вентиляция.jpg",
       title: "Проектирование, монтаж и обслуживание вентиляционных установок",
-      link: "/conditioners"
+      link: "/conditioners",
+      enabled: false
     },
     {
       image: "assets/Кондиционеры Funai.png",
       title: "Проектирование, монтаж и обслуживание систем отопления",
-      link: "/conditioners"
+      link: "/conditioners",
+      enabled: false
     }
   ]
 

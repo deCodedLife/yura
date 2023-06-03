@@ -40,6 +40,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import {PromptWindowComponent} from "./components/prompt-window/prompt-window.component";
 import { PromptContentComponent } from './components/prompt-window/prompt-content/prompt-content.component';
 import { ProductComponent } from './routing/pages/product/product.component';
+import {MatTreeModule} from "@angular/material/tree";
 
 @NgModule({
   declarations: [
@@ -71,30 +72,31 @@ import { ProductComponent } from './routing/pages/product/product.component';
     NotificationComponent,
     PromptWindowComponent,
     PromptContentComponent,
-    ProductComponent,
+    ProductComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HomeModule,
-    HeadModule,
-    AdminModule,
-    ShoppingCartModule,
-    ConditionersModule,
-    ConditionersModule,
-    CookieModule.withOptions(),
-    MatIconModule,
-    FormsModule,
-    ReactiveFormsModule,
-    StoreModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HomeModule,
+        HeadModule,
+        AdminModule,
+        ShoppingCartModule,
+        ConditionersModule,
+        ConditionersModule,
+        CookieModule.withOptions(),
+        MatIconModule,
+        FormsModule,
+        ReactiveFormsModule,
+        StoreModule,
+        MatTreeModule
+    ],
   providers: [],
   bootstrap: [AppComponent],
-    exports: [
-        InputboxComponent,
-        ListboxComponent,
-        ButtonComponent
-    ]
+  exports: [
+    InputboxComponent,
+    ListboxComponent,
+    ButtonComponent
+  ]
 })
 
 export class AppModule { }
